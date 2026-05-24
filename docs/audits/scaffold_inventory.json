@@ -1,0 +1,468 @@
+{
+  "eval_auditor_owned_files": [
+    "apps/api/tests/test_audit.py",
+    "apps/api/tests/test_scoring.py",
+    "apps/api/tests/test_source_graph.py",
+    "apps/api/tests/test_contradiction.py",
+    "apps/api/tests/test_briefing.py",
+    "apps/api/tests/test_claim_extraction.py",
+    "evals/README.md",
+    "evals/eval_plan.md",
+    "evals/golden_cases.json",
+    "docs/audits/SCAFFOLD_AUDIT.md",
+    "docs/audits/scaffold_inventory.json"
+  ],
+  "excluded_dir_counts": {
+    ".git": 1,
+    ".next": 2,
+    ".pytest_cache": 1,
+    ".venv": 1,
+    "__pycache__": 118,
+    "node_modules": 2
+  },
+  "exclusions": [
+    ".git",
+    ".next",
+    ".pytest_cache",
+    ".venv",
+    "__pycache__",
+    "node_modules"
+  ],
+  "file_count_excluding_generated": 73,
+  "files": [
+    {
+      "path": ".DS_Store",
+      "sha256": "6174467b72200418b0a28d3021b492fb8013e8eca55c7fe81493e6daa4da41b5",
+      "size_bytes": 6148
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "84961d206c605e8390880e1f9a477eea3510552124637e056cbd6cc7076acabc",
+      "size_bytes": 338
+    },
+    {
+      "path": "ADVERSARIAL_REVIEW.md",
+      "sha256": "64158bc1b2f99e7a66669b6c0c8b2bbdd641438abb636f839ad722940426b730",
+      "size_bytes": 2540
+    },
+    {
+      "path": "CONSTITUTION.md",
+      "sha256": "de5e411e5381e34e67c1c348c90c1f8a86ce74833e200b04320a9f6bae06ec84",
+      "size_bytes": 9582
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "ad832c3fd3023766049c49460d938b89ec04e856536e98aef800be6ca1fe8577",
+      "size_bytes": 1075
+    },
+    {
+      "path": "LIMITATIONS.md",
+      "sha256": "b19bf0ee454eb26f41c46cff7c92489539a2e7d7f51d76eb411907caf03a967f",
+      "size_bytes": 2592
+    },
+    {
+      "path": "README.md",
+      "sha256": "d05ae89244bfdddb92d971d27c5d1aedefd1efd1f85702b9c189b31a8522045d",
+      "size_bytes": 3042
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "7b8ca6d9bc41938f846dd0dcb9e89aed1b71f041735606d311d6c308069f6b38",
+      "size_bytes": 2797
+    },
+    {
+      "path": "apps/.DS_Store",
+      "sha256": "9275fad522787a21945b0bc4695d174ba1175e6a6ee32e4cafed6122f3b8f868",
+      "size_bytes": 6148
+    },
+    {
+      "path": "apps/api/README.md",
+      "sha256": "87bbddb2c14288bfe527a043016437f99c686fd02bc1298de3eb6dbd6349d9e2",
+      "size_bytes": 1069
+    },
+    {
+      "path": "apps/api/app/__init__.py",
+      "sha256": "ebab7fd99cc3ec12ab65fdcc3bf770998a3c1b4a9ddbc3a32bace05773bd997c",
+      "size_bytes": 104
+    },
+    {
+      "path": "apps/api/app/audit.py",
+      "sha256": "bfaaa0a2d814e846a879e1fe00a38107cd551721ec37bc44fcdfc083e2a6771f",
+      "size_bytes": 5755
+    },
+    {
+      "path": "apps/api/app/briefing.py",
+      "sha256": "5a60615143886d30de9d57e0c6b51de4a0b37964dd9e5c06adbc79152355268b",
+      "size_bytes": 4396
+    },
+    {
+      "path": "apps/api/app/claim_extraction.py",
+      "sha256": "2fa25152860eeb96726bac5719b59d0c2267b316d312128fe21f6469377c4238",
+      "size_bytes": 5573
+    },
+    {
+      "path": "apps/api/app/contradiction.py",
+      "sha256": "5ccdd761776e87256d8718bc2f81ee8ca2926b28e4e27484de7602f3a5ac7963",
+      "size_bytes": 3471
+    },
+    {
+      "path": "apps/api/app/main.py",
+      "sha256": "10511c8938cb81dce9d15c585338ffc2b928e20e515e43c616381a477a30c43f",
+      "size_bytes": 5728
+    },
+    {
+      "path": "apps/api/app/models.py",
+      "sha256": "17f5496bfb8340751a182d92661836f62c92f26c37c1dc7ca4af5b5e4465f4fe",
+      "size_bytes": 8292
+    },
+    {
+      "path": "apps/api/app/scoring.py",
+      "sha256": "90a84c79d946280e864a0093e0f39da6c00e43ee3644a9f046a2688d32243479",
+      "size_bytes": 5919
+    },
+    {
+      "path": "apps/api/app/source_graph.py",
+      "sha256": "3ba8c87f1e48e0e3c78c66e6b77339c6db619377c75728813a19a8ee5e3a8121",
+      "size_bytes": 2427
+    },
+    {
+      "path": "apps/api/pyproject.toml",
+      "sha256": "130e94987b17e72076beef52ec65d7ebb0ebc3c026160a0fa31209c91cd50e5d",
+      "size_bytes": 554
+    },
+    {
+      "path": "apps/api/tests/test_audit.py",
+      "sha256": "41c7985895a4a2ce4aafdd3ad50fcb44a7e04d73a2e422dcdba7ffca9fc223d9",
+      "size_bytes": 2166
+    },
+    {
+      "path": "apps/api/tests/test_briefing.py",
+      "sha256": "3d60449fbbe76baf0b67e0a134364780740436b7da34b47e6e7d875788d48de3",
+      "size_bytes": 1618
+    },
+    {
+      "path": "apps/api/tests/test_claim_extraction.py",
+      "sha256": "854a9a233e69d60f708a83b4ab6fc8ed6e87fc415efa07a67ed7b160f743bff7",
+      "size_bytes": 1123
+    },
+    {
+      "path": "apps/api/tests/test_contradiction.py",
+      "sha256": "b43b057cc0905b790aedc3ba8bb9af6db25c95dcc63cb484f4de164a1e166e0d",
+      "size_bytes": 1326
+    },
+    {
+      "path": "apps/api/tests/test_scoring.py",
+      "sha256": "319c420d72818496bac3f668e47e82266b90eb4f0404c71c3bffb019c6a449b9",
+      "size_bytes": 3696
+    },
+    {
+      "path": "apps/api/tests/test_source_graph.py",
+      "sha256": "00ed068767681f7ce773fc19d9daf4e600e156613a6090ee44c48af1caa55da8",
+      "size_bytes": 1271
+    },
+    {
+      "path": "apps/web/README.md",
+      "sha256": "19034c49f31a9bae49123772a3fdc4564a2d6f68adaaedb86945f691ae6a6edb",
+      "size_bytes": 1628
+    },
+    {
+      "path": "apps/web/next-env.d.ts",
+      "sha256": "7b550dda9686c16f36a17bf9051d5dbf31e98555b30d114ac49fc49a1e712651",
+      "size_bytes": 247
+    },
+    {
+      "path": "apps/web/next.config.mjs",
+      "sha256": "2013a39f9e74e3a54b5bc9e2b12c19d7e53055700b055a11172969884f09a409",
+      "size_bytes": 348
+    },
+    {
+      "path": "apps/web/package-lock.json",
+      "sha256": "dd43cc377b2d72a163732161d3332353f55acca3c6b054245c0423cd876865d1",
+      "size_bytes": 33173
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "e16e874a3267893f25ffd3c52774d8d46e767f6d99f588a061853aef1ced78f2",
+      "size_bytes": 762
+    },
+    {
+      "path": "apps/web/scripts/verify-static-ui.mjs",
+      "sha256": "ce7c399996e091c4023404a65b7620b928524df4df23deb3d8c0da88216f4ddb",
+      "size_bytes": 1548
+    },
+    {
+      "path": "apps/web/src/app/globals.css",
+      "sha256": "ac7d97fb6c88dabf070ec7c45ec981c2a198ae4be8a130b19986703520dd20a6",
+      "size_bytes": 5083
+    },
+    {
+      "path": "apps/web/src/app/layout.tsx",
+      "sha256": "6cb4bd14898ec9fbf91cde0bf06882046d88571b777295f284090eb5496fcba4",
+      "size_bytes": 427
+    },
+    {
+      "path": "apps/web/src/app/page.tsx",
+      "sha256": "e7fe895de0ea2af732763a91fb0fc28af8a9eb64457718858029dc1adcff5c90",
+      "size_bytes": 2633
+    },
+    {
+      "path": "apps/web/src/components/AuditTrail.tsx",
+      "sha256": "fb798a2e1028ee443b57b9bfb40d3d0b78d5e7f93cbed1822820203551f7d9a5",
+      "size_bytes": 927
+    },
+    {
+      "path": "apps/web/src/components/BriefingPanel.tsx",
+      "sha256": "c0e4ad06cdae39c1dccf86b2baea8f358e370ec0464d2e768dd61a38d9583551",
+      "size_bytes": 1740
+    },
+    {
+      "path": "apps/web/src/components/ClaimMatrix.tsx",
+      "sha256": "d3d57928fdfb7ff6e2f707ccf8c79c371831128bbda5ec318459bd0a7d40aca7",
+      "size_bytes": 2446
+    },
+    {
+      "path": "apps/web/src/components/ContradictionBoard.tsx",
+      "sha256": "384e4cda0c9580e599519e40e735b9b42611bca7d15ff07c972bcbb62c4bfb6a",
+      "size_bytes": 1447
+    },
+    {
+      "path": "apps/web/src/components/EvidenceTrail.tsx",
+      "sha256": "bbdf674ef639c2f11dcae0e1ad3b2f91a84ec0503ccfb0f91a74ad78dfe713e5",
+      "size_bytes": 1067
+    },
+    {
+      "path": "apps/web/src/components/NarrativeMap.tsx",
+      "sha256": "81cd4a72f33cfc9dc3da0238f02e51e456eb9b371eda3a55f964e91407c76773",
+      "size_bytes": 1216
+    },
+    {
+      "path": "apps/web/src/components/SourceSpread.tsx",
+      "sha256": "3aa4086b3b215f851dcaacd6b4b56daff9a42bb46b9864661d1632bd130fd9bc",
+      "size_bytes": 2493
+    },
+    {
+      "path": "apps/web/src/data/lumenSample.ts",
+      "sha256": "64b260d0f653e773239790bf3f20564bfb69d486e46654323b02f99bdb338aa6",
+      "size_bytes": 5584
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "sha256": "8c796183a303dda2cce6cb4a7baf2a20c6c6ad96a989684de5b006457cdbf00a",
+      "size_bytes": 640
+    },
+    {
+      "path": "apps/web/tsconfig.tsbuildinfo",
+      "sha256": "0e8155fce2fd2e9deb54de6027238a0411343fc30263d6c2b3d75f2dcbacc4c6",
+      "size_bytes": 109808
+    },
+    {
+      "path": "data/.DS_Store",
+      "sha256": "ae532cfea766fa2e71206b7aab1db70b3d400b6d298e56486973485a6680301b",
+      "size_bytes": 6148
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "26a7565a38a01a9489f8c7d7bfb5fc4aead708077c0e6fcd96d7e8a6db807057",
+      "size_bytes": 564
+    },
+    {
+      "path": "docs/.DS_Store",
+      "sha256": "63a5807751344a211dbc28119f83eeb3b72b4b480b577f3cc6927d614e61d99c",
+      "size_bytes": 6148
+    },
+    {
+      "path": "docs/architecture/DATA_MODEL.md",
+      "sha256": "1f9023dd9f7aee23576f9a48f7738ce1333d9cccfea3325ff51424dfe48e5982",
+      "size_bytes": 10957
+    },
+    {
+      "path": "docs/architecture/MVP_PHASES.md",
+      "sha256": "e76c9e5f39d0360a4688e5971750280e3e515180886a05c93b1d499dfcbdda5e",
+      "size_bytes": 8719
+    },
+    {
+      "path": "docs/architecture/MVP_SCOPE.md",
+      "sha256": "8d769e15119222daecfbcf8f5f3a61b85a660208acc8c0bb95a1892727b8420e",
+      "size_bytes": 6173
+    },
+    {
+      "path": "docs/architecture/PROJECT_BLUEPRINT.md",
+      "sha256": "e49a4adc8e6518c97e51d4ee7a2127c4ba131bbdcda1131a370fa91e52c7eddc",
+      "size_bytes": 12587
+    },
+    {
+      "path": "docs/architecture/SYSTEM_OVERVIEW.md",
+      "sha256": "9da633056dbb9c11836db059a7e988e47dfb99f094a2098e3ccb17f4a17f6200",
+      "size_bytes": 7957
+    },
+    {
+      "path": "docs/audits/SCAFFOLD_AUDIT.md",
+      "sha256": "4d2c4c01a9f960a21c9a16304810ba8fe541da43fd631f2e53ebba606792a334",
+      "size_bytes": 9619
+    },
+    {
+      "path": "docs/audits/scaffold_inventory.json",
+      "sha256": "54f8e9347b2a261e0af7163c87bc273711807855d3f9cebffd4d3fa92c6d847c",
+      "size_bytes": 14183
+    },
+    {
+      "path": "docs/governance/AUDIT_TRAIL_SPEC.md",
+      "sha256": "5297b08cf191fc6fb0c103935dcd7e465bf62ab0b196076c0505451b7799548e",
+      "size_bytes": 3137
+    },
+    {
+      "path": "docs/governance/BIAS_RESISTANCE.md",
+      "sha256": "ca48ef7b465e1ddd05ca6efdb978109e3429a1f19b0569b67ad12b079bef8c9f",
+      "size_bytes": 3233
+    },
+    {
+      "path": "docs/governance/CONFIDENCE_SCORING.md",
+      "sha256": "23a5500c23f31b2e0798e3af8ca78c5738903366d28660a0477c8b5a5a5cabd9",
+      "size_bytes": 4638
+    },
+    {
+      "path": "docs/governance/GOVERNANCE_RULES.md",
+      "sha256": "792e23b70c6cb14a232fe5e90e21e7d3c2584e175989375a43e1a25ee185b2db",
+      "size_bytes": 6139
+    },
+    {
+      "path": "evals/README.md",
+      "sha256": "02119fa1978e72dc1b3b848b1ef6becee89716c0bd31ff11d44ee44da268815f",
+      "size_bytes": 1437
+    },
+    {
+      "path": "evals/eval_plan.md",
+      "sha256": "69c7b576a578f709327710a915de284d0f90b9c110ec0d473b7d2d0a736e9b9a",
+      "size_bytes": 3111
+    },
+    {
+      "path": "evals/golden_cases.json",
+      "sha256": "ff630d924cf9ca81d1631a2efd7f26a2553aef5f056535c1f49c11ded4966213",
+      "size_bytes": 8642
+    },
+    {
+      "path": "examples/sample_article.json",
+      "sha256": "4e484125cbfc18d74c7af69909888a03ce300457c5e921d20fa09e6fb3be0ec1",
+      "size_bytes": 1200
+    },
+    {
+      "path": "examples/sample_audit_trail.json",
+      "sha256": "4a70a608a590a8de0b6f33e6824a9a63ba328fd1a1f2680c92b19e5667078d43",
+      "size_bytes": 2195
+    },
+    {
+      "path": "examples/sample_briefing.json",
+      "sha256": "4a3f2cf15131dff6e7cd2aee9bd5040609bbe52494d583849d0a10f43e38a96b",
+      "size_bytes": 2106
+    },
+    {
+      "path": "examples/sample_claim_matrix.json",
+      "sha256": "d8b4f0fb1260221ebdce166e66e71f5794762c4e4675678f80b98d3b8b9df387",
+      "size_bytes": 5594
+    },
+    {
+      "path": "packages/audit_ledger/README.md",
+      "sha256": "abc3f1933dabd91c69e4d5df9e0a87b750a5d48759d81d8c8bb55c46e2742687",
+      "size_bytes": 619
+    },
+    {
+      "path": "packages/briefing/README.md",
+      "sha256": "0272bb5a61c03ff8df100326d7f506b5cbc4867a596eac2dee2ee1f514d11b83",
+      "size_bytes": 633
+    },
+    {
+      "path": "packages/claim_extractor/README.md",
+      "sha256": "c93b27db9024799ffdae8979127124b42ea394aeb218d1c1a4895253e4a64a8a",
+      "size_bytes": 668
+    },
+    {
+      "path": "packages/governance/README.md",
+      "sha256": "541b395411d7b4ce013655a4efe6bf05f637931dc778793aefa3ba12171af2dd",
+      "size_bytes": 660
+    },
+    {
+      "path": "packages/ingestors/README.md",
+      "sha256": "546ff102ba9cd4e2ac79523e6f2b663bf154e28db5305530d4a0b3e292b24299",
+      "size_bytes": 637
+    },
+    {
+      "path": "packages/scoring/README.md",
+      "sha256": "681818e8fbb38d8959a94b997c015362b0d23c63be5dd7ec48c9c9d7f96e8ec7",
+      "size_bytes": 654
+    },
+    {
+      "path": "packages/source_graph/README.md",
+      "sha256": "f0402dd914463f2461305e5a5c4170f28ba87a2c980ddd2c6e8f68f6ca6a2ff3",
+      "size_bytes": 620
+    }
+  ],
+  "generated_at_utc": "2026-05-24T11:59:35.897642+00:00",
+  "git_status_short": [
+    "?? .gitignore",
+    "?? ADVERSARIAL_REVIEW.md",
+    "?? CONSTITUTION.md",
+    "?? LICENSE",
+    "?? LIMITATIONS.md",
+    "?? README.md",
+    "?? SECURITY.md",
+    "?? apps/",
+    "?? docker-compose.yml",
+    "?? docs/",
+    "?? evals/",
+    "?? examples/",
+    "?? packages/"
+  ],
+  "known_blockers": [
+    {
+      "detail": "Repository contents remain untracked; baseline commit should wait for human review and remaining reference cleanup.",
+      "kind": "baseline_review"
+    }
+  ],
+  "repo_path": "/Users/amirtbz/lumen",
+  "resolved_blockers": [
+    {
+      "detail": "Audit chain verification blocker resolved; backend/eval pytest now passes 11/11.",
+      "kind": "backend_test_failure"
+    },
+    {
+      "detail": "Forbidden legacy-name/reference scan blocker resolved by rewording architecture acceptance criterion.",
+      "kind": "reference_scan_hit"
+    }
+  ],
+  "schema_version": "lumen.scaffold_inventory.v2",
+  "secret_scan": {
+    "hits": [],
+    "pattern_names_checked": [
+      "api_key_assignment",
+      "secret_assignment",
+      "token_assignment",
+      "private_key_block",
+      "password_assignment"
+    ],
+    "status": "pass"
+  },
+  "verification": {
+    "required_forbidden_reference_scan": {
+      "hit_count": 0,
+      "hit_paths": [],
+      "patterns": "banned legacy-name patterns redacted from inventory to avoid self-matching required grep",
+      "status": "pass"
+    }
+  },
+  "verification_results": {
+    "compileall_apps_api_app": "pass",
+    "conflict_marker_scan": "pass",
+    "pytest_apps_api_tests_q": "pass: 11 passed",
+    "required_certainty_claim_scan": {
+      "hit_count": 0,
+      "status": "pass"
+    },
+    "required_forbidden_reference_scan": {
+      "hit_count": 1,
+      "hit_paths": [
+        "docs/architecture/PROJECT_BLUEPRINT.md"
+      ],
+      "status": "fail_outside_eval_ownership"
+    }
+  }
+}

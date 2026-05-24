@@ -1,0 +1,19 @@
+{
+  "schema_version": "lumen.example.article.v1",
+  "id": "article_demo_city_water_2026_05_24",
+  "title": "City says water advisory lifted after new lab results",
+  "source": {
+    "name": "Civic Ledger Example Desk",
+    "type": "local_reporting_example",
+    "url": "https://example.invalid/civic-ledger/water-advisory-lifted",
+    "ownership": "example nonprofit newsroom",
+    "funding_note": "synthetic fixture; no real outlet or event"
+  },
+  "author": "Lumen fixture author",
+  "published_at": "2026-05-24T09:00:00Z",
+  "collected_at": "2026-05-24T09:05:00Z",
+  "ingestion_method": "static_fixture",
+  "content_hash": "sha256:fixture-not-computed-in-static-example",
+  "raw_text": "City officials said a three-day water advisory was lifted after two consecutive lab tests showed contaminant levels below the legal threshold. A neighborhood group said residents still reported odor in tap water. The city posted summary results but had not yet published the full lab report. The treatment contractor said the issue was resolved and routine monitoring would continue.",
+  "fixture_notice": "Synthetic public-interest news example for deterministic local development; it is not a real event."
+}

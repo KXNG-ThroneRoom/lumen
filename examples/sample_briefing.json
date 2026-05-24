@@ -1,0 +1,65 @@
+{
+  "schema_version": "lumen.example.briefing.v1",
+  "topic": "Synthetic city water advisory example",
+  "fixture_notice": "This briefing is generated from synthetic example data and makes no real-world factual claim.",
+  "bottom_line": "The example shows how Lumen should separate on-record assertions, missing primary evidence, community reports, incentive conflicts, and unresolved questions without declaring final truth.",
+  "confidence": {
+    "label": "mixed / unresolved",
+    "score": 0.49,
+    "explanation": "Some claims are specific and inspectable, but the full lab report and sampling details are absent."
+  },
+  "what_changed": [
+    "A city advisory was reported as lifted in the sample article."
+  ],
+  "key_claims": [
+    "claim_001",
+    "claim_002",
+    "claim_003",
+    "claim_004"
+  ],
+  "evidence_summary": [
+    "on-record city statement",
+    "summary lab results",
+    "resident odor reports",
+    "contractor assertion"
+  ],
+  "contradictions": [
+    {
+      "claims": [
+        "claim_002",
+        "claim_003"
+      ],
+      "type": "evidence_gap_or_condition_dispute",
+      "note": "Below-threshold summary results do not automatically resolve continued odor reports."
+    }
+  ],
+  "missing_information": [
+    "full lab report",
+    "contaminant identity",
+    "legal threshold denominator",
+    "sampling locations",
+    "number of resident reports",
+    "contractor monitoring plan"
+  ],
+  "narrative_frames": [
+    "official resolution frame",
+    "community uncertainty frame"
+  ],
+  "incentives": [
+    "city has public assurance incentive",
+    "contractor has performance/liability incentive",
+    "residents have safety concern incentive"
+  ],
+  "watch_indicators": [
+    "publication of full lab report",
+    "new sampling results",
+    "health department review",
+    "continued resident reports"
+  ],
+  "unresolved_questions": [
+    "Were samples representative of affected neighborhoods?",
+    "What contaminant triggered the advisory?",
+    "Do odor reports correlate with measured contaminants?"
+  ],
+  "audit_reference": "ledger_demo_city_water_2026_05_24"
+}

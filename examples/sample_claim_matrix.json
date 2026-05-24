@@ -1,0 +1,197 @@
+{
+  "schema_version": "lumen.example.claim_matrix.v1",
+  "article_id": "article_demo_city_water_2026_05_24",
+  "analysis_mode": "deterministic_fixture",
+  "method_notice": "Claims are sample analytical objects, not findings about a real-world event.",
+  "claims": [
+    {
+      "id": "claim_001",
+      "raw_claim_text": "City officials said a three-day water advisory was lifted.",
+      "normalized_claim": "The city lifted a three-day water advisory.",
+      "claim_type": "factual_claim",
+      "actors": [
+        "city officials"
+      ],
+      "targets": [
+        "water advisory"
+      ],
+      "time_range": "after 2026-05-21, exact lift time unspecified",
+      "status": "plausible",
+      "confidence_score": 0.62,
+      "confidence_label": "moderate",
+      "confidence_reasons": [
+        "named institutional source is on-record but interested",
+        "specific action is inspectable",
+        "full underlying notice is not included in fixture"
+      ],
+      "evidence_refs": [
+        "evidence_001"
+      ],
+      "contradiction_refs": [],
+      "uncertainty": [
+        "exact advisory lift timestamp missing"
+      ]
+    },
+    {
+      "id": "claim_002",
+      "raw_claim_text": "Two consecutive lab tests showed contaminant levels below the legal threshold.",
+      "normalized_claim": "Two consecutive lab tests were below the legal contaminant threshold.",
+      "claim_type": "statistical_claim",
+      "actors": [
+        "city officials",
+        "testing laboratory"
+      ],
+      "targets": [
+        "contaminant levels"
+      ],
+      "time_range": "three-day advisory window",
+      "status": "unresolved",
+      "confidence_score": 0.48,
+      "confidence_label": "limited",
+      "confidence_reasons": [
+        "summary results are referenced",
+        "full lab report and sampling method are missing",
+        "legal threshold denominator and contaminant identity need inspection"
+      ],
+      "evidence_refs": [
+        "evidence_002"
+      ],
+      "contradiction_refs": [
+        "claim_003"
+      ],
+      "uncertainty": [
+        "full lab report absent",
+        "contaminant and threshold not named"
+      ]
+    },
+    {
+      "id": "claim_003",
+      "raw_claim_text": "Residents still reported odor in tap water.",
+      "normalized_claim": "Some residents reported continuing odor in tap water after the advisory was lifted.",
+      "claim_type": "attribution_claim",
+      "actors": [
+        "neighborhood group",
+        "residents"
+      ],
+      "targets": [
+        "tap water odor"
+      ],
+      "time_range": "after advisory lift, exact reports unspecified",
+      "status": "contested",
+      "confidence_score": 0.43,
+      "confidence_label": "limited",
+      "confidence_reasons": [
+        "community reports may indicate unresolved issue",
+        "reports are not individually sourced in fixture",
+        "odor does not by itself prove contaminant threshold breach"
+      ],
+      "evidence_refs": [
+        "evidence_003"
+      ],
+      "contradiction_refs": [
+        "claim_002"
+      ],
+      "uncertainty": [
+        "number of residents unknown",
+        "sampling locations unknown"
+      ]
+    },
+    {
+      "id": "claim_004",
+      "raw_claim_text": "The treatment contractor said the issue was resolved.",
+      "normalized_claim": "The water treatment contractor asserted the issue was resolved.",
+      "claim_type": "interested_party_claim",
+      "actors": [
+        "treatment contractor"
+      ],
+      "targets": [
+        "water issue resolution"
+      ],
+      "time_range": "article publication window",
+      "status": "unsupported",
+      "confidence_score": 0.35,
+      "confidence_label": "low",
+      "confidence_reasons": [
+        "source has direct incentive conflict",
+        "assertion is not paired with primary evidence in fixture",
+        "routine monitoring promise is future-looking"
+      ],
+      "evidence_refs": [
+        "evidence_004"
+      ],
+      "contradiction_refs": [
+        "claim_003"
+      ],
+      "uncertainty": [
+        "contractor records unavailable",
+        "monitoring plan unavailable"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence_001",
+      "type": "on_record_statement",
+      "source": "city officials",
+      "proximity": "primary_interested",
+      "supports": [
+        "claim_001"
+      ]
+    },
+    {
+      "id": "evidence_002",
+      "type": "summary_lab_results",
+      "source": "city posting",
+      "proximity": "secondary_summary",
+      "supports": [
+        "claim_002"
+      ],
+      "missing": [
+        "full_lab_report"
+      ]
+    },
+    {
+      "id": "evidence_003",
+      "type": "community_report",
+      "source": "neighborhood group",
+      "proximity": "local_direct_but_unverified",
+      "supports": [
+        "claim_003"
+      ]
+    },
+    {
+      "id": "evidence_004",
+      "type": "interested_party_statement",
+      "source": "treatment contractor",
+      "proximity": "primary_interested",
+      "supports": [
+        "claim_004"
+      ]
+    }
+  ],
+  "narrative_map": {
+    "analysis_label": "narrative analysis, not fact",
+    "hero": [
+      "city response process"
+    ],
+    "villain": [],
+    "victim": [
+      "residents affected by advisory"
+    ],
+    "threat": [
+      "possible water contamination",
+      "loss of public trust"
+    ],
+    "solution": [
+      "lab testing",
+      "routine monitoring"
+    ],
+    "omitted_context": [
+      "full lab report",
+      "contaminant identity",
+      "sampling locations",
+      "contractor oversight history"
+    ],
+    "emotional_language": []
+  }
+}

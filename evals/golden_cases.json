@@ -1,0 +1,165 @@
+{
+  "schema_version": "lumen.evals.golden_cases.v2",
+  "purpose": "Deterministic golden cases for method-first Lumen behavior. Expected outputs verify transparency, uncertainty preservation, and visible confidence logic rather than final-truth conclusions.",
+  "global_invariants": [
+    "Do not emit a final truth verdict for an entire article.",
+    "Every confidence value must include visible reasons and rule references.",
+    "Unknown, unresolved, and contested are valid expected statuses.",
+    "Article count alone must not increase source independence.",
+    "Anonymous-source claims must be confidence-capped unless stronger evidence is attached.",
+    "Narrative analysis must be labeled as analysis, not fact.",
+    "Every transformation must be represented by an audit event.",
+    "Placeholder extractors must disclose limitations and must not claim production-grade extraction."
+  ],
+  "cases": [
+    {
+      "id": "GC-001-anonymous-single-source",
+      "category": "anonymous_source_cap_enforcement",
+      "input_summary": "One article attributes a major security claim to an unnamed official; no document, named witness, or primary record is attached.",
+      "claims_under_test": [
+        {"text": "An unnamed official said the agency identified the actor responsible for the breach.", "type": "anonymous_source_claim"}
+      ],
+      "expected": {
+        "status": "unresolved",
+        "max_confidence": 0.45,
+        "required_reasons": ["anonymous source", "cap", "no primary evidence", "single evidence stream"],
+        "required_audit_operations": ["claim_extracted", "score_assigned"]
+      },
+      "must_not": ["treat anonymous authority as proof", "hide the cap", "declare the actor responsible"]
+    },
+    {
+      "id": "GC-002-wire-repetition-not-independence",
+      "category": "source_dependency_detection",
+      "input_summary": "Ten outlets publish near-identical reports copied from the same wire dispatch.",
+      "claims_under_test": [
+        {"text": "Multiple reports said the port reopened at noon.", "type": "factual_claim"}
+      ],
+      "expected": {
+        "status": "plausible",
+        "independent_evidence_streams": 1,
+        "required_source_fields": ["wire_dependency", "citation_dependency", "independence_notes"],
+        "required_reasons": ["wire dependency", "repeated language", "article volume is not proof"],
+        "confidence_should_not_increase_from_article_count": true
+      },
+      "must_not": ["count ten articles as ten independent confirmations", "infer truth from repetition"]
+    },
+    {
+      "id": "GC-003-primary-document-contradiction",
+      "category": "contradiction_detection",
+      "input_summary": "An article says a regulation starts on June 1, but an attached official filing says July 1.",
+      "claims_under_test": [
+        {"text": "The regulation starts on June 1.", "type": "factual_claim"}
+      ],
+      "expected": {
+        "status": "contested",
+        "required_contradiction_type": "time_contradiction",
+        "primary_evidence_effect": "boost contradiction visibility, not automatic final truth",
+        "required_reasons": ["primary document conflicts with article"]
+      },
+      "must_not": ["silently overwrite the article claim", "hide the contradiction", "declare final truth without caveat"]
+    },
+    {
+      "id": "GC-004-headline-stronger-than-body",
+      "category": "claim_extraction_honesty",
+      "input_summary": "Headline says study proves a cause; body says researchers observed a correlation and warned about confounders.",
+      "claims_under_test": [
+        {"text": "The study proves the policy caused the change.", "type": "causal_claim"}
+      ],
+      "expected": {
+        "status": "unsupported",
+        "required_reasons": ["headline/body mismatch", "correlation is not causation", "confounders noted"],
+        "required_extracted_claims": ["headline causal claim", "body correlation claim"],
+        "required_limitations": ["placeholder", "not production-grade"]
+      },
+      "must_not": ["normalize headline hype into proven causality", "ignore body limitations", "claim comprehensive extraction"]
+    },
+    {
+      "id": "GC-005-official-statement-incentive-conflict",
+      "category": "incentive_conflict_visibility",
+      "input_summary": "An agency under investigation says its internal review found no wrongdoing; no report is published.",
+      "claims_under_test": [
+        {"text": "The agency found no wrongdoing in its conduct.", "type": "interested_party_claim"}
+      ],
+      "expected": {
+        "status": "unsupported",
+        "max_confidence": 0.5,
+        "required_reasons": ["interested party", "underlying report missing", "authority is not proof"]
+      },
+      "must_not": ["equate official statement with verified fact", "apply ideological assumptions"]
+    },
+    {
+      "id": "GC-006-hostile-sources-agree-on-one-fact",
+      "category": "source_independence_detection",
+      "input_summary": "Two adversarial organizations and a local reporter independently agree that a meeting occurred, while disagreeing on motive.",
+      "claims_under_test": [
+        {"text": "The meeting occurred on Tuesday.", "type": "factual_claim"},
+        {"text": "The meeting was intended to pressure regulators.", "type": "causal_claim"}
+      ],
+      "expected": {
+        "occurrence_claim_status": "strongly_corroborated",
+        "motive_claim_status": "contested",
+        "required_reasons": ["hostile-source agreement on narrow fact", "motive remains interpretive"]
+      },
+      "must_not": ["transfer confidence from occurrence to motive", "flatten disagreement"]
+    },
+    {
+      "id": "GC-007-missing-denominator-statistic",
+      "category": "unsupported_claim_detection",
+      "input_summary": "A campaign says incidents doubled, but omits the baseline count, population, time window, and data source.",
+      "claims_under_test": [
+        {"text": "Incidents doubled this year.", "type": "statistical_claim"}
+      ],
+      "expected": {
+        "status": "unresolved",
+        "max_confidence": 0.4,
+        "required_missing_context": ["baseline", "denominator", "time window", "data source"],
+        "required_reasons": ["missing denominator"]
+      },
+      "must_not": ["present the statistic as meaningful without denominator", "invent missing numbers"]
+    },
+    {
+      "id": "GC-008-old-image-presented-as-new",
+      "category": "media_authenticity_claim",
+      "input_summary": "A post claims a photo is from today; reverse image metadata in the fixture shows the same photo was archived two years earlier.",
+      "claims_under_test": [
+        {"text": "This image shows today's protest.", "type": "image_video_authenticity_claim"}
+      ],
+      "expected": {
+        "status": "contradicted",
+        "required_contradiction_type": "timestamp_contradiction",
+        "required_evidence": ["archive timestamp older than claimed event"],
+        "required_reasons": ["old image presented as new", "chain-of-custody caveat"]
+      },
+      "must_not": ["claim the current event did not happen solely because the image is old", "skip chain-of-custody caveat"]
+    },
+    {
+      "id": "GC-009-insufficient-evidence-unresolved",
+      "category": "unknown_status_correctness",
+      "input_summary": "A breaking report has one vague social post and no named source, document, timestamp, or location.",
+      "claims_under_test": [
+        {"text": "A major incident occurred downtown.", "type": "factual_claim"}
+      ],
+      "expected": {
+        "status": "unknown",
+        "max_confidence": 0.25,
+        "required_reasons": ["insufficient evidence", "missing timestamp", "missing location", "single vague source"],
+        "required_user_visible_output": "what would change confidence"
+      },
+      "must_not": ["force plausible status", "invent location or source details"]
+    },
+    {
+      "id": "GC-010-briefing-audit-and-limitations",
+      "category": "briefing_auditability",
+      "input_summary": "A deterministic briefing is generated from unresolved claims and local fixture evidence.",
+      "claims_under_test": [
+        {"text": "The briefing summarizes fixture-backed unresolved claims.", "type": "briefing_claim"}
+      ],
+      "expected": {
+        "required_briefing_fields": ["limitations", "audit_event_refs", "unresolved_questions"],
+        "required_audit_operations": ["briefing_generated"],
+        "required_reasons": ["limitations visible", "audit reference visible"]
+      },
+      "must_not": ["publish a briefing without limitations", "publish analysis without an audit reference"]
+    }
+  ]
+}

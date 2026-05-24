@@ -1,0 +1,52 @@
+{
+  "schema_version": "lumen.example.audit_trail.v1",
+  "ledger_id": "ledger_demo_city_water_2026_05_24",
+  "hash_chain_notice": "Hashes are illustrative placeholders in this static fixture; runtime ledger code must compute SHA-256 values over canonicalized event payloads.",
+  "events": [
+    {
+      "event_id": "evt_001",
+      "timestamp": "2026-05-24T09:05:00Z",
+      "actor_type": "system_fixture",
+      "actor_id": "static_example_loader",
+      "operation": "raw_input_registered",
+      "input_hash": null,
+      "output_hash": "sha256:article_demo_placeholder",
+      "previous_event_hash": null,
+      "event_hash": "sha256:evt_001_placeholder",
+      "reason": "Register immutable source fixture for local scaffold demo.",
+      "rule_version": "governance_fixture_v1",
+      "model_version": "none-deterministic-fixture",
+      "prompt_hash": "none"
+    },
+    {
+      "event_id": "evt_002",
+      "timestamp": "2026-05-24T09:06:00Z",
+      "actor_type": "system_fixture",
+      "actor_id": "claim_fixture_builder",
+      "operation": "claim_matrix_created",
+      "input_hash": "sha256:article_demo_placeholder",
+      "output_hash": "sha256:claim_matrix_demo_placeholder",
+      "previous_event_hash": "sha256:evt_001_placeholder",
+      "event_hash": "sha256:evt_002_placeholder",
+      "reason": "Expose claims, evidence references, contradictions, and uncertainty for demo inspection.",
+      "rule_version": "governance_fixture_v1",
+      "model_version": "none-deterministic-fixture",
+      "prompt_hash": "none"
+    },
+    {
+      "event_id": "evt_003",
+      "timestamp": "2026-05-24T09:07:00Z",
+      "actor_type": "system_fixture",
+      "actor_id": "briefing_fixture_builder",
+      "operation": "briefing_generated",
+      "input_hash": "sha256:claim_matrix_demo_placeholder",
+      "output_hash": "sha256:briefing_demo_placeholder",
+      "previous_event_hash": "sha256:evt_002_placeholder",
+      "event_hash": "sha256:evt_003_placeholder",
+      "reason": "Generate static uncertainty-preserving briefing for UI scaffold.",
+      "rule_version": "governance_fixture_v1",
+      "model_version": "none-deterministic-fixture",
+      "prompt_hash": "none"
+    }
+  ]
+}

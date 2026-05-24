@@ -1,0 +1,35 @@
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+coverage/
+
+# Local runtime data
+.env
+.env.*
+!.env.example
+data/local/
+data/audit/*.jsonl
+logs/
+
+# Generated artifacts
+*.log
+*.tsbuildinfo
