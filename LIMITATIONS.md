@@ -1,12 +1,12 @@
 # Lumen Limitations
 
-Version: v0.4-demo-polish
+Version: v0.5.2-public-framing
 
 ## Summary
 
 Lumen is an inspection tool for claims, evidence, uncertainty, provenance, and audit trails. It does not decide what users must believe.
 
-MVP v0.4 is local, deterministic, fixture-backed, and limited. It should be read as a methods demonstration, not a production intelligence system.
+The current MVP release packet is local, deterministic, fixture-backed, and limited. It should be read as a methods demonstration, not a production intelligence system or live claim-verification service.
 
 Related public references:
 
@@ -26,23 +26,23 @@ Related public references:
 - No telemetry.
 - No blockchain anchoring.
 - No claim of complete real-world verification.
-- Placeholder claim extraction may be used and must disclose that status.
-- Fixture contradiction detection only.
-- Static or controlled sample data may not represent live information complexity.
+- Controlled fixture data may not represent live information complexity.
+- The current public UI demonstrates one simplified claim story, not a broad analytical product surface.
+- Legacy/internal components may exist in the repository but are not current public demo promises.
 
 ## Demo Flow Disclosure Requirements
 
-Every local demo flow, API sample response, briefing, and dashboard path must display or link this limitations reference close to the output it qualifies.
+Every local demo flow, API sample response, and public UI path must display or link this limitations reference close to the output it qualifies.
 
-Demo documentation, README/run instructions, screenshots, and public walkthroughs must link this file when showing analytical output. A polished dashboard without visible uncertainty, limitations, and audit references is not demo-ready.
+Demo documentation, README/run instructions, screenshots, and public walkthroughs must link this file when showing analytical output. A polished interface without visible uncertainty, limitations, and audit references is not demo-ready.
 
 Required demo disclosures:
 
 - The response is controlled fixture output unless explicitly labeled otherwise.
 - The demo does not ingest live events, paid sources, or external network data.
-- Claim extraction may be placeholder-backed and must disclose that status.
 - Confidence bands describe the documented method-state of available inputs; they are not reality verdicts.
-- Contradiction, source-spread, and narrative panels may expose stubs or fixtures and must label that status.
+- The current public demo is a simplified tabbed claim story: Story, Evidence, Why uncertain, and Audit.
+- Old multi-panel interface language must not be presented as the current public UI.
 - Audit references explain how the displayed output was produced; they do not prove the underlying claim.
 
 ## Analytical Limits
@@ -75,12 +75,6 @@ A low or unknown band does not prove a claim is false. It means Lumen lacks adeq
 MVP source-dependency detection is limited. It may miss shared ownership, undisclosed funding, copied reporting, syndicated material, or common anonymous origin.
 
 When independence is unclear, Lumen should disclose uncertainty rather than inflate confidence.
-
-## Narrative Analysis Limits
-
-Narrative analysis is interpretive. It identifies possible framing patterns; it does not prove intent, deception, or coordination.
-
-All narrative outputs must be labeled as analysis.
 
 ## Audit Limits
 

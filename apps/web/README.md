@@ -1,29 +1,35 @@
 # Lumen Web
 
-Static Next.js mock interface for the first Lumen scaffold.
+Static Next.js interface for the current Lumen controlled local demo.
 
-The UI is intentionally local, deterministic, and sample-data driven. It demonstrates the product direction without claiming live ingestion, real-world verification, or automated truth determination.
+The public UI is intentionally simple: a black-and-white tabbed claim story that helps a reader understand one controlled fixture dispute without pretending to decide reality. It uses local sample data only. It does not read live news, call paid APIs, call LLMs, produce final verdicts, or replace human judgment.
 
-## Panels
+## Current public demo surface
 
-- BriefingPanel: structured uncertainty-first briefing; refuses to render a briefing without limitation and audit references.
-- ClaimMatrix: atomic claims, statuses, confidence logic, evidence references, and guard rails that withhold claim/confidence display when status or reasons are missing.
-- EvidenceTrail: source provenance, source proximity, evidence limitations reference, and evidence audit reference.
-- SourceSpread: explicit fixture-backed/deferred panel that groups visible fixture sources without inferring ownership, geography, affiliation, or independence.
-- NarrativeMap: framing analysis explicitly labeled as analysis, not fact, with a visible audit reference.
-- ContradictionBoard: unresolved disputes and evidence gaps, with a visible audit reference.
-- AuditTrail: hash-chain style transformation log.
+The current public surface presents one fixture claim in four tabs:
 
-## Uncertainty rendering rules
+- Story: shows the disagreement in sequence.
+- Evidence: compares the news report, the official record, and source-independence warning.
+- Why uncertain: explains why the answer remains contested.
+- Audit: explains that local checks exist while keeping raw internal fingerprints and machine labels out of the main reader view.
 
-The static UI keeps uncertainty visible instead of filling gaps:
+Canonical public copy that should remain visible:
 
-- no claim text is rendered when status is missing;
-- no confidence value is rendered when confidence reasons are missing;
-- no briefing is rendered without a limitation reference and audit reference;
-- no evidence item is rendered without a limitations reference and audit reference;
-- narrative, source-spread, and contradiction panels require an audit reference and explicit fixture/deferred labels;
-- source independence is not inferred from article volume or fixture count.
+- Main claim: "When does the regulation start?"
+- Explanation: "Two sources disagree. A news report says June 1. An official filing says July 1. Lumen marks this as contested instead of guessing."
+- Boundary note: "Controlled local demo only. It does not read live news, declare truth, or replace human judgment."
+
+Visual language:
+
+- yellow / middle: contested or uncertain;
+- blue / good: stronger support;
+- red / bad: conflict or weaker/conflicting support.
+
+## Legacy/internal component note
+
+Older component files still exist under `src/components/` as legacy/internal honesty components and contract fixtures. They are useful for regression checks, but they are not the current public launch UX and should not be described as the primary public interface.
+
+Do not promise public display of raw internal fingerprints, internal audit keys, source file names, underscore machine labels, or dense technical language in the simplified demo.
 
 ## Run
 
@@ -33,9 +39,13 @@ npm install
 npm run dev
 ```
 
-## Local scaffold verification
+Open the local Next.js URL printed by the dev server, usually `http://localhost:3000`.
+
+## Local verification
 
 ```bash
 npm run verify:static
 npm run typecheck
 ```
+
+`npm run verify:static` checks that the simplified tabbed page still contains the controlled claim story, required tabs, no retired interface wording in the page, backend fixture parity, and demo-doc wording that matches this public surface.

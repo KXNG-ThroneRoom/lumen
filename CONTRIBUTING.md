@@ -24,23 +24,23 @@ Read these first:
 - `docs/governance/CONFIDENCE_SCORING.md`
 - `ADVERSARIAL_REVIEW.md`
 
-If your change affects a public output, confidence scoring, limitation disclosure, audit trail, source-dependency logic, narrative analysis, or demo wording, treat it as a governance-relevant change.
+If your change affects a public output, confidence scoring, limitation disclosure, audit trail, source-dependency logic, or demo wording, treat it as a governance-relevant change.
 
 ## Current scope boundary
 
-The current demo is local, deterministic, fixture-backed, and limited.
+The current v0.5 demo is local, deterministic, fixture-backed, and limited. The public UI is a simplified claim story with Story, Evidence, Why uncertain, and Audit tabs.
 
 Do not add or imply:
 
 - live ingestion, crawling, RSS polling, or URL fetching;
 - paid APIs, secrets, telemetry, or hidden network calls;
 - LLM calls in the default local demo path;
-- production claim extraction or global source coverage;
+- production claim extraction, live retrieval, or global source coverage;
 - article-level truth labels or final authority language;
 - propaganda-detection, deception-proof, or perfect-neutrality claims;
 - blockchain anchoring, accounts, personalization, or database complexity unless explicitly scoped later.
 
-Use controlled fixtures and explicit limitation labels. If a capability is partial, fixture-backed, stubbed, or deferred, say so close to the output.
+Use controlled fixtures and explicit limitation labels. If a capability is partial, fixture-backed, stubbed, or deferred, say so close to the output. Do not describe legacy internal components as the current public UI.
 
 ## Public wording rules
 
@@ -105,7 +105,7 @@ not accidentally treat a host Python without pytest as a product regression.
 For docs or UI wording changes, also scan for overclaiming language and inspect matches manually:
 
 ```bash
-git grep -nE 'truth machine|truth score|oracle|proves|settles|production intelligence|global coverage|propaganda detector|propaganda detection|deception proof'
+git grep -nE 'truth machine|truth score|truth engine|oracle|proves|settles|final verdict|production intelligence|global coverage|propaganda detector|propaganda detection|deception proof'
 ```
 
 A match is acceptable only when it appears as a prohibition, limitation disclosure, or governance warning.

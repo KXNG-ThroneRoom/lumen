@@ -1,6 +1,6 @@
 # Lumen Adversarial Review Process
 
-Version: v0.4-demo-polish
+Version: v0.5-public-framing
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Adversarial review protects Lumen from hidden bias, false certainty, source laun
 
 The goal is not to win arguments. The goal is to make methods inspectable and improve user reasoning.
 
-This process is the public challenge path for Lumen governance, confidence scoring, limitation disclosure, audit completeness, and user-interface wording. Governance and demo documentation should link here when describing how users can contest an output or rule.
+This process is the public challenge path for Lumen governance, confidence scoring, limitation disclosure, audit completeness, and user-interface wording. Governance and demo documentation should link here when describing how users can contest an output, rule, or public framing choice.
 
 Adversarial review does not turn Lumen into an arbiter of truth. It is a documented way to challenge whether Lumen exposed methods, evidence, uncertainty, provenance, limitations, and audit references honestly.
 
@@ -22,7 +22,6 @@ Reviewers may challenge:
 - anonymous-source cap application;
 - source-independence assessment;
 - contradiction handling;
-- narrative analysis;
 - limitation disclosure;
 - audit completeness;
 - UI wording that implies excessive certainty;
@@ -54,7 +53,6 @@ Reviewers should ask:
 - Are contradictions exposed rather than hidden?
 - Are unknown, unresolved, and contested states preserved?
 - Does the interface overstate certainty?
-- Is narrative analysis clearly labeled?
 - Can the audit trail explain the output?
 
 ## Red-Team Cases
@@ -70,7 +68,8 @@ MVP adversarial cases should include:
 - ambiguous quote attribution;
 - hostile sources agreeing on one narrow fact;
 - unresolved claim with insufficient evidence;
-- emotionally strong narrative with weak evidence.
+- emotionally strong wording with weak evidence.
+- current-demo copy that implies live coverage, production authority, or final verdicts.
 
 ## Resolution States
 
@@ -84,7 +83,7 @@ Challenges may resolve as:
 
 ## Documentation
 
-Accepted and partially accepted challenges should update the relevant governance docs, tests/evals, and audit notes.
+Accepted and partially accepted challenges should update the relevant governance docs, tests/evals, and audit notes. If a challenge concerns public-demo wording, the correction should preserve the v0.5 boundary: controlled local fixture, simplified UI, no live claim-verification promise, and no final authority language.
 
 Governance changes must be public and versioned. Silent scoring or disclosure changes are prohibited.
 

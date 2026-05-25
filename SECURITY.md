@@ -1,10 +1,10 @@
 # Lumen Security and Threat Model
 
-Version: v0.2-local-deterministic
+Version: v0.5-local-demo
 
 ## Scope
 
-This document covers MVP v0.2 local deterministic operation.
+This document covers MVP v0.5 local deterministic demo operation.
 
 The MVP is not a hosted production service. It has no user accounts, no telemetry, no paid API dependency, no live ingestion, and no blockchain anchoring.
 
@@ -41,21 +41,21 @@ Required controls:
 
 - deterministic local processing;
 - no paid APIs;
-- no LLM calls in v0.2 core;
+- no LLM calls in the default local demo path;
 - no telemetry;
 - no secrets in repo;
-- hash-chained audit ledger;
+- local audit-trace primitive;
 - public governance docs;
 - visible limitation disclosures;
 - source/evidence immutability by convention;
-- tests for audit-chain tamper detection;
+- tests for audit-trace and demo-contract behavior;
 - review of network dependencies before adding them.
 
 ## Audit Security
 
-The MVP audit chain is tamper-evident, not tamper-proof.
+The MVP audit trace is a method-inspection primitive, not proof that an underlying claim is correct and not a tamper-proof security control.
 
-It can detect inconsistent changes to event content or ordering. It cannot prevent an attacker with filesystem access from deleting, replacing, or regenerating the entire ledger.
+Where hash-chain verification is used, it can detect inconsistent changes to event content or ordering. It cannot prevent an attacker with filesystem access from deleting, replacing, or regenerating local audit artifacts.
 
 Future hardening may include signed releases, external timestamping, reproducible builds, and optional remote anchoring. These are deferred and must not be implied as implemented.
 
@@ -88,4 +88,4 @@ For MVP development, report security issues through the project issue tracker or
 - whether secrets or user data are involved;
 - suggested mitigation if known.
 
-Do not publish active exploit details against deployed instances until maintainers have had a reasonable chance to respond.
+Do not publish active exploit details against deployed instances until maintainers have had a reasonable chance to respond. The current repository does not claim a hosted production deployment.

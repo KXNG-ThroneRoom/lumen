@@ -1,12 +1,12 @@
 # Lumen Demo Flow
 
-Version: v0.4-demo-polish
+Version: v0.5-launch-hygiene
 
 ## Purpose
 
-This document defines the local demo flow for Lumen v0.3 and the v0.4 controlled-demo polish layer.
+This document defines the v0.5 controlled local demo flow. The public demo is a simplified claim story: one contested start-date claim, four tabs, plain language, and visible uncertainty.
 
-The demo must show Lumen as method-first infrastructure: claims, evidence, uncertainty, provenance, source dependency, limitations, and audit trails are visible together. The demo must not imply live coverage, production intelligence reliability, final truth determination, or broad semantic understanding.
+The demo must show Lumen as method-first infrastructure. It must not imply live coverage, production intelligence reliability, final truth determination, or broad semantic understanding.
 
 Doctrine for every demo surface:
 
@@ -14,39 +14,37 @@ Doctrine for every demo surface:
 - More informed humans, not a new oracle.
 - Unknown, unresolved, contested, unsupported, and contradicted are valid outputs.
 - Confidence explains a rule path; it is not a command to believe.
-- Controlled fixtures only.
+- Controlled local fixtures only.
 
-## v0.4 demo boundary
+## v0.5 demo boundary
 
-v0.4 is demo polish, not expanded analytical capability. The operator should present it as a controlled fixture demonstration of method visibility.
+v0.5 is launch hygiene and public-readiness. It does not expand analytical capability.
 
 Demo-ready means:
 
 - the backend and frontend can render the canonical fixture locally;
-- limitations, confidence reasons, audit references, and unresolved states stay visible;
-- fixture-backed panels are labeled as such;
-- deferred or stubbed panels say exactly what is missing;
+- the public UI presents the simplified tabbed claim story;
+- limitations, uncertainty, and no-final-verdict language stay visible;
+- internal audit/contract detail remains available for developers without crowding the public view;
 - no path implies live coverage, final truth determination, production intelligence reliability, or hidden scoring.
 
 ## Demo scenario boundary
 
-Use a controlled synthetic or historically neutral fixture that demonstrates a start-date or event-detail contradiction.
+Use the controlled start-date contradiction fixture.
 
-Recommended canonical scenario:
+Canonical public story:
 
-- Topic: `Fixture: regulation start-date contradiction`
-- Claim A: a source states that a rule starts on 1 June.
-- Claim B: another fixture source states that the same rule starts on 1 July.
-- Evidence includes one primary/near-primary fixture item, one repeated wire/dependent item, and one missing/unclear evidence item.
-- Source dependency shows that repeated article count is not independent corroboration.
-- Contradiction board shows the date conflict as unresolved.
-- Briefing preserves uncertainty and points to limitations.
+- Main claim: "When does the regulation start?"
+- News report: June 1.
+- Official filing/record: July 1.
+- Lumen marks the claim as contested instead of guessing.
+- The official record is stronger support, but the conflict remains visible until corrected, explained, or reviewed.
 
 Why this scenario:
 
 - It is low-risk and non-geopolitical.
-- It demonstrates claims, evidence, contradictions, source dependency, and audit refs without pretending to resolve a real-world live dispute.
-- It keeps the sprint integration-focused and avoids deep epistemic algorithm design.
+- It demonstrates claims, evidence, contradiction, source dependency, uncertainty, and auditability without pretending to resolve a live dispute.
+- It keeps v0.5 focused on public clarity rather than new epistemic machinery.
 
 ## Out of scope for the demo
 
@@ -60,11 +58,23 @@ Do not include:
 - broad semantic contradiction claims;
 - final authority language;
 - hidden scoring or hidden weighting;
-- telemetry, accounts, or personalization.
+- telemetry, accounts, authentication, or personalization;
+- database/storage complexity;
+- blockchain anchoring.
 
 ## Demo flow sequence
 
-### Step 1 — Start local backend
+### Step 1 — Verify local boundary
+
+Run from repo root before public capture or announcement:
+
+```text
+bash scripts/verify_lumen.sh
+```
+
+The verifier should pass API tests, compile checks, static UI verification, web typecheck, and institutional-memory index checks.
+
+### Step 2 — Start local backend
 
 Expected command from repo root:
 
@@ -72,7 +82,7 @@ Expected command from repo root:
 uvicorn apps.api.app.main:app --reload
 ```
 
-Acceptable if the repo uses a wrapper script, but the local API must expose:
+The local API must expose:
 
 - `GET /health`
 - `GET /sample`
@@ -81,7 +91,7 @@ Acceptable if the repo uses a wrapper script, but the local API must expose:
 
 The backend must run without secrets, paid services, telemetry, external network calls, or LLM calls.
 
-### Step 2 — Verify method boundary
+### Step 3 — Verify method boundary
 
 Open or call:
 
@@ -89,17 +99,9 @@ Open or call:
 GET /health
 ```
 
-The demo operator should confirm the health response shows:
+Confirm the health response shows local deterministic mode, rule/schema version, limitation reference, no production-readiness claim, and no final-authority claim.
 
-- local deterministic mode;
-- rule/schema version;
-- limitation reference;
-- no production-readiness claim;
-- no final-authority claim.
-
-If health output does not disclose limitations, stop the demo and fix the contract.
-
-### Step 3 — Load fixture analysis
+### Step 4 — Load fixture analysis
 
 Open or call:
 
@@ -107,169 +109,88 @@ Open or call:
 GET /sample
 ```
 
-Expected response shape is defined in `docs/architecture/API_CONTRACT.md`.
+The response shape is documented in `docs/architecture/API_CONTRACT.md`. It remains an internal/developer inspection surface for claims, evidence, sources, source graph, contradiction fixture, briefing, audit trail, audit verification, and limitations.
 
-The response must include:
+### Step 5 — Render current public frontend
 
-- claims;
-- evidence;
-- sources;
-- source dependency metadata;
-- contradiction fixture;
-- narrative frame or explicitly deferred/fixture-backed narrative object;
-- briefing;
-- audit events;
-- audit verification;
-- top-level limitations and `limitations_ref`.
-
-### Step 4 — Render frontend dashboard
-
-The frontend may consume either:
-
-- backend-compatible static fixture: `apps/web/src/data/demo-response.json`; or
-- local backend `/sample` response.
-
-Required panels:
-
-- `BriefingPanel`
-- `ClaimMatrix`
-- `EvidenceTrail`
-- `AuditTrail`
-- `NarrativeMap`
-- `SourceSpread`
-- `ContradictionBoard`
-
-Panel requirements:
-
-| Panel | Must show | Must not imply |
-| --- | --- | --- |
-| BriefingPanel | bottom line, confidence summary, limitations ref, audit ref, unresolved questions | that the system settled the dispute |
-| ClaimMatrix | each claim status, confidence reason, evidence refs, audit ref | article-level truth labels |
-| EvidenceTrail | relationship, source/provenance, locator, limitations, audit ref | that evidence is complete |
-| AuditTrail | verification state, event refs/hashes, method trace | that audit proves the claim true |
-| NarrativeMap | fixture-backed/deferred label, analysis-not-fact label | proof of intent or deception |
-| SourceSpread | source dependency and independence notes | that repeated source count means corroboration |
-| ContradictionBoard | conflict description/status and unresolved state | automatic resolution |
-
-v0.4 panel status requirements:
-
-- NarrativeMap is demo-ready only as a labeled fixture/deferred analysis panel unless richer fixture narrative data exists. It must say narrative labels are analysis, not fact, and must not infer intent, deception, or coordination.
-- SourceSpread is demo-ready as fixture-backed source metadata plus dependency warnings. It must not infer ownership, funding, geography, affiliation, or independence that is absent from the fixture.
-- ContradictionBoard is demo-ready as a fixture-backed conflict display. It must show unresolved/fixture status and must not claim broad semantic contradiction detection.
-
-### Step 5 — Demonstrate claim inspection
-
-In the claim matrix, select or inspect a contested claim.
-
-The visible claim row/card must include:
-
-- claim text;
-- normalized claim;
-- status such as `contested` or `unresolved`;
-- confidence reason;
-- linked evidence references;
-- linked contradiction references if present;
-- audit reference;
-- limitations.
-
-Invalid demo state:
-
-- claim shown without status;
-- claim shown without confidence reason;
-- claim shown without evidence reference or explicit missing-evidence object;
-- claim shown without audit reference;
-- claim shown as a full-article verdict.
-
-### Step 6 — Demonstrate evidence trail
-
-Open evidence linked to the selected claim.
-
-The evidence trail must show:
-
-- evidence relationship: supports, contradicts, contextualizes, missing, or unclear;
-- source or document reference;
-- quote/excerpt or fixture summary;
-- provenance/locator field;
-- source dependency notes when applicable;
-- limitations;
-- audit reference.
-
-The operator should say, in effect:
+Start the web app:
 
 ```text
-This panel shows what the system inspected and where uncertainty remains. It does not claim complete source coverage.
+npm run dev --prefix apps/web
 ```
 
-### Step 7 — Demonstrate source dependency
+Open the local Next.js URL printed by the dev server.
 
-Open SourceSpread or source dependency panel.
+The public v0.5 UI must show:
 
-The panel must show that repeated wire/dependent sources are not counted as independent evidence streams.
+- black/white simplified claim-story frame;
+- main claim: "When does the regulation start?";
+- summary that the news report says June 1 and the official filing says July 1;
+- four tabs: Story, Evidence, Why uncertain, Audit;
+- yellow/uncertain, blue/supporting, and red/conflict visual cues;
+- controlled-local-demo and no-human-replacement language.
 
-Required visible language:
+The public v0.5 UI must not show raw hashes, audit IDs, `.md` references, underscores/machine labels, visible provenance strings, or dense technical dashboard wording.
+
+### Step 6 — Demonstrate the Story tab
+
+Show the chronological breakdown:
+
+1. a news report says June 1;
+2. the official record says July 1;
+3. the two dates do not match;
+4. no final verdict yet.
+
+Operator stance:
 
 ```text
-Source quantity is not source independence. Repeated origin streams are counted separately from independent corroboration.
+Lumen keeps the disagreement visible instead of smoothing it over.
 ```
 
-If dependency metadata is absent for a dependency scenario, the demo is incomplete.
+### Step 7 — Demonstrate the Evidence tab
 
-### Step 8 — Demonstrate contradiction handling
+Show:
 
-Open ContradictionBoard.
+- official record as strongest support;
+- news report as conflicting source;
+- source check explaining that more coverage is not the same as more proof.
 
-The board must show:
-
-- contradiction type, e.g. `time`;
-- conflicting claim/evidence IDs;
-- unresolved or open status;
-- limitations;
-- audit reference.
-
-Required stance:
+Operator stance:
 
 ```text
-Lumen exposes this conflict. It does not force resolution from incomplete fixture evidence.
+The official record carries more weight, but Lumen does not pretend that the public disagreement disappeared.
 ```
 
-### Step 9 — Demonstrate briefing with limitations
+### Step 8 — Demonstrate the Why uncertain tab
 
-Open BriefingPanel.
+Show:
 
-The briefing must include:
+- what is known: one source says June 1 and one official record says July 1;
+- what is not known: whether the report was wrong, outdated, or missing context;
+- what would help: correction, newer official record, or human source review.
 
-- bottom line that preserves contested/unresolved status;
-- confidence summary with reasons;
-- missing information;
-- unresolved questions;
-- limitations reference;
-- audit reference.
-
-The briefing must not hide limitations behind polished prose.
-
-### Step 10 — Demonstrate audit verification
-
-Open AuditTrail or call:
+Operator stance:
 
 ```text
-GET /audit/verify
+The honest answer is contested. Lumen supports review; it does not replace it.
 ```
 
-The audit output must show:
+### Step 9 — Demonstrate the Audit tab
 
-- verification valid/invalid state;
-- checked event count;
-- genesis presence;
-- latest event hash;
-- reason.
+Show:
 
-Required explanation:
+- the page uses the same local sample as the backend;
+- the method signal is a caution flag, not a truth score;
+- checks are recorded;
+- raw internal labels stay out of the public view.
+
+Operator stance:
 
 ```text
-The audit trail records the method path and detects inconsistent transformation history. It does not prove that a real-world claim is correct.
+Internal tracking helps inspect the method path. It does not prove that a claim is correct.
 ```
 
-## Optional manual-text path
+### Step 10 — Optional manual-text path
 
 After the fixture demo works, `POST /analyze` may be shown with a short local text snippet.
 
@@ -277,7 +198,7 @@ Rules:
 
 - treat submitted text as local input only;
 - disclose placeholder extraction limitations;
-- return same response envelope as `/sample`;
+- return the same response envelope as `/sample`;
 - preserve unknown/unresolved/unsupported statuses where evidence is absent;
 - do not imply production extraction quality.
 
@@ -291,18 +212,17 @@ Safe example request:
 }
 ```
 
-Expected behavior:
+## Legacy/internal component note
 
-- extracted claims are labeled deterministic placeholder or fixture/manual;
-- missing evidence is explicit;
-- confidence remains low/unknown/unresolved unless local evidence supports more;
-- briefing states limitations.
+The repository still contains detailed component files named BriefingPanel, ClaimMatrix, EvidenceTrail, AuditTrail, NarrativeMap, SourceSpread, and ContradictionBoard. In v0.5 they are legacy/internal honesty components and verification targets, not the public demo layout.
+
+Do not use screenshots or copy that present those components as the public v0.5 UI.
 
 ## Demo copy rules
 
 Allowed language:
 
-- "Lumen exposes claims, evidence, uncertainty, provenance, and audit trails."
+- "Lumen exposes claims, evidence, uncertainty, and audit trails."
 - "This is a deterministic local fixture demo."
 - "The system shows why a claim is contested or unresolved."
 - "Confidence is a transparent method signal, not a command to believe."
@@ -324,76 +244,47 @@ Prohibited language categories:
 
 A launch-quality screenshot set should capture:
 
-1. Full dashboard with all seven panels visible or clearly navigable.
-2. Briefing panel showing limitations reference and audit reference.
-3. Claim matrix row showing status, confidence reason, evidence refs, and audit ref.
-4. Evidence trail showing relationship/provenance/limitations.
-5. Source spread showing dependency note and independent stream count.
-6. Contradiction board showing unresolved fixture conflict.
-7. Audit trail showing verification status and latest event hash.
-8. Limitations text visible near analytical outputs.
+1. full simplified claim-story frame;
+2. Story tab with the June 1 vs July 1 sequence;
+3. Evidence tab showing official record support and news-report conflict;
+4. Why uncertain tab showing what remains unknown;
+5. Audit tab showing checks without raw internal identifiers;
+6. footer or nearby note that this is a controlled local demo only.
 
-Screenshots must not crop away uncertainty, limitations, or audit references.
-
-## Integration gates
-
-Before declaring demo-ready, run the implementation verification commands from the swarm task, including:
-
-```text
-python3 -m pytest apps/api/tests -q
-python3 -m compileall apps/api/app
-npm run verify:static --prefix apps/web
-npm run typecheck --prefix apps/web
-```
-
-Repo-wide forbidden-reference and certainty-overclaim scans from the swarm task should also pass. Keep those exact grep commands in the task/audit runner rather than in this document so the architecture docs themselves do not contain forbidden strings.
-
-For this architecture lane, the minimum doc gate is:
-
-- `/sample` and `/analyze` schemas are documented in `API_CONTRACT.md`;
-- the demo sequence documents visible limitations and audit references;
-- `MVP_SCOPE.md` allows v0.3 contract/demo integration without expanding beyond local deterministic fixtures;
-- no architecture doc introduces prohibited capability claims.
+Screenshots must not crop away uncertainty or controlled-demo language.
 
 ## Failure states that block demo readiness
 
 Block demo readiness if any of these are true:
 
-- frontend renders a claim without status;
-- frontend renders confidence without reason;
-- frontend renders a claim without evidence reference or explicit missing-evidence object;
-- frontend renders a claim without audit reference;
-- briefing lacks limitations reference;
-- audit verification is absent from the demo;
-- narrative/source/contradiction panels are unlabeled stubs;
+- docs describe the old dense seven-component dashboard as the current public UI;
+- public UI copy implies the issue is settled;
+- public UI hides controlled-local-demo limits;
 - fixture data is presented as live analysis;
 - repeated source count is presented as independent corroboration;
 - copy implies certainty beyond backend data;
-- hidden network, paid API, telemetry, or LLM path is required.
+- hidden network, paid API, telemetry, account, database, or LLM path is required.
 
 ## Handoff notes for sibling lanes
 
 Backend lane:
 
-- Use `API_CONTRACT.md` as the target contract for `/sample` and `/analyze`.
-- If implementation must use transitional names, tests should still enforce the display invariants: claim status, confidence reason, evidence ref, audit ref, briefing limitations ref.
 - Keep fixture response deterministic.
+- Keep API contract inspectable, but do not require public UI to expose raw internal fields.
 
 Frontend lane:
 
-- Static `demo-response.json` must match backend-compatible schema.
-- All seven dashboard panels must be present.
-- Stubbed/deferred panels must be clearly labeled.
-- Do not over-polish away uncertainty.
+- Preserve the simplified four-tab UI unless a later scope doc explicitly changes it.
+- Keep legacy/internal components labeled honestly if they remain in the repo.
+- Do not reintroduce dense dashboard copy into the public page.
 
 Governance lane:
 
-- Confirm limitations and challenge/adversarial review language remain close to outputs.
+- Confirm limitations and challenge/adversarial review language remain close to public outputs.
 - Confirm confidence language remains methodological.
 - Confirm prohibited copy does not appear.
 
-Eval/auditor lane:
+Verifier lane:
 
-- Test both `/sample` and `/analyze` against the schema and display invariants.
-- Verify no prohibited references or certainty-overclaim language appears.
-- Record final verification status in the v0.3 audit report.
+- Run the aggregate verifier.
+- Scan launch docs for stale dense-dashboard wording and capability overclaims.

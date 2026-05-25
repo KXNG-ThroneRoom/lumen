@@ -42,6 +42,11 @@ Pre-SOP swarm summaries (prior to 2026-05-24) live under `docs/audits/` as
 historical reference. They predate the canonical card schema and are not
 indexed.
 
+Some early canonical filenames preserve planning-era labels. For example,
+`2026-05-24_lumen-v1-readiness.md` is a historical v0.1 read-only readiness
+record, not a current v1 release claim. Do not rename historical memory files;
+use frontmatter and index metadata for the authoritative phase/status.
+
 ## Do not
 
 - Hand-edit `index.jsonl`.

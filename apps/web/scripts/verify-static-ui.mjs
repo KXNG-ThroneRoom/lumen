@@ -41,6 +41,24 @@ const requiredImplementationSignals = [
   '<summary>',
 ];
 
+const demoDocFiles = [
+  '../../docs/demo/README.md',
+  '../../docs/demo/LOCAL_DEMO_WALKTHROUGH.md',
+  'README.md',
+];
+
+const requiredDemoDocPhrases = [
+  'simplified',
+  'controlled local demo',
+  'When does the regulation start?',
+  'Two sources disagree',
+  'Story',
+  'Evidence',
+  'Why uncertain',
+  'Audit',
+  'not the current public launch UX',
+];
+
 const retiredDashboardPhrases = [
   'public intelligence terminal',
   'Claim-level analysis scaffold',
@@ -51,9 +69,43 @@ const retiredDashboardPhrases = [
   'provenance',
 ];
 
+const publicDocRetiredPhrases = [
+  'Static Next.js mock interface for the first Lumen scaffold',
+  'public intelligence terminal',
+  'seven-panel dashboard',
+  'dense dashboard',
+  'technical dashboard',
+  'provenance-heavy',
+  'raw audit identifiers',
+  'raw hashes',
+  'audit IDs',
+  '.md evidence references',
+  'provenance strings',
+  '## Panels',
+  'BriefingPanel:',
+  'ClaimMatrix:',
+  'EvidenceTrail:',
+  'SourceSpread:',
+  'NarrativeMap:',
+  'ContradictionBoard:',
+  'AuditTrail:',
+  'hash-chain style transformation log',
+];
+
 const missing = requiredFiles.filter((file) => !existsSync(join(root, file)));
 if (missing.length > 0) {
   throw new Error(`Missing UI scaffold files: ${missing.join(', ')}`);
+}
+
+const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
+const packageDescription = packageJson.description ?? '';
+if (!packageDescription.includes('Controlled local Lumen demo UI')) {
+  throw new Error('package.json description must describe the simplified controlled local demo UI');
+}
+for (const phrase of ['intelligence-dashboard', 'dashboard mock UI', 'narrative, contradiction, briefing, and audit panels']) {
+  if (packageDescription.includes(phrase)) {
+    throw new Error(`package.json still contains retired public-interface wording: ${phrase}`);
+  }
 }
 
 const page = readFileSync(join(root, 'src/app/page.tsx'), 'utf8');
@@ -70,6 +122,24 @@ for (const signal of requiredImplementationSignals) {
 for (const phrase of retiredDashboardPhrases) {
   if (page.includes(phrase)) {
     throw new Error(`page.tsx still contains retired dashboard wording: ${phrase}`);
+  }
+}
+
+for (const file of demoDocFiles) {
+  const absolute = join(root, file);
+  if (!existsSync(absolute)) {
+    throw new Error(`missing simplified public demo doc: ${file}`);
+  }
+  const body = readFileSync(absolute, 'utf8');
+  for (const phrase of requiredDemoDocPhrases) {
+    if (!body.includes(phrase)) {
+      throw new Error(`${file} missing simplified public demo phrase: ${phrase}`);
+    }
+  }
+  for (const phrase of publicDocRetiredPhrases) {
+    if (body.includes(phrase)) {
+      throw new Error(`${file} still contains retired public-interface wording: ${phrase}`);
+    }
   }
 }
 
@@ -266,4 +336,4 @@ for (const file of components) {
   }
 }
 
-console.log(`Static UI scaffold verified: ${requiredFiles.length} files, ${components.length} legacy components, simplified tabbed demo.`);
+console.log(`Static UI scaffold verified: ${requiredFiles.length} files, ${components.length} support components, simplified tabbed demo.`);

@@ -1,21 +1,21 @@
 # Lumen API
 
-Local deterministic backend core for the Lumen v0.4 demo path.
+Local deterministic backend core for the Lumen v0.5 controlled demo path.
 
-This service exposes claim-level primitives only. It does not perform real-time ingestion, call LLMs, use paid APIs, or present conclusions as final truth.
+This service exposes claim-level primitives for a fixture-backed/sample flow. It does not perform real-time ingestion, crawl URLs, call LLMs, use paid APIs, use secrets, or present conclusions as final truth. Its job is to make the method path inspectable: claims, evidence references, uncertainty, scoring reasons, limitations, and audit references.
 
 Routes:
 
 - `GET /health` — service and doctrine status.
-- `GET /sample` — fixture-backed structured analysis.
+- `GET /sample` — deterministic controlled fixture analysis for the local demo.
 - `POST /analyze` — deterministic local placeholder analysis for supplied text.
 - `GET /audit/verify` — verifies the in-memory sample audit hash chain.
 
 Demo-path stability notes:
 
 - `/health` reports backend version `0.4.0` while the analysis envelope remains
-  `lumen.analysis.v0.3` to avoid a schema-version bump without a breaking
-  contract change.
+  `lumen.analysis.v0.3`; v0.5 launch hygiene does not change the API schema or
+  backend product behavior.
 - `/sample` returns the controlled fixture topic `Fixture: regulation start-date
   contradiction` using local fixture data only.
 - `/analyze` treats user-supplied text as local evidence that a claim was
@@ -24,22 +24,49 @@ Demo-path stability notes:
   `evidence_refs`, `audit_reference`, and `limitations_ref`.
 - Briefings expose uncertainty language, `limitations`, `limitations_ref`, and
   `audit_reference`.
+- Confidence scores are deterministic method/scoring signals, not verdicts or
+  instructions to believe a claim.
+- Audit references and `/audit/verify` describe transformation-trace consistency;
+  they do not prove the underlying claim.
 - No route performs LLM calls, paid API calls, live ingestion, telemetry, or
   hidden network behavior.
 
-Local run after installing dependencies:
+Local run from repo root after installing dependencies in the project environment:
+
+```bash
+source .venv/bin/activate
+python -m pip install -e 'apps/api[test]'
+uvicorn --app-dir apps/api app.main:app --reload
+```
+
+Equivalent local run from `apps/api` after activating `.venv`:
 
 ```bash
 cd apps/api
-python3 -m pip install -e '.[test]'
+python -m pip install -e '.[test]'
 uvicorn app.main:app --reload
 ```
 
-Verification from repo root:
+Preferred verification from repo root:
 
 ```bash
-python3 -m pytest apps/api/tests -q
-python3 -m compileall apps/api/app
+bash scripts/verify_lumen.sh
+```
+
+The aggregate verifier selects `.venv/bin/python` when present, then falls back
+to `python3` from `PATH`. Activate the project environment for consistent local
+commands and dependency resolution:
+
+```bash
+source .venv/bin/activate
+bash scripts/verify_lumen.sh
+```
+
+Focused API verification from repo root after activating `.venv`:
+
+```bash
+python -m pytest apps/api/tests -q
+python -m compileall apps/api/app
 ```
 
 Limitations:

@@ -2,14 +2,14 @@
 
 Lumen is free, open-source infrastructure for inspecting public-interest claims.
 
-It does not tell users what is true. It exposes methods, evidence, claims, contradictions, uncertainty, source provenance, source dependency, narrative framing, confidence logic, limitations, and audit trails so humans can form better judgments.
+It does not tell users what is true. It exposes methods, evidence, claims, contradictions, uncertainty, provenance, confidence logic, limitations, and audit trails so humans can form better judgments.
 
 ## What Lumen is
 
-- A local-first method demonstration for claim-level analysis.
-- A way to inspect how evidence, source dependency, contradictions, and uncertainty affect confidence explanations.
+- A local-first method demonstration for claim-level inspection.
+- A way to inspect how evidence, contradictions, and uncertainty affect confidence explanations.
 - A governance-first project where scoring rules, limitation disclosures, and audit requirements are public.
-- A demo surface for controlled fixtures and manually supplied local text.
+- A controlled local demo, currently centered on one fixture-backed claim story.
 
 ## What Lumen is not
 
@@ -38,11 +38,11 @@ The current MVP is intentionally narrow: local, deterministic, fixture-backed, a
 Current demo commitments:
 
 - FastAPI backend for local deterministic primitives.
-- Next.js dashboard UI for claim, evidence, contradiction, source, narrative, briefing, and audit panels.
-- Controlled fixture data and manually supplied local text only.
+- Simplified Next.js public UI with four tabs: Story, Evidence, Why uncertain, and Audit.
+- One controlled fixture-backed demo claim: "When does the regulation start?"
+- Visible contested/uncertain/support/conflict language without final-verdict wording.
 - Deterministic confidence scoring rules with visible reasons.
-- Local hash-chained audit ledger primitive.
-- Evaluation/golden cases focused on method quality.
+- Local audit trace primitive for method inspectability.
 - Visible limitations close to outputs.
 
 Current demo limits:
@@ -61,7 +61,7 @@ See `LIMITATIONS.md` for the public limitation disclosure and `ADVERSARIAL_REVIE
 
 ```text
 apps/api/                  FastAPI scaffold and deterministic primitives
-apps/web/                  Next.js dashboard UI scaffold
+apps/web/                  Next.js local demo UI scaffold
 packages/governance/       Versioned governance method package boundary
 packages/scoring/          Transparent confidence scoring boundary
 packages/audit_ledger/     Append-only audit ledger boundary
@@ -101,7 +101,7 @@ GET  http://localhost:8000/audit/verify
 
 The expected response contract is documented in `docs/architecture/API_CONTRACT.md`.
 
-### Frontend dashboard
+### Frontend demo UI
 
 ```bash
 cd apps/web
@@ -109,7 +109,7 @@ npm install
 npm run dev
 ```
 
-Open the local Next.js URL printed by the dev server, usually `http://localhost:3000`.
+Open the local Next.js URL printed by the dev server, usually `http://localhost:3000`. The public UI should show a simple black/white tabbed claim story with Story, Evidence, Why uncertain, and Audit tabs.
 
 ### Optional Docker Compose development path
 
@@ -137,7 +137,7 @@ Before claiming launch-readiness, also inspect docs and UI copy for overclaims:
 git grep -nE 'truth machine|oracle|proves|settles|production intelligence|global coverage|propaganda detection|deception proof'
 ```
 
-Allowed occurrences should be explicit prohibitions or limitation disclosures, not product promises.
+Allowed occurrences should be explicit prohibitions or limitation disclosures, not product promises. Also inspect for stale multi-panel interface language if public docs describe the current UI.
 
 ## Governance and public challenge path
 
@@ -155,4 +155,4 @@ Start with these documents:
 
 ## Trust model
 
-Lumen earns trust by being inspectable, not authoritative. Outputs must preserve uncertainty and expose the reasons behind confidence assignments. Narrative analysis is analysis, not fact. Audit logs are tamper-evident design primitives that record method traceability; they do not prove that an underlying claim is correct.
+Lumen earns trust by being inspectable, not authoritative. Outputs must preserve uncertainty and expose the reasons behind confidence assignments. The current public demo is a controlled local fixture, not live analysis. Audit traces record method traceability; they do not prove that an underlying claim is correct.

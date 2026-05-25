@@ -2,99 +2,135 @@
 
 ## Status
 
-Lumen is in the v0.4 demo-polish and launch-readiness swarm. v0.2 established the deterministic local baseline and v0.3 stabilized backend/frontend contract and demo flow around that baseline. v0.4 must not expand the analytical claim surface; it tightens demo scope, panel labeling, launch gates, and deferrals.
+Lumen is in the v0.5.1 stabilization and fresh-clone-readiness lane. v0.2 established the deterministic local baseline, v0.3 stabilized backend/frontend contract and demo flow, v0.4 tightened detailed demo polish, and v0.5 aligned public docs with the current simplified controlled local demo. v0.5.1 preserves that scope while tightening roadmap discipline, deferred-work clarity, and fresh-clone verification guidance.
 
 Current known state:
 
-- Static UI scaffold exists.
-- JSON fixtures parse.
-- Repo contains untracked scaffold/docs/frontend/backend artifacts pending baseline review.
-- Backend deterministic core is the main implementation blocker.
-- Governance docs require hardening into enforceable product/code rules.
-- MVP scope is locked to local deterministic primitives and fixture-backed analysis.
-- v0.4 architecture scope is documented in `docs/architecture/V0_4_SCOPE.md`.
-- v0.4 launch gates are documented in `docs/architecture/LAUNCH_READINESS.md`.
-- NarrativeMap, SourceSpread, and ContradictionBoard must be fixture-backed, clearly stubbed, or explicitly deferred.
+- Backend local deterministic API and tests exist.
+- Static frontend uses the simplified black/white tabbed claim-story UI.
+- Main public claim: "When does the regulation start?"
+- Public tabs: Story, Evidence, Why uncertain, Audit.
+- Legacy/internal detailed component files still exist and may support verification, but they are not the current public UX.
+- MVP scope remains locked to local deterministic primitives and fixture-backed analysis.
+- v0.5 architecture scope is documented in `docs/architecture/V0_5_SCOPE.md`.
+- v0.5.1 stabilization scope is documented in `docs/architecture/V0_5_1_SCOPE.md`.
+- v0.5 launch gates are documented in `docs/architecture/LAUNCH_READINESS.md`.
+- Fresh-clone expectations are documented in `docs/architecture/FRESH_CLONE_READINESS.md`.
+- Roadmap and deferred-work boundaries are documented in `docs/architecture/ROADMAP_TO_V1.md` and `docs/architecture/DEFERRED_WORK.md`.
+
+## Phase v0.5.1 — Stabilization Hygiene + Fresh-Clone Readiness
+
+Goal: preserve the v0.5 controlled local demo boundary while making the repo easier to verify, explain, and review from a clean checkout.
+
+Owned architecture files:
+
+- `docs/architecture/MVP_PHASES.md`
+- `docs/architecture/ROADMAP_TO_V1.md`
+- `docs/architecture/DEFERRED_WORK.md`
+- `docs/architecture/V0_5_1_SCOPE.md`
+- `docs/architecture/FRESH_CLONE_READINESS.md`
+
+Tasks:
+
+- Define v0.5.1 as stabilization/hygiene, not capability expansion.
+- Document expected fresh-clone install, verification, demo flow, and environment assumptions.
+- Keep v0.5.1 positioned between public-readiness and later roadmap phases.
+- Keep deferred-work language explicit that future capabilities are not current promises.
+- Remove or reframe stale public-facing references to old dashboard surfaces.
+- Prevent scope creep into live ingestion, paid APIs, LLM calls, telemetry, auth/accounts, databases, blockchain, broad verification, or UI redesign.
+
+Gate:
+
+- `V0_5_1_SCOPE.md` says v0.5.1 is hygiene/stabilization only.
+- `FRESH_CLONE_READINESS.md` provides install, verification, demo, and environment guidance.
+- Roadmap sequencing keeps v0.6+ future work separate from current capability.
+- No v0.5.1 architecture doc claims new analytical capability.
+
+## Phase v0.5 — Launch Hygiene + Public Readiness
+
+Goal: make the controlled local fixture demo publicly legible, reviewable, and honest without adding live-data or production-intelligence scope.
+
+Owned architecture/demo files:
+
+- `docs/architecture/LAUNCH_READINESS.md`
+- `docs/architecture/DEMO_FLOW.md`
+- `docs/architecture/MVP_PHASES.md`
+- `docs/architecture/V0_5_SCOPE.md`
+- `docs/architecture/ROADMAP_TO_V1.md`
+- `docs/architecture/DEFERRED_WORK.md`
+- `docs/demo/LOCAL_DEMO_WALKTHROUGH.md`
+
+Tasks:
+
+- Define v0.5 as launch hygiene/public-readiness, not analytical expansion.
+- Align architecture and demo docs with the simplified four-tab claim-story UI.
+- Reframe old detailed component names as legacy/internal if mentioned.
+- Create a roadmap to v1 that separates later phases from current capability.
+- Create a deferred-work list covering live ingestion, paid APIs, LLM calls, telemetry, accounts/auth, database/storage complexity, blockchain, and broad verification claims.
+- Prevent scope creep into live ingestion, paid APIs, LLM calls, telemetry, auth/accounts, databases, blockchain, hidden scoring, or final truth determination.
+
+Gate:
+
+- `V0_5_SCOPE.md` clearly separates public-ready demo commitments from deferred work.
+- `LAUNCH_READINESS.md` defines pass/blocker criteria and verification commands.
+- `DEMO_FLOW.md` and `LOCAL_DEMO_WALKTHROUGH.md` match the runnable simplified UI.
+- `ROADMAP_TO_V1.md` and `DEFERRED_WORK.md` prevent overclaiming future capabilities as current features.
+- No v0.5 architecture doc claims live coverage, production reliability, or final authority.
 
 ## Phase v0.4 — Demo Polish + Launch Readiness
 
 Goal: make the controlled local fixture demo precise, reviewable, and honest without adding live-data or production intelligence scope.
 
-Owned architecture files:
+Historical focus:
 
-- `docs/architecture/MVP_PHASES.md`
-- `docs/architecture/DEMO_FLOW.md`
-- `docs/architecture/API_CONTRACT.md`
-- `docs/architecture/LAUNCH_READINESS.md`
-- `docs/architecture/V0_4_SCOPE.md`
-
-Tasks:
-
-- Define v0.4 scope and deferrals separately from v0.2/v0.3 baseline work.
-- Keep `/sample` and `/analyze` contract clarity aligned with implementation.
-- Make the operator demo path precise enough for backend, frontend, eval, and governance lanes to verify independently.
-- Mark NarrativeMap, SourceSpread, and ContradictionBoard as fixture-backed, stubbed, or deferred instead of allowing ambiguous polish.
-- Define launch-readiness states and blocker taxonomy.
-- Prevent scope creep into live ingestion, paid APIs, LLM calls, telemetry, auth/accounts, databases, blockchain, hidden scoring, or final truth determination.
+- define pass/blocker criteria;
+- document API contract and controlled fixture flow;
+- ensure detailed internal components preserve uncertainty, limitations, and audit references;
+- prevent scope creep into live ingestion, paid APIs, LLM calls, telemetry, accounts, databases, blockchain, hidden scoring, or final truth determination.
 
 Gate:
 
-- `V0_4_SCOPE.md` clearly separates demo-ready from deferred work.
-- `LAUNCH_READINESS.md` defines pass/blocker criteria and verification commands.
-- `DEMO_FLOW.md` gives an exact controlled-fixture operator path.
-- `API_CONTRACT.md` documents v0.4 panel status without forcing an unnecessary schema break.
-- No v0.4 architecture doc claims live coverage, production reliability, or final authority.
+- detailed demo contract and verification gates exist;
+- architecture docs identify fixture-backed vs deferred internals;
+- no architecture doc claims production-grade real-world verification.
 
-## Phase 0 — Scope Lock + Architecture Hardening
+## Phase v0.3 — Backend/Frontend Contract + Demo Flow
 
-Goal: freeze the MVP boundary before implementation expands.
+Goal: stabilize the local API response shape and demo sequence around deterministic fixture-backed analysis.
 
-Owned architecture files:
+Historical focus:
 
-- `docs/architecture/MVP_SCOPE.md`
-- `docs/architecture/MVP_PHASES.md`
-- `docs/architecture/SYSTEM_OVERVIEW.md`
-- `docs/architecture/DATA_MODEL.md`
-
-Tasks:
-
-- Define the v0.2 scope boundary.
-- Separate implemented primitives, deferred modules, and explicit non-goals.
-- Harden module boundaries around deterministic local backend primitives.
-- Align data model with backend/eval/frontend lanes.
-- Make source independence, confidence reasons, limitations, and audit references first-class architecture requirements.
-- Avoid new product claims beyond deterministic local fixture-backed analysis.
+- document `/health`, `/sample`, `/analyze`, and `/audit/verify`;
+- keep fixture response deterministic;
+- expose limitations and auditability in the response contract;
+- support frontend/static fixture parity.
 
 Gate:
 
-- `MVP_SCOPE.md` clearly separates v0.2 commitments from deferred intelligence modules.
-- Architecture docs identify exact model and API contracts needed by backend, eval, and frontend lanes.
-- No architecture doc claims production-grade real-world verification.
+- API contract matches backend/static fixture shapes;
+- demo flow has no hidden network, paid API, telemetry, secret, or LLM dependency.
+
+## Phase v0.2 — Deterministic Local Baseline
+
+Goal: build the first local method primitives.
+
+Historical focus:
+
+- Pydantic models for source, evidence, claim, confidence, audit event, and briefing objects;
+- tamper-evident local audit ledger primitive;
+- deterministic scoring rules;
+- fixture-based contradiction handling;
+- placeholder claim extraction with explicit limitation metadata;
+- FastAPI routes for local inspection.
+
+Gate:
+
+- backend returns structured local analysis from fixtures without paid APIs, telemetry, secrets, or LLM calls;
+- route outputs include limitations and audit references where analytical outputs are returned.
 
 ## Phase 1 — Governance Hardening
 
 Goal: make the constitution enforceable in product and code.
-
-Owned governance files:
-
-- `CONSTITUTION.md`
-- `docs/governance/GOVERNANCE_RULES.md`
-- `docs/governance/CONFIDENCE_SCORING.md`
-- `docs/governance/AUDIT_TRAIL_SPEC.md`
-- `docs/governance/BIAS_RESISTANCE.md`
-- `LIMITATIONS.md`
-- `ADVERSARIAL_REVIEW.md`
-- `SECURITY.md`
-
-Tasks:
-
-- Harden anti-authority language without weakening evidence discipline.
-- Define confidence statuses and required reason fields.
-- Define anonymous-source caps and cap exceptions only when stronger evidence exists.
-- Define source-independence rules: wire dependency, citation dependency, shared origin, source laundering, and repeated-origin evidence streams.
-- Define limitation disclosure policy for API, briefing, and UI outputs.
-- Define adversarial review/challenge process.
-- Define MVP security/threat model for local deterministic use.
 
 Required governance rules:
 
@@ -110,171 +146,85 @@ Required governance rules:
 
 Gate:
 
-- No confidence or scoring rule exists only in code. Every rule is documented.
-- User-facing docs disclose limitations and no-authority stance.
+- no confidence or scoring rule exists only in code;
+- user-facing docs disclose limitations and no-authority stance.
 
-## Phase 2 — Backend Deterministic Core
-
-Goal: build the first local epistemic primitives.
-
-Owned backend files:
-
-- `apps/api/README.md`
-- `apps/api/pyproject.toml`
-- `apps/api/app/__init__.py`
-- `apps/api/app/main.py`
-- `apps/api/app/models.py`
-- `apps/api/app/audit.py`
-- `apps/api/app/scoring.py`
-- `apps/api/app/claim_extraction.py`
-- `apps/api/app/source_graph.py`
-- `apps/api/app/contradiction.py`
-- `apps/api/app/briefing.py`
-
-Tasks:
-
-- Implement Pydantic models matching `DATA_MODEL.md` for source, evidence, claim, confidence, audit event, and briefing objects.
-- Implement audit ledger with genesis event, append-only events, previous hash, event hash, and verification function.
-- Implement deterministic scoring rules for primary evidence, source independence, anonymous caps, contradictions, unsupported evidence, and unknown/unresolved outputs.
-- Implement source graph primitive with `wire_dependency`, `citation_dependency`, and `independence_notes`.
-- Implement fixture-based contradiction detection only; do not imply broad semantic detection.
-- Implement deterministic briefing generation from claims, evidence, scoring, limitations, and audit refs.
-- Implement placeholder claim extraction with explicit limitation metadata.
-- Implement FastAPI routes:
-  - `GET /health`
-  - `GET /sample`
-  - `POST /analyze`
-  - `GET /audit/verify`
-
-Gate:
-
-- Backend returns structured local analysis from fixtures without paid APIs, telemetry, secrets, or LLM calls.
-- Backend app imports cleanly.
-- Route outputs include limitations and audit references where analytical outputs are returned.
-
-## Phase 3 — Evals + Tests
+## Phase 2 — Evals + Tests
 
 Goal: prove the primitives behave correctly and stay aligned with governance.
 
-Owned eval/audit files:
+Tests cover:
 
-- `apps/api/tests/test_audit.py`
-- `apps/api/tests/test_scoring.py`
-- `apps/api/tests/test_source_graph.py`
-- `apps/api/tests/test_contradiction.py`
-- `apps/api/tests/test_briefing.py`
-- `apps/api/tests/test_claim_extraction.py`
-- `evals/README.md`
-- `evals/eval_plan.md`
-- `evals/golden_cases.json`
-- `docs/audits/SCAFFOLD_AUDIT.md`
-- `docs/audits/scaffold_inventory.json`
-
-Tests:
-
-- Audit chain integrity.
-- Genesis event creation.
-- Tamper detection.
-- Anonymous-source cap enforcement.
-- Primary-evidence boost.
-- Unknown/unresolved status handling.
-- Source dependency warning.
-- Fixture-based contradiction detection.
-- Placeholder extractor honesty.
-- Briefing includes limitations and audit references.
-- No claim object is valid without status and confidence reason.
+- audit chain integrity;
+- genesis event creation;
+- tamper detection;
+- anonymous-source cap enforcement;
+- primary-evidence boost;
+- unknown/unresolved status handling;
+- source dependency warning;
+- fixture-based contradiction detection;
+- placeholder extractor honesty;
+- briefing includes limitations and audit references;
+- no claim object is valid without status and confidence reason.
 
 Gate:
 
-- `python3 -m pytest apps/api/tests -q` passes from repo root after dependency install.
-- Audit report lists created/changed files and verification commands.
+- API tests pass from repo root after dependency install;
+- audit/reporting docs list verification commands.
 
-## Phase 4 — Frontend/API Readiness
+## Phase 3 — Fixture and Public Demo Expansion
 
-Goal: connect or preserve the UI without overstating backend maturity.
+Goal: improve controlled-fixture coverage only after v0.5 launch hygiene is stable.
 
-Owned frontend files:
+Allowed direction:
 
-- `apps/web/README.md`
-- `apps/web/src/app/page.tsx`
-- `apps/web/src/components/ClaimMatrix.tsx`
-- `apps/web/src/components/EvidenceTrail.tsx`
-- `apps/web/src/components/BriefingPanel.tsx`
-- `apps/web/src/components/AuditTrail.tsx`
-- `apps/web/src/components/NarrativeMap.tsx`
-- `apps/web/src/components/SourceSpread.tsx`
-- `apps/web/src/components/ContradictionBoard.tsx`
+- add synthetic or historically neutral fixtures;
+- add edge cases for contested, unresolved, unsupported, and contradicted claims;
+- improve local manual-text ergonomics with explicit placeholder limitations.
+
+Not allowed without a new scope:
+
+- live feeds;
+- paid APIs;
+- LLM-backed default analysis;
+- production source coverage;
+- final verdicts.
+
+## Phase 4 — OSS Baseline Prep
+
+Goal: make the repo credible for public inspection.
 
 Tasks:
 
-- Keep existing static dashboard aesthetic unless API contract is stable.
-- Render claim matrix, evidence trail, audit trail, and briefing panel from fixture/API-shaped data where safe.
-- Preserve explicit stubs/deferred labels for narrative map, source spread, and contradiction board if backend data is not ready.
-- Enforce uncertainty rendering:
-  - no claim displayed without status
-  - no confidence displayed without reason
-  - no briefing displayed without limitations
-  - no analysis displayed without audit reference
+- polish README and run instructions;
+- confirm local setup and optional Compose path;
+- maintain license, security policy, limitations, and adversarial review docs;
+- clean only clearly generated build junk when explicitly scoped;
+- confirm no secrets, telemetry, paid API requirements, hidden scoring, or fake capability claims.
 
 Gate:
 
-- UI cannot imply certainty beyond backend output.
-- Stubbed/deferred panels are labeled honestly.
+- a stranger can inspect, run, challenge, and fork the local MVP.
 
-## Phase 5 — Demo Scenario
-
-Goal: create one honest demo flow after deterministic primitives pass tests.
-
-Tasks:
-
-- Use controlled fixtures, not a live event feed.
-- Prefer a historically resolved or synthetic/fixture scenario where claims, evidence, contradictions, and unknowns can be shown safely.
-- Demonstrate:
-  - placeholder claim extraction limitations
-  - claim matrix
-  - scoring reasons
-  - source dependency notes
-  - contradiction fixture
-  - unknown/unresolved output
-  - audit verification
-  - limitations visibility
-
-Gate:
-
-- Demo is impressive as a method demonstration without claiming live-world completeness.
-
-## Phase 6 — OSS Baseline Prep
-
-Goal: make the repo credible for public inspection after the v0.2 primitives pass.
-
-Tasks:
-
-- Polish README and run instructions.
-- Confirm Docker Compose path or document any gap.
-- Add/confirm license, security policy, limitations, and adversarial review docs.
-- Clean only clearly generated build junk such as `.next`, `tsbuildinfo`, and caches.
-- Confirm no secrets, telemetry, paid API requirements, hidden scoring, or fake capability claims.
-
-Gate:
-
-- A stranger can inspect, run, challenge, and fork the local MVP.
-- Baseline commit is ready only after code/tests/docs verification passes and human review accepts the untracked scaffold.
-
-## Phase 7 — Public Announcement Prep
+## Phase 5 — Public Announcement Prep
 
 Positioning:
 
-> Lumen does not tell users what is true. It exposes claims, evidence, contradictions, uncertainty, provenance, confidence reasons, and audit trails so humans can reason better.
+> Lumen does not tell users what is true. It exposes claims, evidence, contradictions, uncertainty, confidence reasons, and audit trails so humans can reason better.
 
 Launch requirements:
 
-- Working local app.
-- Deterministic sample analysis.
-- Claim matrix.
-- Evidence trail.
-- Source dependency notes.
-- Confidence explanations.
-- Audit verification.
-- Briefing panel with limitations.
-- README/run path.
-- Clear limitations and challenge process.
+- working local app;
+- deterministic sample analysis;
+- simplified four-tab public story;
+- evidence and uncertainty explanation;
+- confidence/method explanation without verdict language;
+- audit/check explanation without proof claims;
+- README/run path;
+- clear limitations and challenge process.
+
+## Phase v1.0 — Public Method Baseline
+
+Goal: a stable, inspectable open-source baseline for local claim-inspection methodology.
+
+v1 should not be declared until implementation, docs, tests, governance, public wording, and limitations agree.

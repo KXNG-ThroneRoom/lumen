@@ -2,7 +2,7 @@
   "name": "@lumen/web",
   "version": "0.1.0",
   "private": true,
-  "description": "Static Lumen intelligence-dashboard mock UI for claim, evidence, narrative, contradiction, briefing, and audit panels.",
+  "description": "Controlled local Lumen demo UI for the contested regulation start-date fixture.",
   "scripts": {
     "dev": "NEXT_TELEMETRY_DISABLED=1 next dev",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",

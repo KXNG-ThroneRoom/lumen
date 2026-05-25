@@ -1,54 +1,102 @@
-# Lumen v0.4 Launch Readiness
+# Lumen v0.5 Launch Readiness
 
-Version: v0.4-demo-polish
+Version: v0.5-launch-hygiene
 
 ## Readiness stance
 
-This checklist is for a controlled local demo. It is not a production-readiness certification.
+v0.5 is public-readiness and launch-hygiene work for the controlled local demo. It is not a production-readiness certification and it does not add analytical capability.
 
-Lumen is launch-ready for v0.4 only if the demo makes methods visible without overstating capability. Passing this checklist means the local fixture demo is inspectable, deterministic, and honest about limits. It does not mean Lumen verifies live reality, provides global coverage, or replaces human judgment.
+Lumen is launch-ready for v0.5 only if a reviewer can run the local fixture demo, understand the simplified claim story, see uncertainty preserved, and verify that public docs do not imply live coverage, final authority, hidden scoring, or real-world verification completeness.
+
+Allowed readiness labels:
+
+- `ready-controlled-local-demo`: local verifier passes and public copy matches the simplified fixture demo.
+- `ready-with-documented-limitations`: core demo works, but non-blocking gaps are documented close to the output.
+- `not-ready`: any blocker in this document remains unresolved.
+
+Do not use labels that imply production fitness, automated intelligence readiness, final judgment, or live-event coverage.
+
+## v0.5 scope
+
+v0.5 is launch hygiene:
+
+- align public documentation with the current simplified black/white tabbed claim-story UI;
+- preserve the controlled local fixture boundary;
+- keep the existing backend/API contract available for internal inspection;
+- make old detailed component names clearly legacy/internal when mentioned;
+- document v1 roadmap and deferred work without pulling it into the launch;
+- keep verification language auditable and modest.
+
+v0.5 does not add live ingestion, paid APIs, LLM calls, telemetry, accounts, authentication, database/storage complexity, blockchain anchoring, or a new analytical claim surface.
 
 ## Required local verification
 
-Run from repo root unless noted.
+Run from repo root:
 
 ```text
 bash scripts/verify_lumen.sh
 ```
 
-The aggregate verifier prefers `.venv/bin/python` when present, then falls back
-to `python3`. This avoids treating a host interpreter without pytest as a
-product failure.
+Expected result for launch-ready status:
 
-Expected result for demo-ready status:
+- institutional-memory index check passes;
+- API tests pass;
+- API modules compile;
+- static UI verification passes;
+- web typecheck passes;
+- any failure is recorded as a blocker, not ignored.
 
-- the aggregate command completes successfully;
-- failures are recorded as blockers, not ignored;
-- any skipped test must be justified as intentionally outside v0.4 scope.
+## Current public UI gates
+
+The public demo UI is the simplified claim-story interface, not the old dense dashboard.
+
+Required visible story:
+
+- Main claim: "When does the regulation start?"
+- Explanation: "Two sources disagree. A news report says June 1. An official filing says July 1. Lumen marks this as contested instead of guessing."
+- Tabs: Story, Evidence, Why uncertain, Audit.
+- Visual language: yellow/uncertain for contested, blue/supporting for stronger support, red/conflict for disagreement.
+- Footer or nearby note: controlled local demo only; no live news; no replacement for human judgment.
+
+Required public-copy behavior:
+
+- explain the disagreement in human-readable language;
+- show the official record as stronger support without claiming the dispute is settled;
+- explain why uncertainty remains;
+- keep technical internals out of the main public view;
+- say that internal tracking exists without exposing raw fingerprints, machine labels, or source-file references in the public UI.
+
+Public UI must not show raw hashes, audit IDs, `.md` references, underscores/machine labels, visible provenance strings, or dense technical dashboard wording.
+
+## Legacy/internal component policy
+
+The old detailed component files may remain in the repository as legacy/internal honesty components and static verification targets. If mentioned in architecture docs, label them as internal/legacy surfaces, not the current public UX.
+
+Legacy/internal component names include:
+
+- BriefingPanel
+- ClaimMatrix
+- EvidenceTrail
+- AuditTrail
+- NarrativeMap
+- SourceSpread
+- ContradictionBoard
+
+These names must not be described as the public v0.5 layout. The public layout is the four-tab claim story.
 
 ## API readiness gates
+
+The local API remains part of the inspectable demo substrate. It must stay deterministic and local.
 
 `GET /health` must show:
 
 - service status;
-- deterministic/local method boundary;
+- local deterministic method boundary;
 - limitations or limitations reference;
 - no production-readiness claim;
 - no final-authority claim.
 
-`GET /sample` must return the canonical controlled fixture response with:
-
-- `schema_version`;
-- `mode: "fixture_demo"`;
-- claims;
-- evidence;
-- sources;
-- source graph;
-- contradictions;
-- briefing;
-- audit events or audit trail;
-- audit verification;
-- limitations and `limitations_ref`.
+`GET /sample` must return the canonical controlled fixture response with claims, evidence, sources, source graph, contradictions, briefing, audit trail/verification, limitations, and limitation reference.
 
 `POST /analyze` must:
 
@@ -59,39 +107,18 @@ Expected result for demo-ready status:
 - disclose placeholder extraction limits;
 - return the same analysis envelope shape as `/sample`.
 
-`GET /audit/verify` must:
-
-- return valid/invalid state;
-- include event count;
-- include genesis/latest event hashes when available;
-- explain audit-chain consistency only, not claim truth.
-
-## Frontend readiness gates
-
-The dashboard is demo-ready only if these panels are present and honest:
-
-| Panel | Required for pass |
-| --- | --- |
-| BriefingPanel | bottom line preserves uncertainty; confidence reasons, limitations, limitations ref, audit ref are visible |
-| ClaimMatrix | every rendered claim has status, confidence reason, evidence ref, limitations ref, audit ref |
-| EvidenceTrail | evidence shows provenance/proximity/limitations/audit ref and does not imply completeness |
-| AuditTrail | verification state and method trace are visible; copy does not say audit proves the claim |
-| NarrativeMap | labeled analysis-not-fact and fixture-backed/deferred; no intent/deception inference |
-| SourceSpread | wire/citation/dependency notes visible; repeated count is not treated as corroboration |
-| ContradictionBoard | fixture conflict is shown as unresolved/exposed, not settled |
+`GET /audit/verify` must explain audit-chain consistency only. It must not say the audit trail proves an underlying claim.
 
 ## Content and copy readiness gates
 
-Pass requires all user-facing demo copy to preserve these messages:
+Pass requires public and launch-adjacent copy to preserve these messages:
 
-- Lumen exposes claims, evidence, contradictions, uncertainty, provenance, confidence reasons, and audit trails.
+- Lumen exposes methods, evidence, uncertainty, contradictions, and auditability so humans can reason better.
 - Lumen helps humans reason; it does not replace judgment.
-- Controlled fixtures are used unless explicitly labeled otherwise.
-- Confidence is a visible method signal, not a truth verdict.
+- The demo uses controlled local fixtures unless explicitly labeled otherwise.
+- Confidence is a visible method signal, not a verdict.
 - Contradictions expose unresolved disputes; they do not settle them.
-- Narrative analysis is analysis, not fact.
-- Source quantity is not source independence.
-- Audit trails record transformation history and can detect inconsistent history; they do not prove the underlying claim.
+- Audit trails record transformation history and can detect inconsistent history; they do not prove a claim.
 
 Block readiness if copy implies:
 
@@ -100,62 +127,33 @@ Block readiness if copy implies:
 - live geopolitical analysis;
 - complete source coverage;
 - production intelligence reliability;
-- propaganda/deception certainty;
+- propaganda or deception certainty;
 - hidden model/scoring authority.
-
-## Fixture readiness gates
-
-The canonical v0.4 fixture must demonstrate:
-
-- at least one contested or unresolved claim;
-- at least one primary or near-primary evidence object;
-- at least one dependent/repeated source stream;
-- at least one fixture contradiction;
-- visible missing information or unresolved questions;
-- visible limitations at top-level and briefing level;
-- audit references on displayed claims, evidence, and briefing.
-
-The fixture must not include live current-event claims unless they are clearly synthetic or historically neutral controlled examples with no claim of live coverage.
-
-## Security and operations gates
-
-Pass requires:
-
-- no secrets required for the default demo path;
-- no telemetry or analytics in the default demo path;
-- no hidden external network dependency for fixture demo;
-- no automatic commit/push/deploy expectation;
-- no mutation, deletion, or replacement of raw evidence as part of demo flow;
-- local-only run instructions remain accurate.
 
 ## Documentation readiness gates
 
-Before v0.4 launch-readiness is claimed, these docs must agree:
+Before v0.5 public-readiness is claimed, these docs must agree:
 
-- `docs/architecture/V0_4_SCOPE.md` defines the scope and deferrals;
-- `docs/architecture/API_CONTRACT.md` matches backend/static response shape;
-- `docs/architecture/DEMO_FLOW.md` matches the runnable operator path;
-- `docs/architecture/MVP_PHASES.md` places v0.4 after v0.3 contract/demo integration as demo polish, not a new intelligence layer;
-- `LIMITATIONS.md` remains linked or visible near outputs;
+- `docs/architecture/V0_5_SCOPE.md` defines launch hygiene and deferrals;
+- `docs/architecture/DEMO_FLOW.md` matches the simplified four-tab public demo;
+- `docs/demo/LOCAL_DEMO_WALKTHROUGH.md` gives an operator path for the current UI;
+- `docs/architecture/MVP_PHASES.md` places v0.5 after v0.4 as public-readiness hygiene, not new capability;
+- `docs/architecture/ROADMAP_TO_V1.md` separates future phases from v0.5;
+- `docs/architecture/DEFERRED_WORK.md` lists deferred items explicitly;
+- `LIMITATIONS.md` remains linked or visible near outputs by public docs and launch materials;
 - governance docs preserve no-authority, confidence-reason, and auditability rules.
 
 ## Blocker taxonomy
 
 Use these labels in handoff or verification reports:
 
-- `api-contract-blocker`: route or schema drift prevents contract trust.
-- `frontend-honesty-blocker`: UI hides or overstates uncertainty, limitations, status, reasons, or audit references.
-- `fixture-blocker`: canonical fixture lacks claims/evidence/source dependency/contradiction/limitations needed for demo.
-- `audit-blocker`: audit trail or verification is absent, invalid, or overclaimed.
-- `scope-blocker`: implementation introduces live ingestion, paid APIs, LLM calls, telemetry, accounts, or production claims.
-- `docs-blocker`: docs disagree with the runnable implementation.
+- `ui-reality-blocker`: docs describe the old dense dashboard as the public UI.
+- `copy-overclaim-blocker`: copy implies final authority, live coverage, broad verification, or hidden judgment.
+- `demo-boundary-blocker`: default demo requires network calls, paid services, telemetry, secrets, accounts, or LLM calls.
+- `api-contract-blocker`: route or schema drift prevents local fixture inspection.
+- `audit-overclaim-blocker`: audit wording implies proof of the underlying claim.
+- `docs-blocker`: launch docs disagree with the runnable implementation.
 
 ## Final readiness decision
 
-Allowed final states:
-
-- `ready-controlled-demo`: all required gates pass; remaining deferrals are intentional and visible.
-- `ready-with-documented-limitations`: core demo works, but non-blocking gaps are explicitly documented near outputs.
-- `not-ready`: any blocker taxonomy item remains unresolved.
-
-Do not use broader labels that imply production fitness, truth determination, or automated intelligence readiness for v0.4.
+A v0.5 readiness claim is valid only when the local verifier passes, stale public-UX references are removed or reframed, deferred work is explicit, and no public surface expands beyond the controlled local demo.

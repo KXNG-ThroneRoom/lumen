@@ -1,6 +1,6 @@
 # Lumen Governance Rules
 
-Version: v0.3-demo-contract
+Version: v0.5-public-framing
 Scope: MVP governance, scoring, audit, and public-facing disclosure rules.
 
 ## 1. Governing Doctrine
@@ -28,19 +28,9 @@ Every displayed claim must include:
 - source/provenance reference;
 - audit reference.
 
-Every briefing must include:
-
-- limitations reference;
-- unresolved questions;
-- audit reference;
-- confidence explanation;
-- explicit statement when fixture or placeholder data is used.
-
 Every demo flow must include a visible limitations reference and must preserve the no-authority stance: outputs expose method-state, evidence, provenance, uncertainty, and audit lineage for human inspection.
 
 Public README, contributing, demo, and release notes must link `LIMITATIONS.md` and `ADVERSARIAL_REVIEW.md` when they describe analytical outputs, confidence, or audit trails.
-
-Every narrative analysis panel must say it is analysis, not fact.
 
 ## 3. Valid Claim Statuses
 
@@ -53,7 +43,6 @@ Lumen may use these MVP statuses:
 - contested: credible attached evidence or claims conflict.
 - contradicted: attached evidence directly conflicts with the claim.
 - unsupported: no adequate supporting evidence is attached.
-- narrative_only: the item is framing, interpretation, or rhetoric rather than a factual claim.
 - unknown: the system cannot classify the claim honestly with available inputs.
 
 Status labels describe method-state, not final reality.
@@ -79,7 +68,7 @@ Default caps:
 - unsupported anonymous assertion: capped at low;
 - anonymous official or unnamed institutional source: capped at low unless independently supported;
 - anonymous eyewitness: capped at low unless corroborated by primary or independent evidence;
-- anonymous expert interpretation: narrative_only or low unless tied to inspectable evidence;
+- anonymous expert interpretation: capped at low unless tied to inspectable evidence;
 - leaked document: score the document provenance separately; anonymity of leaker does not make the document self-validating.
 
 No number of dependent anonymous repeats should raise confidence by itself.
@@ -136,11 +125,11 @@ Required disclosures include:
 - anonymous-source caps;
 - unresolved contradiction;
 - stale or uncertain timestamps;
-- narrative analysis limitations.
+- current-demo scope limits.
 
 Limitations must be written plainly and must not be buried in footnotes alone.
 
-For v0.3 demo and launch-facing surfaces, limitation links are required in `README.md`, `LIMITATIONS.md`, `docs/architecture/DEMO_FLOW.md`, and any UI/API path that displays analysis. A missing limitation reference is a release blocker, not a copy edit.
+For v0.5 demo and launch-facing surfaces, limitation links are required in `README.md`, `LIMITATIONS.md`, `docs/architecture/DEMO_FLOW.md`, and any UI/API path that displays analysis. A missing limitation reference is a release blocker, not a copy edit.
 
 ## 10. Audit Requirements
 
@@ -154,7 +143,6 @@ MVP audit events should cover:
 - score assigned;
 - source dependency evaluated;
 - contradiction checked;
-- briefing generated;
 - governance rule applied.
 
 Audit events must include rule version, operation, reason, input hash, output hash, previous hash, and event hash where available.
@@ -170,16 +158,17 @@ UI must avoid:
 - hidden uncertainty;
 - unsupported badges of authority;
 - overconfident summaries;
-- suppressing unresolved questions.
+- suppressing unresolved questions;
+- stale multi-panel interface language on the current public demo.
 
-UI must show:
+The v0.5 public UI must match the simplified controlled demo unless a later scoped change updates this rule:
 
-- status;
-- confidence reason;
-- evidence quality;
-- source dependency;
-- limitations;
-- audit reference.
+- main claim: "When does the regulation start?";
+- explanation: two sources disagree, with June 1 from a news report and July 1 from an official filing;
+- tabs: Story, Evidence, Why uncertain, Audit;
+- visual language: uncertain/contested, support, and conflict;
+- no raw hashes, audit IDs, machine labels, or `.md` references in the public UI;
+- no wording that says Lumen decides the final truth.
 
 ## 12. Governance Change Process
 

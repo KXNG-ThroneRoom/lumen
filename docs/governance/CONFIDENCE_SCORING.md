@@ -1,6 +1,6 @@
 # Lumen Confidence Scoring Methodology
 
-Version: v0.3-demo-contract
+Version: v0.5-public-framing
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Confidence scoring in Lumen is an explanation mechanism, not a verdict mechanism
 
 Lumen does not determine what users must believe. It exposes the rule path, evidence quality, uncertainty, and provenance behind a confidence band.
 
-Confidence language must remain methodological in all API responses, briefings, dashboards, screenshots, and demos. A band describes how documented rules handled available inputs; it must not be phrased as proof, final truth, certainty, or completion of real-world verification.
+Confidence language must remain methodological in all API responses, public UI copy, screenshots, and demos. A band describes how documented rules handled available inputs; it must not be phrased as proof, final truth, certainty, or completion of real-world verification.
 
 Public docs and contributor onboarding must link this methodology when they mention confidence. Users and contributors may challenge confidence reasons, cap application, or score wording through `../../ADVERSARIAL_REVIEW.md`.
 
@@ -27,7 +27,7 @@ Every scored claim must include:
 
 A claim missing status or confidence_reason is invalid for display.
 
-A public surface that displays confidence without a nearby limitation reference is also invalid for v0.3 demo purposes.
+A public surface that displays confidence without a nearby limitation reference is also invalid for v0.5 demo purposes.
 
 ## Confidence Bands
 
@@ -37,7 +37,7 @@ A public surface that displays confidence without a nearby limitation reference 
 - capped: a governance cap prevents elevation.
 - unknown: confidence cannot be assigned honestly from available inputs.
 
-High confidence still preserves uncertainty. Low, capped, unknown, unresolved, unsupported, and contested states must be displayed as valid analytical outcomes rather than failures.
+High confidence still preserves uncertainty. Low, capped, unknown, unresolved, unsupported, and contested states must be displayed as valid analytical outcomes rather than failures. The current public fixture demonstrates contested output rather than a final verdict.
 
 ## Deterministic MVP Rule Order
 
@@ -45,7 +45,7 @@ MVP scoring applies rules in this order:
 
 1. Start at unknown.
 2. If no inspectable evidence exists, set unsupported or unresolved with low/unknown confidence.
-3. If the item is framing, speculation, or interpretation, set narrative_only unless a factual subclaim is extracted separately.
+3. If the item is framing, speculation, or interpretation rather than an inspectable factual claim, mark that limitation plainly and do not inflate confidence.
 4. Add support for primary or near-primary evidence with adequate provenance.
 5. Add support for independent evidence streams.
 6. Reduce or cap confidence for anonymous sourcing.
@@ -63,7 +63,7 @@ Default cap rules:
 | Unsupported anonymous assertion | low | Anonymous assertion has no inspectable support. |
 | Anonymous official / unnamed institutional source | low | Identity and incentives cannot be independently inspected. |
 | Anonymous eyewitness | low | Witness cannot be independently assessed. |
-| Anonymous expert interpretation | low or narrative_only | Expert basis is not inspectable. |
+| Anonymous expert interpretation | low | Expert basis is not inspectable. |
 | Leaked document with weak provenance | capped | Document chain of custody is uncertain. |
 
 Independent primary evidence can raise confidence above the cap, but the reason must explain why.
