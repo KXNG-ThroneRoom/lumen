@@ -121,7 +121,8 @@ workers:
     key_deliverable: Produced the operational swarm summary used as forensic evidence.
 supersedes: ""
 related_postmortems: []
-related_swarms: []
+related_swarms:
+  - docs/swarms/2026-05-24_lumen-v0-2-deterministic-core.md
 tags:
   - v0.3
   - contract_demo
