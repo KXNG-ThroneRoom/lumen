@@ -1,7 +1,10 @@
-import type { Contradiction } from '../data/lumenSample';
+import type { Contradiction } from '../lib/api-contract';
+import { auditReferenceCanRender, fixturePanelLabel } from '../lib/api-contract';
 
 export function ContradictionBoard({ contradictions, auditReference }: { contradictions: Contradiction[]; auditReference: string }) {
-  if (!auditReference) {
+  const hasAuditReference = auditReferenceCanRender(auditReference);
+
+  if (!hasAuditReference) {
     return (
       <section className="panel" aria-labelledby="contradictions-heading">
         <div className="panel-kicker">Contradiction board</div>
@@ -15,17 +18,21 @@ export function ContradictionBoard({ contradictions, auditReference }: { contrad
     <section className="panel" aria-labelledby="contradictions-heading">
       <div className="panel-kicker">Contradiction board</div>
       <h2 id="contradictions-heading">Conflicts stay visible until resolved</h2>
-      <p>Audit reference: {auditReference}. Contradictions are fixture-scoped unresolved disputes, not final findings.</p>
+      <p>
+        Explicit {fixturePanelLabel(contradictions.length > 0, hasAuditReference)} panel. Audit reference: {auditReference}. Contradictions expose
+        unresolved disputes; they do not settle them.
+      </p>
       <div className="contradiction-list">
         {contradictions.map((item) => (
           <article className="contradiction-card" key={item.id}>
             <div className="contradiction-topline">
               <span>{item.id}</span>
-              <strong>{item.status}</strong>
+              <strong>{item.status.replaceAll('_', ' ')}</strong>
             </div>
-            <h3>{item.conflict}</h3>
-            <p>{item.evidenceGap}</p>
-            <div className="claim-links">Linked claims: {item.claims.join(', ')}</div>
+            <div className="claim-links">Type: {item.contradiction_type.replaceAll('_', ' ')}</div>
+            <h3>{item.summary}</h3>
+            <p>{item.limitations.join(' ') || 'Fixture contradiction lacks a limitation note; treat as deferred.'}</p>
+            <div className="claim-links">Linked claims: {item.claim_ids.join(', ')}</div>
           </article>
         ))}
       </div>

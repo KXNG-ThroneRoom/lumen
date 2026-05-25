@@ -8,8 +8,8 @@ The UI is intentionally local, deterministic, and sample-data driven. It demonst
 
 - BriefingPanel: structured uncertainty-first briefing; refuses to render a briefing without limitation and audit references.
 - ClaimMatrix: atomic claims, statuses, confidence logic, evidence references, and guard rails that withhold claim/confidence display when status or reasons are missing.
-- EvidenceTrail: source provenance, source independence, and evidence quality.
-- SourceSpread: explicit deferred/stub panel that groups visible fixture sources without inferring ownership, geography, affiliation, or independence.
+- EvidenceTrail: source provenance, source proximity, evidence limitations reference, and evidence audit reference.
+- SourceSpread: explicit fixture-backed/deferred panel that groups visible fixture sources without inferring ownership, geography, affiliation, or independence.
 - NarrativeMap: framing analysis explicitly labeled as analysis, not fact, with a visible audit reference.
 - ContradictionBoard: unresolved disputes and evidence gaps, with a visible audit reference.
 - AuditTrail: hash-chain style transformation log.
@@ -20,8 +20,9 @@ The static UI keeps uncertainty visible instead of filling gaps:
 
 - no claim text is rendered when status is missing;
 - no confidence value is rendered when confidence reasons are missing;
-- no briefing is rendered without a limitation reference;
-- narrative and contradiction analysis require an audit reference;
+- no briefing is rendered without a limitation reference and audit reference;
+- no evidence item is rendered without a limitations reference and audit reference;
+- narrative, source-spread, and contradiction panels require an audit reference and explicit fixture/deferred labels;
 - source independence is not inferred from article volume or fixture count.
 
 ## Run

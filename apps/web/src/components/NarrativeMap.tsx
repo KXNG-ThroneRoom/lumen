@@ -1,7 +1,9 @@
-import type { NarrativeFrame } from '../data/lumenSample';
+import { auditReferenceCanRender, fixturePanelLabel } from '../lib/api-contract';
 
-export function NarrativeMap({ frames, auditReference }: { frames: NarrativeFrame[]; auditReference: string }) {
-  if (!auditReference) {
+export function NarrativeMap({ frames, auditReference }: { frames: string[]; auditReference: string }) {
+  const hasAuditReference = auditReferenceCanRender(auditReference);
+
+  if (!hasAuditReference) {
     return (
       <section className="panel" aria-labelledby="narrative-heading">
         <div className="panel-kicker">Narrative map</div>
@@ -15,14 +17,17 @@ export function NarrativeMap({ frames, auditReference }: { frames: NarrativeFram
     <section className="panel" aria-labelledby="narrative-heading">
       <div className="panel-kicker">Narrative map</div>
       <h2 id="narrative-heading">Narrative analysis, not fact</h2>
-      <p>Audit reference: {auditReference}. Narrative roles are fixture labels, not findings of truth.</p>
+      <p>
+        Explicit {fixturePanelLabel(frames.length > 0, hasAuditReference)} panel. Audit reference: {auditReference}. Narrative roles are analysis
+        labels, not findings of truth.
+      </p>
       <div className="narrative-map">
         {frames.map((frame) => (
-          <article className="narrative-node" key={frame.role}>
-            <span className="node-role">{frame.role}</span>
-            <h3>{frame.observedFrame}</h3>
-            <p>{frame.evidence}</p>
-            <small>{frame.caution}</small>
+          <article className="narrative-node" key={frame}>
+            <span className="node-role">Deferred fixture label</span>
+            <h3>{frame}</h3>
+            <p>No intent, deception, or coordination is inferred from this stub.</p>
+            <small>Future narrative outputs must remain marked as analysis, not fact.</small>
           </article>
         ))}
       </div>

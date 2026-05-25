@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Lumen Static Intelligence Dashboard',
-  description: 'Transparent claim, evidence, narrative, contradiction, briefing, and audit scaffold.',
+  title: 'Lumen Local Demo',
+  description: 'A plain-language demo that shows why a claim is contested without declaring final truth.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,0 +1,615 @@
+{
+  "audit_events": [
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "48810b091db71e0e9658d6e3e80632a2bebd0e5c40eebb20940c0e1ab2f853c4",
+      "event_id": "audit-000-genesis",
+      "input_hash": "dadee9b140ec83ce380a71cd23b255da6518bde04549b788bb0e9d8c4f74c3ae",
+      "metadata": {
+        "rule_version": "lumen.rules.v0.2"
+      },
+      "model_version": "none",
+      "operation": "genesis",
+      "output_hash": "01b394a89e18eff00b27abc54b4fafb5926748518450b445a055ffb3a6cde702",
+      "previous_event_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "prompt_hash": "none",
+      "reason": "Initialize local deterministic Lumen audit ledger.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "a69cdc551571f95fd2641d6071b7f22db3081afcd85ae71da654a0d831350d2d",
+      "event_id": "audit-001-claim_extracted",
+      "input_hash": "a292b2465e30647d0857777b7995d3c54b87b9b90c617b552f1647528aeff348",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "claim_extracted",
+      "output_hash": "5b5fa04b4e9ef1280f33a26d792a90da85f27ac5705f6b551b999109274a601a",
+      "previous_event_hash": "48810b091db71e0e9658d6e3e80632a2bebd0e5c40eebb20940c0e1ab2f853c4",
+      "prompt_hash": "none",
+      "reason": "Represent local input or fixture claims as inspectable claim objects.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "cb04c806b145327fcef498859530fc799da47f10451bd1f39b9092b8f9fabb13",
+      "event_id": "audit-002-source_graph_built",
+      "input_hash": "bc04e04bfe9cf58f06d515b1d738a01aafa50a19d61b80f7c3203bab27c77f95",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "source_graph_built",
+      "output_hash": "64c0e375eaeec7de325b177cf6eed2d71b736427a266756447e069b5f6ad5b37",
+      "previous_event_hash": "a69cdc551571f95fd2641d6071b7f22db3081afcd85ae71da654a0d831350d2d",
+      "prompt_hash": "none",
+      "reason": "Track wire/citation dependency and source independence notes.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "e4908c28ac3c09e914bf8345bad6fa1dcc24ac4058cb80e91bc1a4d3aeef2d8e",
+      "event_id": "audit-003-contradiction_detected",
+      "input_hash": "5b5fa04b4e9ef1280f33a26d792a90da85f27ac5705f6b551b999109274a601a",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "contradiction_detected",
+      "output_hash": "15f7f931cf84d87c3ba55e087cd7ade92b46814a5b8f2d4fa2ab9f0f051546bd",
+      "previous_event_hash": "cb04c806b145327fcef498859530fc799da47f10451bd1f39b9092b8f9fabb13",
+      "prompt_hash": "none",
+      "reason": "Expose deterministic fixture contradictions without resolving them as final truth.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "event_id": "audit-004-score_assigned",
+      "input_hash": "65aa306020cf07884406fceb3193ca4b0247b5856d6db2ba1b6d3c81e50ca9af",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "score_assigned",
+      "output_hash": "0389d6098726527318a28b2078c359db79cb0a4e4b0662edd8f00873800bb79a",
+      "previous_event_hash": "e4908c28ac3c09e914bf8345bad6fa1dcc24ac4058cb80e91bc1a4d3aeef2d8e",
+      "prompt_hash": "none",
+      "reason": "Apply documented deterministic confidence rules with visible reasons.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "7930f6aedaa07c9c80d5da40604392408e72cb87a5eaf5fc3721f3c8e9a69555",
+      "event_id": "audit-005-briefing_generated",
+      "input_hash": "74971742b96e7af1bc96825d9b0aadf6c4f8e7edb7e9423affac5f3df7a1d380",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "briefing_generated",
+      "output_hash": "5d419433b53797859c8df61636542160ea23b6bc6e0bc3b449bd845208e72310",
+      "previous_event_hash": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "prompt_hash": "none",
+      "reason": "Generate deterministic briefing with limitations and audit reference.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "audit_trail": [
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "48810b091db71e0e9658d6e3e80632a2bebd0e5c40eebb20940c0e1ab2f853c4",
+      "event_id": "audit-000-genesis",
+      "input_hash": "dadee9b140ec83ce380a71cd23b255da6518bde04549b788bb0e9d8c4f74c3ae",
+      "metadata": {
+        "rule_version": "lumen.rules.v0.2"
+      },
+      "model_version": "none",
+      "operation": "genesis",
+      "output_hash": "01b394a89e18eff00b27abc54b4fafb5926748518450b445a055ffb3a6cde702",
+      "previous_event_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "prompt_hash": "none",
+      "reason": "Initialize local deterministic Lumen audit ledger.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "a69cdc551571f95fd2641d6071b7f22db3081afcd85ae71da654a0d831350d2d",
+      "event_id": "audit-001-claim_extracted",
+      "input_hash": "a292b2465e30647d0857777b7995d3c54b87b9b90c617b552f1647528aeff348",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "claim_extracted",
+      "output_hash": "5b5fa04b4e9ef1280f33a26d792a90da85f27ac5705f6b551b999109274a601a",
+      "previous_event_hash": "48810b091db71e0e9658d6e3e80632a2bebd0e5c40eebb20940c0e1ab2f853c4",
+      "prompt_hash": "none",
+      "reason": "Represent local input or fixture claims as inspectable claim objects.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "cb04c806b145327fcef498859530fc799da47f10451bd1f39b9092b8f9fabb13",
+      "event_id": "audit-002-source_graph_built",
+      "input_hash": "bc04e04bfe9cf58f06d515b1d738a01aafa50a19d61b80f7c3203bab27c77f95",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "source_graph_built",
+      "output_hash": "64c0e375eaeec7de325b177cf6eed2d71b736427a266756447e069b5f6ad5b37",
+      "previous_event_hash": "a69cdc551571f95fd2641d6071b7f22db3081afcd85ae71da654a0d831350d2d",
+      "prompt_hash": "none",
+      "reason": "Track wire/citation dependency and source independence notes.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "e4908c28ac3c09e914bf8345bad6fa1dcc24ac4058cb80e91bc1a4d3aeef2d8e",
+      "event_id": "audit-003-contradiction_detected",
+      "input_hash": "5b5fa04b4e9ef1280f33a26d792a90da85f27ac5705f6b551b999109274a601a",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "contradiction_detected",
+      "output_hash": "15f7f931cf84d87c3ba55e087cd7ade92b46814a5b8f2d4fa2ab9f0f051546bd",
+      "previous_event_hash": "cb04c806b145327fcef498859530fc799da47f10451bd1f39b9092b8f9fabb13",
+      "prompt_hash": "none",
+      "reason": "Expose deterministic fixture contradictions without resolving them as final truth.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "event_id": "audit-004-score_assigned",
+      "input_hash": "65aa306020cf07884406fceb3193ca4b0247b5856d6db2ba1b6d3c81e50ca9af",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "score_assigned",
+      "output_hash": "0389d6098726527318a28b2078c359db79cb0a4e4b0662edd8f00873800bb79a",
+      "previous_event_hash": "e4908c28ac3c09e914bf8345bad6fa1dcc24ac4058cb80e91bc1a4d3aeef2d8e",
+      "prompt_hash": "none",
+      "reason": "Apply documented deterministic confidence rules with visible reasons.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    },
+    {
+      "actor_id": "lumen.local.deterministic",
+      "actor_type": "system",
+      "code_version": "local",
+      "event_hash": "7930f6aedaa07c9c80d5da40604392408e72cb87a5eaf5fc3721f3c8e9a69555",
+      "event_id": "audit-005-briefing_generated",
+      "input_hash": "74971742b96e7af1bc96825d9b0aadf6c4f8e7edb7e9423affac5f3df7a1d380",
+      "metadata": {},
+      "model_version": "none",
+      "operation": "briefing_generated",
+      "output_hash": "5d419433b53797859c8df61636542160ea23b6bc6e0bc3b449bd845208e72310",
+      "previous_event_hash": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "prompt_hash": "none",
+      "reason": "Generate deterministic briefing with limitations and audit reference.",
+      "rule_version": "lumen.rules.v0.2",
+      "timestamp": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "audit_verification": {
+    "errors": [],
+    "event_count": 6,
+    "genesis_event_hash": "48810b091db71e0e9658d6e3e80632a2bebd0e5c40eebb20940c0e1ab2f853c4",
+    "latest_event_hash": "7930f6aedaa07c9c80d5da40604392408e72cb87a5eaf5fc3721f3c8e9a69555",
+    "valid": true
+  },
+  "briefing": {
+    "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+    "bottom_line": "Fixture: regulation start-date contradiction: 2 claim(s) represented; contradictions are present. Use the evidence and audit trail to inspect the method, not as a final truth verdict.",
+    "confidence": {
+      "caps_applied": [],
+      "reasons": [
+        "2 independent evidence streams",
+        "briefing confidence is an aggregate method signal, not a truth verdict",
+        "contradictions remain visible in the briefing",
+        "primary evidence attached; raises confidence but does not resolve all uncertainty"
+      ],
+      "rule_references": [
+        "briefing.aggregate.v0.2"
+      ],
+      "score": 0.37,
+      "status": "contested",
+      "warnings": [
+        "Do not interpret aggregate confidence as article-level truth."
+      ]
+    },
+    "contradictions": [
+      {
+        "claim_ids": [
+          "claim-regulation-june",
+          "claim-regulation-july"
+        ],
+        "contradiction_type": "time_contradiction",
+        "id": "contradiction-regulation-start-date",
+        "limitations": [
+          "Fixture-based time contradiction; no automatic final truth resolution."
+        ],
+        "status": "fixture_detected",
+        "summary": "Fixture conflict: article claim says June 1 while primary filing says July 1."
+      }
+    ],
+    "evidence": [
+      {
+        "anonymous": false,
+        "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+        "claim_id": null,
+        "evidence_type": "court_filing",
+        "id": "ev-primary-filing",
+        "limitations": [
+          "Fixture evidence only; not live verification."
+        ],
+        "limitations_ref": "LIMITATIONS.md",
+        "primary": true,
+        "provenance": "fixture:golden_case_gc003",
+        "proximity": "primary",
+        "quote": null,
+        "source_id": "src-local-a",
+        "summary": "Official filing states the regulation begins on July 1.",
+        "timestamp_quality": "dated filing",
+        "url": null
+      },
+      {
+        "anonymous": false,
+        "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+        "claim_id": null,
+        "evidence_type": "wire_report",
+        "id": "ev-wire-report",
+        "limitations": [
+          "Secondary report; article volume is not proof."
+        ],
+        "limitations_ref": "LIMITATIONS.md",
+        "primary": false,
+        "provenance": "fixture:golden_case_gc003",
+        "proximity": "secondary",
+        "quote": null,
+        "source_id": "src-wire-a",
+        "summary": "Wire report says an article claimed the regulation starts on June 1.",
+        "timestamp_quality": "reported timestamp",
+        "url": null
+      }
+    ],
+    "generated_at": "2026-01-01T00:00:00Z",
+    "id": "briefing-local-deterministic",
+    "key_claims": [
+      {
+        "actors": [],
+        "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+        "claim_type": "factual_claim",
+        "confidence_reason": [
+          "primary evidence attached; raises confidence but does not resolve all uncertainty",
+          "2 independent evidence streams",
+          "source dependency warning: article volume is not proof",
+          "contradictory fixture evidence attached"
+        ],
+        "confidence_score": 0.37,
+        "contradiction_refs": [
+          "contradiction-regulation-start-date"
+        ],
+        "created_at": "2026-01-01T00:00:00Z",
+        "evidence_refs": [
+          "ev-wire-report"
+        ],
+        "id": "claim-regulation-june",
+        "limitations": [
+          "Fixture sample; no live evidence retrieval."
+        ],
+        "limitations_ref": "LIMITATIONS.md",
+        "location": null,
+        "normalized_claim": "regulation start date is June 1",
+        "raw_claim_text": "The regulation starts on June 1.",
+        "source_document_id": "fixture-gc003",
+        "status": "contested",
+        "targets": [],
+        "time_range": null
+      },
+      {
+        "actors": [],
+        "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+        "claim_type": "factual_claim",
+        "confidence_reason": [
+          "primary evidence attached; raises confidence but does not resolve all uncertainty",
+          "2 independent evidence streams",
+          "source dependency warning: article volume is not proof",
+          "contradictory fixture evidence attached"
+        ],
+        "confidence_score": 0.37,
+        "contradiction_refs": [
+          "contradiction-regulation-start-date"
+        ],
+        "created_at": "2026-01-01T00:00:00Z",
+        "evidence_refs": [
+          "ev-primary-filing"
+        ],
+        "id": "claim-regulation-july",
+        "limitations": [
+          "Primary evidence boosts confidence but does not create a final truth verdict."
+        ],
+        "limitations_ref": "LIMITATIONS.md",
+        "location": null,
+        "normalized_claim": "regulation start date is July 1",
+        "raw_claim_text": "The official filing states the regulation starts on July 1.",
+        "source_document_id": "fixture-gc003",
+        "status": "contested",
+        "targets": [],
+        "time_range": null
+      }
+    ],
+    "limitations": [
+      "This briefing is deterministic and fixture/local-input based.",
+      "It exposes claims, evidence, contradictions, and uncertainty; it does not declare final truth.",
+      "Placeholder extraction and fixture contradiction detection are not production intelligence capabilities."
+    ],
+    "limitations_ref": "LIMITATIONS.md",
+    "missing_information": [
+      "human review of source independence",
+      "primary evidence for any claim lacking a primary evidence reference",
+      "durable audit storage beyond local MVP memory"
+    ],
+    "narrative_frames": [
+      "Narrative analysis deferred; any future frame labels must be marked as analysis, not fact."
+    ],
+    "topic": "Fixture: regulation start-date contradiction",
+    "unresolved_questions": [
+      "Which evidence streams are truly independent?",
+      "What primary material would change confidence?",
+      "Are any interested-party incentives missing from the source metadata?"
+    ],
+    "watch_indicators": [
+      "new primary documents",
+      "named on-record sources",
+      "corrections or retractions",
+      "source dependency changes"
+    ]
+  },
+  "claims": [
+    {
+      "actors": [],
+      "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "claim_type": "factual_claim",
+      "confidence_reason": [
+        "primary evidence attached; raises confidence but does not resolve all uncertainty",
+        "2 independent evidence streams",
+        "source dependency warning: article volume is not proof",
+        "contradictory fixture evidence attached"
+      ],
+      "confidence_score": 0.37,
+      "contradiction_refs": [
+        "contradiction-regulation-start-date"
+      ],
+      "created_at": "2026-01-01T00:00:00Z",
+      "evidence_refs": [
+        "ev-wire-report"
+      ],
+      "id": "claim-regulation-june",
+      "limitations": [
+        "Fixture sample; no live evidence retrieval."
+      ],
+      "limitations_ref": "LIMITATIONS.md",
+      "location": null,
+      "normalized_claim": "regulation start date is June 1",
+      "raw_claim_text": "The regulation starts on June 1.",
+      "source_document_id": "fixture-gc003",
+      "status": "contested",
+      "targets": [],
+      "time_range": null
+    },
+    {
+      "actors": [],
+      "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "claim_type": "factual_claim",
+      "confidence_reason": [
+        "primary evidence attached; raises confidence but does not resolve all uncertainty",
+        "2 independent evidence streams",
+        "source dependency warning: article volume is not proof",
+        "contradictory fixture evidence attached"
+      ],
+      "confidence_score": 0.37,
+      "contradiction_refs": [
+        "contradiction-regulation-start-date"
+      ],
+      "created_at": "2026-01-01T00:00:00Z",
+      "evidence_refs": [
+        "ev-primary-filing"
+      ],
+      "id": "claim-regulation-july",
+      "limitations": [
+        "Primary evidence boosts confidence but does not create a final truth verdict."
+      ],
+      "limitations_ref": "LIMITATIONS.md",
+      "location": null,
+      "normalized_claim": "regulation start date is July 1",
+      "raw_claim_text": "The official filing states the regulation starts on July 1.",
+      "source_document_id": "fixture-gc003",
+      "status": "contested",
+      "targets": [],
+      "time_range": null
+    }
+  ],
+  "contradictions": [
+    {
+      "claim_ids": [
+        "claim-regulation-june",
+        "claim-regulation-july"
+      ],
+      "contradiction_type": "time_contradiction",
+      "id": "contradiction-regulation-start-date",
+      "limitations": [
+        "Fixture-based time contradiction; no automatic final truth resolution."
+      ],
+      "status": "fixture_detected",
+      "summary": "Fixture conflict: article claim says June 1 while primary filing says July 1."
+    }
+  ],
+  "evidence": [
+    {
+      "anonymous": false,
+      "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "claim_id": null,
+      "evidence_type": "court_filing",
+      "id": "ev-primary-filing",
+      "limitations": [
+        "Fixture evidence only; not live verification."
+      ],
+      "limitations_ref": "LIMITATIONS.md",
+      "primary": true,
+      "provenance": "fixture:golden_case_gc003",
+      "proximity": "primary",
+      "quote": null,
+      "source_id": "src-local-a",
+      "summary": "Official filing states the regulation begins on July 1.",
+      "timestamp_quality": "dated filing",
+      "url": null
+    },
+    {
+      "anonymous": false,
+      "audit_reference": "d0b85b2f636cba40259da7e318f4ff43f0043e00f299f1a56da47162f61cc73f",
+      "claim_id": null,
+      "evidence_type": "wire_report",
+      "id": "ev-wire-report",
+      "limitations": [
+        "Secondary report; article volume is not proof."
+      ],
+      "limitations_ref": "LIMITATIONS.md",
+      "primary": false,
+      "provenance": "fixture:golden_case_gc003",
+      "proximity": "secondary",
+      "quote": null,
+      "source_id": "src-wire-a",
+      "summary": "Wire report says an article claimed the regulation starts on June 1.",
+      "timestamp_quality": "reported timestamp",
+      "url": null
+    }
+  ],
+  "limitations": [
+    "Local deterministic MVP only; no real-time ingestion.",
+    "No LLM calls, no paid APIs, and no production intelligence reliability claims.",
+    "Confidence values expose method signals and uncertainty; they are not truth verdicts."
+  ],
+  "limitations_ref": "LIMITATIONS.md",
+  "mode": "fixture_demo",
+  "schema_version": "lumen.analysis.v0.3",
+  "source_graph": {
+    "citation_dependencies": {},
+    "independence_notes": [
+      "Wire dispatch is one evidence stream even if republished.",
+      "Primary filing is separate from article commentary."
+    ],
+    "independent_evidence_streams": 2,
+    "sources": [
+      {
+        "anonymous": false,
+        "author": null,
+        "citation_dependency": [],
+        "country": null,
+        "funding": null,
+        "id": "src-wire-a",
+        "independence_notes": [
+          "Wire dispatch is one evidence stream even if republished."
+        ],
+        "interested_party": false,
+        "language": null,
+        "name": "Metro Wire Service",
+        "owner": null,
+        "publisher": null,
+        "reliability_notes": [],
+        "source_type": "wire_report",
+        "url": null,
+        "wire_dependency": "metro-wire-dispatch-001"
+      },
+      {
+        "anonymous": false,
+        "author": null,
+        "citation_dependency": [],
+        "country": null,
+        "funding": null,
+        "id": "src-local-a",
+        "independence_notes": [
+          "Primary filing is separate from article commentary."
+        ],
+        "interested_party": false,
+        "language": null,
+        "name": "Local Court Filing Archive",
+        "owner": null,
+        "publisher": null,
+        "reliability_notes": [],
+        "source_type": "primary_document_repository",
+        "url": null,
+        "wire_dependency": null
+      }
+    ],
+    "warnings": [
+      "wire dependency: src-wire-a depends on metro-wire-dispatch-001"
+    ],
+    "wire_dependencies": {
+      "src-wire-a": "metro-wire-dispatch-001"
+    }
+  },
+  "sources": [
+    {
+      "anonymous": false,
+      "author": null,
+      "citation_dependency": [],
+      "country": null,
+      "funding": null,
+      "id": "src-wire-a",
+      "independence_notes": [
+        "Wire dispatch is one evidence stream even if republished."
+      ],
+      "interested_party": false,
+      "language": null,
+      "name": "Metro Wire Service",
+      "owner": null,
+      "publisher": null,
+      "reliability_notes": [],
+      "source_type": "wire_report",
+      "url": null,
+      "wire_dependency": "metro-wire-dispatch-001"
+    },
+    {
+      "anonymous": false,
+      "author": null,
+      "citation_dependency": [],
+      "country": null,
+      "funding": null,
+      "id": "src-local-a",
+      "independence_notes": [
+        "Primary filing is separate from article commentary."
+      ],
+      "interested_party": false,
+      "language": null,
+      "name": "Local Court Filing Archive",
+      "owner": null,
+      "publisher": null,
+      "reliability_notes": [],
+      "source_type": "primary_document_repository",
+      "url": null,
+      "wire_dependency": null
+    }
+  ],
+  "topic": "Fixture: regulation start-date contradiction"
+}

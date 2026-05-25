@@ -1,76 +1,48 @@
-import type { EvidenceItem } from '../data/lumenSample';
+import type { SourceGraph } from '../lib/api-contract';
+import { auditReferenceCanRender, fixturePanelLabel } from '../lib/api-contract';
 
-type SourceSpreadItem = {
-  source: string;
-  sourceType: string;
-  provenance: string;
-  independence: string;
-  evidenceIds: string[];
-};
-
-function sourceName(label: string) {
-  return label.split(' / ')[0] ?? label;
-}
-
-function groupSources(evidence: EvidenceItem[]): SourceSpreadItem[] {
-  const grouped = new Map<string, SourceSpreadItem>();
-
-  for (const item of evidence) {
-    const key = `${sourceName(item.label)}|${item.sourceType}|${item.provenance}`;
-    const existing = grouped.get(key);
-    if (existing) {
-      existing.evidenceIds.push(item.id);
-      continue;
-    }
-
-    grouped.set(key, {
-      source: sourceName(item.label),
-      sourceType: item.sourceType,
-      provenance: item.provenance,
-      independence: item.independence,
-      evidenceIds: [item.id],
-    });
-  }
-
-  return Array.from(grouped.values());
-}
-
-export function SourceSpread({ evidence, auditReference }: { evidence: EvidenceItem[]; auditReference: string }) {
-  const sources = groupSources(evidence);
+export function SourceSpread({ sourceGraph, auditReference }: { sourceGraph: SourceGraph; auditReference: string }) {
+  const hasAuditReference = auditReferenceCanRender(auditReference);
+  const panelLabel = fixturePanelLabel(sourceGraph.sources.length > 0, hasAuditReference);
 
   return (
     <section className="panel" aria-labelledby="source-spread-heading">
       <div className="panel-kicker">Source spread</div>
-      <h2 id="source-spread-heading">Source independence is deferred, not assumed</h2>
+      <h2 id="source-spread-heading">Source independence is visible, not assumed</h2>
       <p>
-        Explicit stub/deferred panel. The current UI groups fixture evidence by visible source metadata only; it does not infer ownership, geography,
-        political leaning, or real independence. Audit reference: {auditReference || 'missing — analysis withheld'}.
+        Explicit {panelLabel} panel. Source quantity is not source independence. Repeated origin streams are counted separately from independent
+        corroboration. Audit reference: {hasAuditReference ? auditReference : 'missing — analysis withheld'}.
+      </p>
+      <p>
+        Independent evidence streams recorded in fixture: {sourceGraph.independent_evidence_streams}. The UI renders backend source metadata and
+        dependency warnings only; it does not infer ownership, geography, political leaning, or real independence.
       </p>
       <div className="evidence-grid">
-        {sources.map((source) => (
-          <article className="evidence-card" key={`${source.source}-${source.sourceType}-${source.provenance}`}>
+        {sourceGraph.sources.map((source) => (
+          <article className="evidence-card" key={source.id}>
             <div className="evidence-meta">
-              <span>{source.sourceType}</span>
-              <span>{source.evidenceIds.join(', ')}</span>
+              <span>{source.id}</span>
+              <span>{source.source_type}</span>
             </div>
-            <h3>{source.source}</h3>
+            <h3>{source.name}</h3>
             <dl>
               <div>
-                <dt>Provenance</dt>
-                <dd>{source.provenance}</dd>
+                <dt>Wire dependency</dt>
+                <dd>{source.wire_dependency ?? 'none recorded in fixture'}</dd>
               </div>
               <div>
-                <dt>Independence note</dt>
-                <dd>{source.independence}</dd>
+                <dt>Independence notes</dt>
+                <dd>{source.independence_notes.join(' ') || 'No independence note recorded; do not assume independence.'}</dd>
               </div>
               <div>
                 <dt>Deferred fields</dt>
-                <dd>ownership, geography, affiliation, and source graph validation</dd>
+                <dd>ownership, geography, affiliation, funding validation, and source graph expansion</dd>
               </div>
             </dl>
           </article>
         ))}
       </div>
+      <p>Dependency warnings: {sourceGraph.warnings.length > 0 ? sourceGraph.warnings.join(' | ') : 'none in fixture'}.</p>
     </section>
   );
 }
