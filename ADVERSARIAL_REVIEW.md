@@ -1,12 +1,16 @@
 # Lumen Adversarial Review Process
 
-Version: v0.2-local-deterministic
+Version: v0.4-demo-polish
 
 ## Purpose
 
 Adversarial review protects Lumen from hidden bias, false certainty, source laundering, overclaiming, and interface-induced authority.
 
 The goal is not to win arguments. The goal is to make methods inspectable and improve user reasoning.
+
+This process is the public challenge path for Lumen governance, confidence scoring, limitation disclosure, audit completeness, and user-interface wording. Governance and demo documentation should link here when describing how users can contest an output or rule.
+
+Adversarial review does not turn Lumen into an arbiter of truth. It is a documented way to challenge whether Lumen exposed methods, evidence, uncertainty, provenance, limitations, and audit references honestly.
 
 ## What Can Be Challenged
 
@@ -83,3 +87,5 @@ Challenges may resolve as:
 Accepted and partially accepted challenges should update the relevant governance docs, tests/evals, and audit notes.
 
 Governance changes must be public and versioned. Silent scoring or disclosure changes are prohibited.
+
+Contributor onboarding should direct reviewers here before changing public wording, confidence rules, limitation placement, audit requirements, or demo capability claims.

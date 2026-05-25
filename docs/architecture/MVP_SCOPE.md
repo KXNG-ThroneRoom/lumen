@@ -2,11 +2,33 @@
 
 ## Scope lock
 
-This document is the architecture lane scope lock for Lumen v0.2. It is intentionally narrow.
+This document is the architecture lane scope lock for Lumen v0.2 and v0.3 demo integration. It is intentionally narrow.
 
-Lumen v0.2 is a local, deterministic demonstration of Lumen's method-first workflow over fixture-backed inputs. It is not a live intelligence system, a production ingestion platform, a global search product, or an automated authority on reality.
+Lumen v0.2 is a local, deterministic demonstration of Lumen's method-first workflow over fixture-backed inputs. Lumen v0.3 extends that baseline only by stabilizing the backend/frontend API contract and demo flow around the same local deterministic fixture boundary. It is not a live intelligence system, a production ingestion platform, a global search product, or an automated authority on reality.
 
 The MVP must make users more informed by exposing claims, evidence, uncertainty, source dependency, confidence reasons, limitations, and audit references. It must not ask users to trust hidden machinery.
+
+## v0.3 contract/demo integration scope
+
+The v0.3 integration layer is in scope only when it tightens the local demo contract without adding new analytical capability claims.
+
+In scope for v0.3:
+
+- Stable `/sample` and `/analyze` response envelope documented in `docs/architecture/API_CONTRACT.md`.
+- Fixture-backed demo flow documented in `docs/architecture/DEMO_FLOW.md`.
+- Frontend-compatible static demo response or live local `/sample` response using the same schema.
+- Visible limitations reference on the analysis envelope and briefing.
+- Visible audit references on claims, evidence, confidence assessments, contradictions, narrative/source/dependency objects, and briefing.
+- Explicit fixture-backed or deferred labels for narrative, source-spread, and contradiction panels when implementation is partial.
+- Verification that UI surfaces do not imply certainty beyond backend data.
+
+Out of scope for v0.3 remains:
+
+- live ingestion, crawling, RSS polling, or real-time event monitoring;
+- paid APIs, secrets, telemetry, or hidden hosted services;
+- LLM calls in the default local demo path;
+- production claim extraction, broad semantic contradiction detection, or global source coverage;
+- final truth determination or article-level truth labels.
 
 ## MVP goal
 

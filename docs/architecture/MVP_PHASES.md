@@ -2,7 +2,7 @@
 
 ## Status
 
-Lumen is in the v0.2 implementation swarm. The previous readiness/planning swarm passed the gate for a write-enabled next layer.
+Lumen is in the v0.4 demo-polish and launch-readiness swarm. v0.2 established the deterministic local baseline and v0.3 stabilized backend/frontend contract and demo flow around that baseline. v0.4 must not expand the analytical claim surface; it tightens demo scope, panel labeling, launch gates, and deferrals.
 
 Current known state:
 
@@ -12,6 +12,38 @@ Current known state:
 - Backend deterministic core is the main implementation blocker.
 - Governance docs require hardening into enforceable product/code rules.
 - MVP scope is locked to local deterministic primitives and fixture-backed analysis.
+- v0.4 architecture scope is documented in `docs/architecture/V0_4_SCOPE.md`.
+- v0.4 launch gates are documented in `docs/architecture/LAUNCH_READINESS.md`.
+- NarrativeMap, SourceSpread, and ContradictionBoard must be fixture-backed, clearly stubbed, or explicitly deferred.
+
+## Phase v0.4 — Demo Polish + Launch Readiness
+
+Goal: make the controlled local fixture demo precise, reviewable, and honest without adding live-data or production intelligence scope.
+
+Owned architecture files:
+
+- `docs/architecture/MVP_PHASES.md`
+- `docs/architecture/DEMO_FLOW.md`
+- `docs/architecture/API_CONTRACT.md`
+- `docs/architecture/LAUNCH_READINESS.md`
+- `docs/architecture/V0_4_SCOPE.md`
+
+Tasks:
+
+- Define v0.4 scope and deferrals separately from v0.2/v0.3 baseline work.
+- Keep `/sample` and `/analyze` contract clarity aligned with implementation.
+- Make the operator demo path precise enough for backend, frontend, eval, and governance lanes to verify independently.
+- Mark NarrativeMap, SourceSpread, and ContradictionBoard as fixture-backed, stubbed, or deferred instead of allowing ambiguous polish.
+- Define launch-readiness states and blocker taxonomy.
+- Prevent scope creep into live ingestion, paid APIs, LLM calls, telemetry, auth/accounts, databases, blockchain, hidden scoring, or final truth determination.
+
+Gate:
+
+- `V0_4_SCOPE.md` clearly separates demo-ready from deferred work.
+- `LAUNCH_READINESS.md` defines pass/blocker criteria and verification commands.
+- `DEMO_FLOW.md` gives an exact controlled-fixture operator path.
+- `API_CONTRACT.md` documents v0.4 panel status without forcing an unnecessary schema break.
+- No v0.4 architecture doc claims live coverage, production reliability, or final authority.
 
 ## Phase 0 — Scope Lock + Architecture Hardening
 

@@ -1,12 +1,16 @@
 # Lumen Confidence Scoring Methodology
 
-Version: v0.2-local-deterministic
+Version: v0.3-demo-contract
 
 ## Purpose
 
 Confidence scoring in Lumen is an explanation mechanism, not a verdict mechanism. It helps users understand why the system assigned a method-state to a claim.
 
 Lumen does not determine what users must believe. It exposes the rule path, evidence quality, uncertainty, and provenance behind a confidence band.
+
+Confidence language must remain methodological in all API responses, briefings, dashboards, screenshots, and demos. A band describes how documented rules handled available inputs; it must not be phrased as proof, final truth, certainty, or completion of real-world verification.
+
+Public docs and contributor onboarding must link this methodology when they mention confidence. Users and contributors may challenge confidence reasons, cap application, or score wording through `../../ADVERSARIAL_REVIEW.md`.
 
 ## Required Fields
 
@@ -23,6 +27,8 @@ Every scored claim must include:
 
 A claim missing status or confidence_reason is invalid for display.
 
+A public surface that displays confidence without a nearby limitation reference is also invalid for v0.3 demo purposes.
+
 ## Confidence Bands
 
 - high: strong primary or near-primary evidence, strong provenance, independent corroboration, and no material unresolved contradiction.
@@ -30,6 +36,8 @@ A claim missing status or confidence_reason is invalid for display.
 - low: weak, indirect, dependent, anonymous, stale, or incomplete evidence dominates.
 - capped: a governance cap prevents elevation.
 - unknown: confidence cannot be assigned honestly from available inputs.
+
+High confidence still preserves uncertainty. Low, capped, unknown, unresolved, unsupported, and contested states must be displayed as valid analytical outcomes rather than failures.
 
 ## Deterministic MVP Rule Order
 
@@ -127,3 +135,5 @@ Every score assignment must produce or reference an audit event containing:
 - limitations;
 - previous_event_hash;
 - event_hash.
+
+Audit coupling explains how the score was produced. It does not prove that the underlying claim is correct.

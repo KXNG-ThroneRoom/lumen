@@ -1,6 +1,6 @@
 # Lumen Governance Rules
 
-Version: v0.2-local-deterministic
+Version: v0.3-demo-contract
 Scope: MVP governance, scoring, audit, and public-facing disclosure rules.
 
 ## 1. Governing Doctrine
@@ -35,6 +35,10 @@ Every briefing must include:
 - audit reference;
 - confidence explanation;
 - explicit statement when fixture or placeholder data is used.
+
+Every demo flow must include a visible limitations reference and must preserve the no-authority stance: outputs expose method-state, evidence, provenance, uncertainty, and audit lineage for human inspection.
+
+Public README, contributing, demo, and release notes must link `LIMITATIONS.md` and `ADVERSARIAL_REVIEW.md` when they describe analytical outputs, confidence, or audit trails.
 
 Every narrative analysis panel must say it is analysis, not fact.
 
@@ -136,6 +140,8 @@ Required disclosures include:
 
 Limitations must be written plainly and must not be buried in footnotes alone.
 
+For v0.3 demo and launch-facing surfaces, limitation links are required in `README.md`, `LIMITATIONS.md`, `docs/architecture/DEMO_FLOW.md`, and any UI/API path that displays analysis. A missing limitation reference is a release blocker, not a copy edit.
+
 ## 10. Audit Requirements
 
 Every meaningful transformation must create or reference an audit event.
@@ -187,3 +193,18 @@ Any change to these rules must be documented with:
 - reviewer or challenge notes when available.
 
 Silent governance changes are prohibited.
+
+## 13. Adversarial Review Linkage
+
+The public challenge process is defined in `../../ADVERSARIAL_REVIEW.md`.
+
+Governance docs, demo documentation, and launch-facing flows should link or name the adversarial review process wherever Lumen asks users to trust its methods. At minimum, the challenge path must be visible from:
+
+- limitation disclosures;
+- confidence/scoring documentation;
+- audit or verification documentation;
+- public demo notes or release audit notes.
+
+Challenges may target status assignment, confidence reasons, source-independence handling, limitation disclosure, audit completeness, and UI wording that implies excessive certainty.
+
+Contributor onboarding must point new contributors to this challenge path before they change public wording, scoring rules, or demo claims.
