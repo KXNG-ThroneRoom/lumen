@@ -1,12 +1,12 @@
 # Lumen Limitations
 
-Version: v0.5.2-public-framing
+Version: v0.6-controlled-manual-input
 
 ## Summary
 
 Lumen is an inspection tool for claims, evidence, uncertainty, provenance, and audit trails. It does not decide what users must believe.
 
-The current MVP release packet is local, deterministic, fixture-backed, and limited. It should be read as a methods demonstration, not a production intelligence system or live claim-verification service.
+The current v0.6 MVP release packet is local, deterministic, fixture-backed, manually bounded, and limited. It should be read as a methods demonstration and controlled manual/local input boundary, not a production intelligence system, live ingestion system, or live claim-verification service.
 
 Related public references:
 
@@ -18,6 +18,10 @@ Related public references:
 ## Current MVP Limits
 
 - No real-time ingestion.
+- No crawling, scraping, RSS polling, URL fetching, or network enrichment.
+- Controlled manual/local input only: submitted text, URLs, and source labels are user assertions unless separately supported by supplied evidence.
+- `source_url` and URL-looking strings are metadata only in v0.6; the default demo path does not fetch, authenticate, archive, or enrich them.
+- Manual input is an assertion container, not evidence that the article or claim is true.
 - No paid APIs.
 - No LLM calls.
 - No production-scale retrieval.
@@ -26,8 +30,8 @@ Related public references:
 - No telemetry.
 - No blockchain anchoring.
 - No claim of complete real-world verification.
-- Controlled fixture data may not represent live information complexity.
-- The current public UI demonstrates one simplified claim story, not a broad analytical product surface.
+- Controlled fixture data and manual/local submissions may not represent live information complexity.
+- The current public UI demonstrates one simplified claim story, not a broad analytical product surface or manual-ingestion workflow.
 - Legacy/internal components may exist in the repository but are not current public demo promises.
 
 ## Demo Flow Disclosure Requirements
@@ -38,12 +42,17 @@ Demo documentation, README/run instructions, screenshots, and public walkthrough
 
 Required demo disclosures:
 
-- The response is controlled fixture output unless explicitly labeled otherwise.
-- The demo does not ingest live events, paid sources, or external network data.
+- The response is controlled fixture output or controlled manual/local input output unless explicitly labeled otherwise.
+- The demo does not ingest live events, paid sources, URLs, RSS feeds, scraped pages, or external network data.
+- Manual input is an assertion container; source labels and URL-looking strings in submitted text are not independently verified by the default demo path.
 - Confidence bands describe the documented method-state of available inputs; they are not reality verdicts.
 - The current public demo is a simplified tabbed claim story: Story, Evidence, Why uncertain, and Audit.
 - Old multi-panel interface language must not be presented as the current public UI.
 - Audit references explain how the displayed output was produced; they do not prove the underlying claim.
+
+## Manual Input Limits
+
+For v0.6 manual/local input, Lumen can only inspect manually supplied text. A submitted article, excerpt, paste, source label, `source_url`, or URL-looking string is not automatically authenticated, fetched, completed, updated, archived, enriched, or proven. It remains a container of claims until evidence, contradictions, provenance, limitations, and audit references are inspected under documented rules. Local file parsing remains deferred unless a later scope explicitly adds it.
 
 ## Analytical Limits
 

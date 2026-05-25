@@ -1,8 +1,8 @@
 # Lumen Web
 
-Static Next.js interface for the current Lumen controlled local demo.
+Static Next.js interface for the current Lumen controlled local demo, with a small v0.6 local/manual-only boundary note.
 
-The public UI is intentionally simple: a black-and-white tabbed claim story that helps a reader understand one controlled fixture dispute without pretending to decide reality. It uses local sample data only. It does not read live news, call paid APIs, call LLMs, produce final verdicts, or replace human judgment.
+The public UI is intentionally simple: a black-and-white tabbed claim story that helps a reader understand one controlled fixture dispute without pretending to decide reality. It uses local sample data only. v0.6 is local/manual only: any manual input is an assertion container, not a fact. It does not read live news, call paid APIs, call LLMs, produce final verdicts, or replace human judgment.
 
 ## Current public demo surface
 
@@ -17,7 +17,9 @@ Canonical public copy that should remain visible:
 
 - Main claim: "When does the regulation start?"
 - Explanation: "Two sources disagree. A news report says June 1. An official filing says July 1. Lumen marks this as contested instead of guessing."
-- Boundary note: "Controlled local demo only. It does not read live news, declare truth, or replace human judgment."
+- Boundary note: "Controlled local demo only. It accepts local/manual inputs as assertions, not facts. It does not read live news, declare truth, or replace human judgment."
+- Small version note: "v0.6 local/manual only"
+- Manual input affordance: "Manual input area" and "Local assertion container" copy that says staged text is not a verified fact and does not submit anywhere. The page should not echo arbitrary pasted text in the public summary.
 
 Visual language:
 
@@ -48,4 +50,4 @@ npm run verify:static
 npm run typecheck
 ```
 
-`npm run verify:static` checks that the simplified tabbed page still contains the controlled claim story, required tabs, no retired interface wording in the page, backend fixture parity, and demo-doc wording that matches this public surface.
+`npm run verify:static` checks that the simplified tabbed page still contains the controlled claim story, required tabs, the small v0.6 local/manual-only boundary, no retired interface wording in the page, backend fixture parity, and demo-doc wording that matches this public surface.

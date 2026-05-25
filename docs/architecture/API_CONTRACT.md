@@ -1,25 +1,27 @@
 # Lumen API Contract
 
-Version: v0.4-demo-polish
+Version: v0.6-controlled-manual-input
 
 ## Purpose
 
-This document defines the stable local API contract for the Lumen v0.3 demo integration flow and the v0.4 controlled-demo polish layer.
+This document defines the stable local API contract for the Lumen controlled demo path and the v0.6 controlled manual/local input layer.
 
-The contract exists to keep backend, frontend, evaluation, and audit work aligned without expanding scope. It is a deterministic, fixture-backed/local-text contract for local MVP demonstration only. It is not a live ingestion contract, not a production intelligence API, and not a claim that Lumen can determine final truth.
+The contract exists to keep backend, frontend, evaluation, and audit work aligned without expanding scope. It is a deterministic, fixture-backed/manual-local contract for local MVP demonstration only. It is not a live URL/RSS/crawl ingestion contract, not a production intelligence API, and not a claim that Lumen can determine final truth.
 
-Lumen exposes methods, evidence, claims, uncertainty, provenance, and audit references so humans can reason with more context. v0.4 does not introduce a new intelligence layer; it clarifies what is demo-ready, fixture-backed, stubbed, or deferred.
+Lumen exposes methods, evidence, claims, uncertainty, source context, and audit references so humans can reason with more context. v0.6 adds a document lifecycle for controlled manual/local input only; it does not introduce live ingestion or a new intelligence layer.
 
-## v0.4 scope note
+## v0.6 scope note
 
-The implemented response schema remains `lumen.analysis.v0.3` unless the backend, frontend, tests, and docs intentionally move together. v0.4 is a launch-readiness and demo-polish scope, not a breaking schema release by itself.
+The implemented analysis response schema remains `lumen.analysis.v0.3` unless the backend, frontend, tests, and docs intentionally move together. v0.6 is a controlled manual/local input scope, not a live-ingestion or production-intelligence release.
 
-For v0.4:
+For v0.6:
 
 - `/sample` remains the canonical controlled fixture path.
-- `/analyze` remains manual local text only.
-- The default demo path must not use live ingestion, paid APIs, LLM calls, telemetry, accounts, hidden scoring, or external network dependencies.
-- NarrativeMap, SourceSpread, and ContradictionBoard must be rendered only as real fixture-backed panels or visibly labeled fixture/stub/deferred panels.
+- `/analyze` remains the existing manual local-text analysis shortcut.
+- `POST /ingest/manual` is the controlled document-container boundary for manual/local input.
+- Manual input is an assertion container, not truth. Articles are containers of claims, not facts.
+- Submitted URLs are inert strings unless a future scope explicitly authorizes retrieval.
+- The default path must not use URL fetching, RSS, crawling, scraping, live feeds, paid APIs, LLM calls, telemetry, accounts, hidden scoring, production databases, or external network dependencies.
 - Audit verification demonstrates method-trace consistency, not real-world correctness.
 - Confidence values and statuses are claim-level method signals, not truth verdicts.
 
@@ -33,7 +35,8 @@ The v0.3 demo API must remain:
 - free of paid API dependencies;
 - free of LLM calls in the default path;
 - free of telemetry and hidden network calls;
-- limited to controlled fixture/demo data or manually submitted local text.
+- limited to controlled fixture/demo data or manually submitted local text. File parsing remains deferred unless a later scope explicitly adds it.
+- unable to fetch or enrich submitted URL strings in v0.6.
 
 ## Required routes
 
@@ -110,6 +113,80 @@ Required behavior:
 - uses `mode: "local_input"`;
 - every displayed analytical object must link to status/reason/evidence/audit/limitations as applicable.
 
+### POST /ingest/manual
+
+Creates controlled local document containers from manually supplied input. This route is the v0.6 boundary for RawDocument and SourceDocument lifecycle creation. It is not a URL-fetching or live-ingestion route.
+
+Request body (`ManualIngestRequest`, conceptual v0.6 contract):
+
+```json
+{
+  "input_method": "manual_text",
+  "raw_text": "A local article, excerpt, note, or claim container supplied by the user.",
+  "title": "Optional topic label",
+  "source_name": "Optional user-supplied source label",
+  "source_url": "https://example.invalid/user-supplied-string-only"
+}
+```
+
+Allowed request fields for v0.6:
+
+| Field | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `title` | string | no | Display/context label, not an analytical conclusion. Defaults to `Manual input`. |
+| `source_name` | string | no | User-provided source label; assertion only. |
+| `author` | string/null | no | User-provided metadata only; not verified. |
+| `published_at` | string/null | no | User-provided metadata only; not verified. |
+| `source_url` | string/null | no | Optional user-supplied string. Must not be fetched, validated over the network, or treated as inspected content. |
+| `raw_text` | string | yes | Local supplied content only. It must not be fetched from the network by Lumen. |
+| `input_method` | string | no | Canonical value is `manual_text`. URL, RSS, crawl, and file-input modes are unsupported in v0.6. |
+
+No request aliases are accepted in v0.6. Legacy field names are intentionally rejected so the contract hardens around one vocabulary before external clients exist.
+
+Response body (`ManualIngestResponse`, conceptual v0.6 contract):
+
+```json
+{
+  "schema_version": "lumen.ingest.manual.v0.6",
+  "mode": "manual_input",
+  "raw_document": {
+    "raw_document_id": "raw-local-001",
+    "input_method": "manual_text",
+    "state": "normalized",
+    "content_hash": "sha256:...",
+    "user_source_label": "user supplied",
+    "user_topic_label": "optional topic",
+    "source_url": null,
+    "source_url_fetched": false,
+    "limitations": ["Manual input is an assertion container, not proof of truth."],
+    "audit_reference": "sha256:..."
+  },
+  "source_document": {
+    "source_document_id": "doc-local-001",
+    "raw_document_id": "raw-local-001",
+    "state": "ready_for_local_analysis",
+    "source_assertion_type": "user_supplied",
+    "analysis_allowed": true,
+    "limitations": ["Source labels are user assertions unless backed by supplied evidence."],
+    "audit_reference": "sha256:..."
+  },
+  "limitations": ["No URL fetching, RSS polling, crawling, scraping, LLM calls, paid APIs, telemetry, or production storage."],
+  "limitations_ref": "LIMITATIONS.md"
+}
+```
+
+Required behavior:
+
+- create a RawDocument as the preserved local submission envelope;
+- create a SourceDocument as the normalized local analysis container;
+- record audit references for receipt and normalization;
+- reject empty or unsupported input with visible limitations;
+- never fetch `source_url` or any URL-looking string in `raw_text`;
+- never call external networks, paid APIs, LLMs, telemetry, accounts, queues, or production databases in the default path;
+- never present document creation as source verification or claim truth.
+
+Compatibility note: current `POST /analyze` behavior may be understood as a shortcut that receives manual text and immediately runs local analysis. v0.6 separates the conceptual document lifecycle from analysis so future code can add the boundary without implying live ingestion.
+
 ### GET /audit/verify
 
 Returns audit-chain verification for the current sample/demo ledger.
@@ -168,6 +245,55 @@ Field rules:
 - If a module is stubbed/deferred, return a labeled object or empty array plus visible limitation; do not imply completed capability.
 
 ## Object contracts
+
+### RawDocument
+
+Conceptual v0.6 fields for the controlled input boundary:
+
+```json
+{
+  "raw_document_id": "raw-local-001",
+  "input_method": "manual_text",
+  "state": "normalized",
+  "submitted_text": "User supplied local text...",
+  "user_source_label": "Optional source label",
+  "user_topic_label": "Optional topic label",
+  "source_url": null,
+  "source_url_fetched": false,
+  "received_at": "2026-01-01T00:00:00Z",
+  "content_hash": "sha256:...",
+  "limitations": ["Manual input is an assertion container, not truth."],
+  "audit_reference": "sha256:..."
+}
+```
+
+Allowed states for v0.6: `received`, `normalized`, `rejected`, `superseded`.
+
+RawDocument records what was supplied locally. It must not claim the source exists, the article is accurate, or any URL was inspected.
+
+### SourceDocument
+
+Conceptual v0.6 fields for the normalized analysis container:
+
+```json
+{
+  "source_document_id": "doc-local-001",
+  "raw_document_id": "raw-local-001",
+  "source_id": "src-user-input",
+  "state": "ready_for_local_analysis",
+  "display_name": "user supplied",
+  "topic": "User supplied text",
+  "text_for_analysis": "Normalized local text...",
+  "source_assertion_type": "user_supplied",
+  "analysis_allowed": true,
+  "limitations": ["Source labels are user assertions unless backed by supplied evidence."],
+  "audit_reference": "sha256:..."
+}
+```
+
+Allowed states for v0.6: `derived`, `ready_for_local_analysis`, `analysis_completed`, `analysis_failed`, `discarded`.
+
+SourceDocument is a local analysis container derived from RawDocument. It may feed placeholder extraction. It must not certify source truthfulness or publication authenticity.
 
 ### Source
 
@@ -469,6 +595,7 @@ Backend/eval tests should verify:
 
 - `/sample` returns the shared `AnalysisResponse` envelope;
 - `/analyze` returns the shared `AnalysisResponse` envelope;
+- `POST /ingest/manual` documents RawDocument and SourceDocument lifecycle metadata without requiring live retrieval;
 - response `mode` is `fixture_demo` for `/sample` and `local_input` for `/analyze`;
 - top-level `limitations_ref` and `limitations` exist;
 - top-level `audit_trail`, `audit_events`, and `audit_verification` exist;
@@ -477,14 +604,15 @@ Backend/eval tests should verify:
 - every evidence item includes limitations reference and audit reference;
 - source dependency metadata is present in `source_graph` when dependency exists;
 - audit verification returns valid/invalid state with event count, errors, genesis hash, and latest hash;
-- no route requires paid APIs, external network calls, telemetry, or LLM calls.
+- no route requires paid APIs, external network calls, telemetry, auth/accounts, production databases, or LLM calls;
+- submitted URL strings are not fetched or treated as inspected sources in v0.6.
 
 ## Explicit non-goals
 
-The v0.3 contract does not include:
+The local/v0.6 contract does not include:
 
 - live geopolitical analysis;
-- URL crawling or RSS ingestion;
+- URL crawling, URL fetching, scraping, live feeds, or RSS ingestion;
 - global source coverage;
 - broad semantic contradiction detection;
 - production claim extraction;
@@ -493,4 +621,5 @@ The v0.3 contract does not include:
 - telemetry;
 - proprietary hosted dependencies;
 - blockchain anchoring;
-- final truth determination.
+- final truth determination;
+- treating manual input, article text, source labels, or submitted URL strings as verified facts.

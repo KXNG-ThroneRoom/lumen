@@ -30,6 +30,11 @@ const requiredPhrases = [
   'No final verdict',
   'Controlled local demo only',
   'Methods over conclusions',
+  'v0.6 local/manual only',
+  'Manual input area',
+  'Local assertion container',
+  'not a verified fact',
+  'does not submit',
 ];
 
 const requiredImplementationSignals = [
@@ -39,6 +44,8 @@ const requiredImplementationSignals = [
   'onClick={() => setActiveView(view.id)}',
   '<details>',
   '<summary>',
+  'maxLength={1200}',
+  'text stays hidden',
 ];
 
 const demoDocFiles = [
@@ -58,6 +65,11 @@ const requiredDemoDocPhrases = [
   'Audit',
   'not the current public launch UX',
 ];
+
+const requiredOwnedDemoDocPhrases = new Map([
+  ['../../docs/demo/LOCAL_DEMO_WALKTHROUGH.md', ['v0.6 local/manual only', 'Manual input is an assertion container, not a fact']],
+  ['README.md', ['v0.6 local/manual only', 'manual input is an assertion container, not a fact']],
+]);
 
 const retiredDashboardPhrases = [
   'public intelligence terminal',
@@ -139,6 +151,12 @@ for (const file of demoDocFiles) {
   for (const phrase of publicDocRetiredPhrases) {
     if (body.includes(phrase)) {
       throw new Error(`${file} still contains retired public-interface wording: ${phrase}`);
+    }
+  }
+
+  for (const phrase of requiredOwnedDemoDocPhrases.get(file) ?? []) {
+    if (!body.includes(phrase)) {
+      throw new Error(`${file} missing v0.6 local/manual-only boundary phrase: ${phrase}`);
     }
   }
 }

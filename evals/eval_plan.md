@@ -18,6 +18,8 @@ Initial MVP eval categories:
 9. narrative_frame_labeling
 10. audit_chain_integrity
 11. scaffold_inventory_and_secret_scan
+12. manual_local_input_containment
+13. simplified_public_ui_contract
 
 ## Golden Case Contract
 
@@ -38,6 +40,7 @@ The Phase 3 backend tests enforce:
 - `test_contradiction.py`: fixture-only date contradiction detection.
 - `test_claim_extraction.py`: placeholder extractor limitation disclosure and audit event emission.
 - `test_briefing.py`: briefing limitations and audit reference visibility.
+- `test_api_contract.py` and `test_manual_input.py`: `/health`, `/sample`, `/analyze`, and `POST /ingest/manual` preserve the local contract; manual input returns local provenance, visible limitations, and no external capability claims.
 
 ## Evaluation Invariants
 
@@ -51,7 +54,9 @@ A run fails if it:
 - invents missing details;
 - omits audit events for extraction, scoring, or briefing transformations;
 - depends on paid APIs or external credentials for the MVP eval path;
-- validates a claim object without both a status and a confidence reason.
+- validates a claim object without both a status and a confidence reason;
+- treats manual/local input as truth instead of an assertion container;
+- adds URL fetching, RSS polling, scraping, live ingestion, LLM calls, paid APIs, telemetry, auth/accounts, or production persistence to the default path.
 
 ## Suggested Local Runner Behavior
 
@@ -67,8 +72,8 @@ A future `evals/run_evals.py` should:
 - No real-time ingestion benchmark yet.
 - No model leaderboard yet.
 - No production reliability claim.
-- No claim that the fixture outcomes are real-world truth.
-- No hidden scoring, telemetry, paid APIs, or credential-dependent eval path.
+- No claim that fixture outcomes, articles, or manual/local inputs are real-world truth.
+- No hidden scoring, telemetry, paid APIs, live ingestion, URL/RSS fetching, LLM calls, auth/accounts, production persistence, or credential-dependent eval path.
 
 ## Manual Review Checklist
 

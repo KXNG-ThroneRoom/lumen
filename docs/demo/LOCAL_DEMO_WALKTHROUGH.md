@@ -1,16 +1,18 @@
 # Lumen Local Demo Walkthrough
 
-Version: v0.5-launch-hygiene
+Version: v0.6-ui-alignment
 
 ## Purpose
 
-This walkthrough is for the current controlled local demo. It matches the simplified public UI: one contested claim, four tabs, and plain-language uncertainty.
+This walkthrough is for the current controlled local/manual demo. It matches the simplified public UI: one contested claim, four tabs, and plain-language uncertainty.
+
+Small visible version note: v0.6 local/manual only. Manual input is an assertion container, not a fact, and the public UI should not add a manual-input workflow to this demo page.
 
 Core public sentence: Two sources disagree; Lumen marks the claim contested instead of guessing.
 
 Older internal component screens are not the current public launch UX.
 
-It is not a production deployment path. It does not demonstrate live ingestion, broad verification, or final truth determination.
+It is not a production deployment path. It does not demonstrate live ingestion, URL fetching, broad extraction, broad verification, persistence, accounts, telemetry, model-backed analysis, paid-source access, or final truth determination.
 
 ## Preflight
 
@@ -43,12 +45,13 @@ Open the local Next.js URL printed by the dev server, usually `http://localhost:
 The page should show:
 
 - "Lumen local demo";
+- "v0.6 local/manual only";
 - "Methods over conclusions";
 - main claim: "When does the regulation start?";
 - summary: a news report says June 1, an official filing says July 1, and Lumen marks the claim contested instead of guessing;
 - status cards for contested answer, official-record support, and date conflict;
 - tabs: Story, Evidence, Why uncertain, Audit;
-- footer note: controlled local demo only; no live news; no replacement for human judgment.
+- footer note: controlled local demo only; local/manual inputs are assertions, not facts; no live news; no replacement for human judgment.
 
 The page should not show raw internal fingerprints, internal audit keys, source file names, underscores/machine labels, internal method labels, or dense technical language.
 
@@ -90,6 +93,18 @@ Close:
 Lumen is for methods over conclusions: more informed humans, not a new oracle.
 ```
 
+## Manual/local input boundary
+
+v0.6 manual/local input is a controlled submission boundary. A pasted article, excerpt, local file, source label, or URL-looking string should be introduced as user-supplied material for inspection, not as evidence that the article is true, current, complete, or fetched from the network.
+
+If a walkthrough mentions manual input, say plainly:
+
+```text
+Manual input is an assertion container. Lumen can show how the supplied text was transformed and inspected, but that audit path does not prove the underlying claim.
+```
+
+The public demo page remains the four-tab claim story. Do not turn this walkthrough into a live-ingestion, URL-fetching, or broad-analysis demo.
+
 ## Optional API inspection
 
 For developer or reviewer audiences, show the local API after the public UI:
@@ -109,7 +124,7 @@ Stop the demo and record a blocker if:
 - the page does not show the simplified four-tab claim story;
 - the page implies the date dispute is settled;
 - controlled-local-demo language is missing;
-- the demo requires network access, paid services, credentials, telemetry, accounts, or LLM calls;
+- the demo requires network access, URL fetching, paid services, credentials, telemetry, accounts, persistence services, or LLM calls;
 - older internal component copy appears as the public UI;
 - developer-only identifiers appear in the public page.
 

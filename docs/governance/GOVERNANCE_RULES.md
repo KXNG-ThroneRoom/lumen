@@ -1,6 +1,6 @@
 # Lumen Governance Rules
 
-Version: v0.5-public-framing
+Version: v0.6-controlled-manual-input
 Scope: MVP governance, scoring, audit, and public-facing disclosure rules.
 
 ## 1. Governing Doctrine
@@ -29,6 +29,8 @@ Every displayed claim must include:
 - audit reference.
 
 Every demo flow must include a visible limitations reference and must preserve the no-authority stance: outputs expose method-state, evidence, provenance, uncertainty, and audit lineage for human inspection.
+
+For v0.6, controlled manual input is an assertion boundary. Submitted text, source labels, and URL-looking strings may be inspected as supplied material, but they must not be presented as fetched, authenticated, current, complete, or true unless a later scoped capability explicitly provides that evidence and limitation disclosure.
 
 Public README, contributing, demo, and release notes must link `LIMITATIONS.md` and `ADVERSARIAL_REVIEW.md` when they describe analytical outputs, confidence, or audit trails.
 
@@ -126,10 +128,11 @@ Required disclosures include:
 - unresolved contradiction;
 - stale or uncertain timestamps;
 - current-demo scope limits.
+- manual/local input limits, including that `source_url` is metadata only and no URL is fetched in v0.6.
 
 Limitations must be written plainly and must not be buried in footnotes alone.
 
-For v0.5 demo and launch-facing surfaces, limitation links are required in `README.md`, `LIMITATIONS.md`, `docs/architecture/DEMO_FLOW.md`, and any UI/API path that displays analysis. A missing limitation reference is a release blocker, not a copy edit.
+For v0.6 demo and launch-facing surfaces, limitation links are required in `README.md`, `LIMITATIONS.md`, `docs/architecture/DEMO_FLOW.md`, and any UI/API path that displays analysis. A missing limitation reference is a release blocker, not a copy edit.
 
 ## 10. Audit Requirements
 
@@ -161,7 +164,7 @@ UI must avoid:
 - suppressing unresolved questions;
 - stale multi-panel interface language on the current public demo.
 
-The v0.5 public UI must match the simplified controlled demo unless a later scoped change updates this rule:
+The v0.6 public UI must match the simplified controlled demo unless a later scoped change updates this rule:
 
 - main claim: "When does the regulation start?";
 - explanation: two sources disagree, with June 1 from a news report and July 1 from an official filing;
@@ -169,6 +172,7 @@ The v0.5 public UI must match the simplified controlled demo unless a later scop
 - visual language: uncertain/contested, support, and conflict;
 - no raw hashes, audit IDs, machine labels, or `.md` references in the public UI;
 - no wording that says Lumen decides the final truth.
+- no wording that implies manual/local input performs live ingestion, source authentication, URL retrieval, or production verification.
 
 ## 12. Governance Change Process
 

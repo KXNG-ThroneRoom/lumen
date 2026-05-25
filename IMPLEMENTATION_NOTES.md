@@ -89,3 +89,60 @@ Run the full verifier suite after this edit:
 ### Risks / follow-up
 
 - This task generated AARs only. Several incidents in these swarms are postmortem candidates under the universal SOP: missing `avoid-ai-writing` crash loops, v0.2 audit-chain remediation, v0.2 forbidden-reference remediation, and v0.3 schema/API contract drift.
+
+## 2026-05-25 — v0.6 governance/docs manual input boundaries
+
+### Authorization
+
+- Root Kanban card `t_61343179` carried write authorization phrase `god bless` for v0.6 work.
+
+### Decisions
+
+- Treated v0.6 as controlled manual/local input only, not live ingestion or capability expansion into production verification.
+- Framed submitted articles, excerpts, files, source labels, and URL-looking strings as assertion containers rather than facts or verified source access.
+- Preserved the simplified public UI contract: Story, Evidence, Why uncertain, and Audit tabs, with visible limitations close to outputs.
+- Left live ingestion, crawling, scraping, RSS, URL fetching, broad extraction, persistence, auth/accounts, telemetry, LLM calls, paid APIs, and production verification deferred.
+
+### Commands run
+
+- `git fetch origin && git status --short --branch && git grep -nE '<<<<<<<|=======|>>>>>>>' -- . || true`
+- `git diff -- README.md LIMITATIONS.md CONSTITUTION.md docs/architecture/ROADMAP_TO_V1.md docs/architecture/DEFERRED_WORK.md docs/architecture/MVP_PHASES.md docs/demo/LOCAL_DEMO_WALKTHROUGH.md IMPLEMENTATION_NOTES.md docs/architecture/V0_6_SCOPE.md`
+- `git grep -nE 'truth machine|oracle|proves|settles|production intelligence|global coverage|propaganda detection|deception proof|final verdict|final-verdict|reality determination|live intelligence|production oracle|production verification|broad source coverage' -- README.md LIMITATIONS.md CONSTITUTION.md docs/architecture/ROADMAP_TO_V1.md docs/architecture/DEFERRED_WORK.md docs/architecture/MVP_PHASES.md docs/demo/LOCAL_DEMO_WALKTHROUGH.md IMPLEMENTATION_NOTES.md || true` — matches reviewed as prohibitions, limitation disclosures, or deferred-scope language.
+- `git grep -nE 'seven-component|seven component|dense dashboard|multi-panel|old dashboard|raw fingerprints|internal audit keys|source file names|machine labels' -- README.md LIMITATIONS.md docs/architecture/ROADMAP_TO_V1.md docs/architecture/DEFERRED_WORK.md docs/architecture/MVP_PHASES.md docs/demo/LOCAL_DEMO_WALKTHROUGH.md IMPLEMENTATION_NOTES.md || true` — matches reviewed as stale-UI prohibitions or “do not show” guidance.
+- Final scoped `git diff -- README.md LIMITATIONS.md CONSTITUTION.md docs/architecture/ROADMAP_TO_V1.md docs/architecture/DEFERRED_WORK.md docs/architecture/MVP_PHASES.md docs/demo/LOCAL_DEMO_WALKTHROUGH.md IMPLEMENTATION_NOTES.md` reviewed for scope.
+
+### Risks / edge cases
+
+- `docs/demo/LOCAL_DEMO_WALKTHROUGH.md` had pre-existing v0.6 UI-alignment edits before this lane; this pass preserved and extended them instead of reverting.
+- `docs/architecture/V0_6_SCOPE.md` already existed as an untracked scope file before this lane and was used as context, not modified here.
+
+## 2026-05-25 — v0.6 frontend controlled manual input affordance
+
+### Authorization
+
+- Root Kanban card `t_61343179` carried write authorization phrase `god bless` for v0.6 work.
+
+### Decisions
+
+- Added a controlled local textarea affordance inside the simplified public page instead of adding live ingestion or a backend submit path.
+- Labeled pasted text as a local assertion container and not a verified fact; staged text does not change the fixture answer or the four-tab claim story.
+- Kept the public UI in the Story, Evidence, Why uncertain, and Audit model with black/white base and yellow uncertainty styling for manual/local input.
+
+### Changes
+
+- Updated `apps/web/src/app/page.tsx` with local-only manual assertion state, preview copy, character-limited input, hidden pasted-text summary, and no network/submission behavior.
+- Added manual input styling in `apps/web/src/app/globals.css` using the existing uncertainty color tokens.
+- Extended `apps/web/scripts/verify-static-ui.mjs` to require manual-input boundary copy in the public page.
+- Updated `apps/web/README.md` so the frontend contract names the manual affordance and no-submit boundary.
+
+### Commands run
+
+- `git fetch origin && git status --short --branch && git grep -nE '<<<<<<<|=======|>>>>>>>' -- . ':!node_modules'`
+- `npm run verify:static --prefix apps/web` (expected RED before implementation: missing `Manual input area`)
+- `npm run verify:static --prefix apps/web && npm run typecheck --prefix apps/web` (passed)
+- Independent review found the first preview echoed pasted text; remediated by hiding the pasted text in the preview and adding `maxLength={1200}`.
+- `npm run verify:static --prefix apps/web && npm run typecheck --prefix apps/web` (rerun after remediation, passed)
+
+### Risks / edge cases
+
+- `docs/demo/LOCAL_DEMO_WALKTHROUGH.md` still says the public UI should not add a manual-input workflow to the demo page; this lane avoided editing broad docs outside the owned area, but the root v0.6 task objective now supersedes that older walkthrough sentence and should be reconciled by the docs/release lane.

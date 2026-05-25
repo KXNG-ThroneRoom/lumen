@@ -92,6 +92,8 @@ function toneLabel(tone: Tone) {
 
 export default function Home() {
   const [activeView, setActiveView] = useState<ViewId>('story');
+  const [manualAssertion, setManualAssertion] = useState('');
+  const trimmedManualAssertion = manualAssertion.trim();
 
   return (
     <main className="app-shell">
@@ -99,6 +101,7 @@ export default function Home() {
         <header className="claim-hero">
           <div className="top-line">
             <span>Lumen local demo</span>
+            <span>v0.6 local/manual only</span>
             <span>Methods over conclusions</span>
           </div>
 
@@ -123,6 +126,36 @@ export default function Home() {
               <strong>Dates conflict</strong>
             </div>
           </div>
+
+          <section className="manual-input-card" aria-labelledby="manual-input-heading">
+            <div>
+              <p className="section-label">Manual input area</p>
+              <h2 id="manual-input-heading">Local assertion container</h2>
+              <p>
+                Paste a sentence here to stage it locally as something to inspect later. It is an assertion container, not a verified fact,
+                it does not submit anywhere, and it does not change the demo answer.
+              </p>
+            </div>
+            <label className="manual-input-label" htmlFor="manual-assertion">
+              Local text to inspect
+            </label>
+            <textarea
+              id="manual-assertion"
+              value={manualAssertion}
+              onChange={(event) => setManualAssertion(event.target.value)}
+              placeholder="Example: A report says the regulation starts June 1."
+              rows={4}
+              maxLength={1200}
+            />
+            <div className="manual-preview" aria-live="polite">
+              <strong>{trimmedManualAssertion ? 'Staged locally' : 'Waiting for local text'}</strong>
+              <p>
+                {trimmedManualAssertion
+                  ? `A manual assertion is staged locally (${manualAssertion.length}/1200 characters). The text stays hidden in this summary until a reviewer chooses evidence to inspect.`
+                  : 'Nothing has been staged. Keep it local until a reviewer chooses what evidence to inspect.'}
+              </p>
+            </div>
+          </section>
         </header>
 
         <nav className="view-tabs" aria-label="Lumen demo sections">
@@ -246,7 +279,8 @@ export default function Home() {
         </section>
 
         <footer className="demo-note">
-          Controlled local demo only. It does not read live news, declare truth, or replace human judgment.
+          Controlled local demo only. It accepts local/manual inputs as assertions, not facts. It does not read live
+          news, declare truth, or replace human judgment.
         </footer>
       </div>
     </main>

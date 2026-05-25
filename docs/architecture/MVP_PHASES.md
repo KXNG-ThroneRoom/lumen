@@ -2,7 +2,7 @@
 
 ## Status
 
-Lumen is in the v0.5.1 stabilization and fresh-clone-readiness lane. v0.2 established the deterministic local baseline, v0.3 stabilized backend/frontend contract and demo flow, v0.4 tightened detailed demo polish, and v0.5 aligned public docs with the current simplified controlled local demo. v0.5.1 preserves that scope while tightening roadmap discipline, deferred-work clarity, and fresh-clone verification guidance.
+Lumen is moving into the v0.6 controlled manual/local input lane. v0.2 established the deterministic local baseline, v0.3 stabilized backend/frontend contract and demo flow, v0.4 tightened detailed demo polish, v0.5 aligned public docs with the simplified controlled local demo, and v0.5.1/v0.5.2 tightened stabilization, fresh-clone readiness, and public release framing. v0.6 preserves those boundaries while making manual/local input explicit as an assertion-container layer, not live ingestion.
 
 Current known state:
 
@@ -11,12 +11,46 @@ Current known state:
 - Main public claim: "When does the regulation start?"
 - Public tabs: Story, Evidence, Why uncertain, Audit.
 - Legacy/internal detailed component files still exist and may support verification, but they are not the current public UX.
-- MVP scope remains locked to local deterministic primitives and fixture-backed analysis.
+- MVP scope remains locked to local deterministic primitives, fixture-backed analysis, and controlled manual/local input boundaries.
+- Manual input is an assertion container, not evidence of truth.
 - v0.5 architecture scope is documented in `docs/architecture/V0_5_SCOPE.md`.
 - v0.5.1 stabilization scope is documented in `docs/architecture/V0_5_1_SCOPE.md`.
+- v0.6 controlled manual/local input scope is documented in `docs/architecture/V0_6_SCOPE.md` and `docs/architecture/CONTROLLED_INPUT_LAYER.md`.
 - v0.5 launch gates are documented in `docs/architecture/LAUNCH_READINESS.md`.
 - Fresh-clone expectations are documented in `docs/architecture/FRESH_CLONE_READINESS.md`.
 - Roadmap and deferred-work boundaries are documented in `docs/architecture/ROADMAP_TO_V1.md` and `docs/architecture/DEFERRED_WORK.md`.
+
+
+## Phase v0.6 — Controlled Manual/Local Input Layer
+
+Goal: make manually supplied local text and local-file payloads explicit, auditable, and bounded without introducing live ingestion, broad extraction, persistence, auth/accounts, telemetry, LLMs, paid APIs, or production verification.
+
+Owned architecture files:
+
+- `docs/architecture/V0_6_SCOPE.md`
+- `docs/architecture/CONTROLLED_INPUT_LAYER.md`
+- `docs/architecture/API_CONTRACT.md`
+- `docs/architecture/MVP_PHASES.md`
+- `docs/architecture/ROADMAP_TO_V1.md`
+- `docs/architecture/DEFERRED_WORK.md`
+
+Tasks:
+
+- Define v0.6 as controlled manual/local input only.
+- Document RawDocument as the preserved local submission envelope.
+- Document SourceDocument as the normalized local analysis container derived from RawDocument.
+- Update the API contract for `POST /ingest/manual` as a deterministic local boundary.
+- Preserve `/sample` as canonical fixture demo and `/analyze` as the existing local-analysis shortcut.
+- Explicitly defer URL fetching, RSS polling, crawling, scraping, live feeds, automated source discovery, LLM extraction/calls, paid APIs, telemetry, auth/accounts, and production storage complexity.
+- Preserve the rule that manual input is evidence of what was supplied, not evidence that the supplied article, source label, URL-looking string, or underlying claim is true.
+
+Gate:
+
+- v0.6 docs do not claim live ingestion or production verification.
+- `POST /ingest/manual` is described as local document-container creation, not source retrieval.
+- RawDocument/SourceDocument lifecycle states carry limitations and audit references.
+- Submitted URLs remain inert strings unless a future scope explicitly authorizes retrieval.
+- No v0.6 architecture doc introduces network, secret, account, telemetry, database, paid API, or LLM default-path requirements.
 
 ## Phase v0.5.1 — Stabilization Hygiene + Fresh-Clone Readiness
 
@@ -43,7 +77,7 @@ Gate:
 
 - `V0_5_1_SCOPE.md` says v0.5.1 is hygiene/stabilization only.
 - `FRESH_CLONE_READINESS.md` provides install, verification, demo, and environment guidance.
-- Roadmap sequencing keeps v0.6+ future work separate from current capability.
+- Roadmap sequencing keeps v0.6 controlled manual/local input separate from future live-ingestion capability.
 - No v0.5.1 architecture doc claims new analytical capability.
 
 ## Phase v0.5 — Launch Hygiene + Public Readiness

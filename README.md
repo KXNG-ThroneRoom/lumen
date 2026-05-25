@@ -9,7 +9,7 @@ It does not tell users what is true. It exposes methods, evidence, claims, contr
 - A local-first method demonstration for claim-level inspection.
 - A way to inspect how evidence, contradictions, and uncertainty affect confidence explanations.
 - A governance-first project where scoring rules, limitation disclosures, and audit requirements are public.
-- A controlled local demo, currently centered on one fixture-backed claim story.
+- A controlled local/manual demo, currently centered on one fixture-backed claim story and explicit manual-input boundaries.
 
 ## What Lumen is not
 
@@ -33,13 +33,15 @@ It does not tell users what is true. It exposes methods, evidence, claims, contr
 
 ## Current demo boundary
 
-The current MVP is intentionally narrow: local, deterministic, fixture-backed, and limited. It demonstrates the method and interface contract; it does not demonstrate complete real-world verification.
+The current v0.6 MVP is intentionally narrow: local, deterministic, fixture-backed, and limited. It demonstrates the method, interface contract, and controlled manual/local input boundaries; it does not demonstrate complete real-world verification or live ingestion.
 
 Current demo commitments:
 
 - FastAPI backend for local deterministic primitives.
 - Simplified Next.js public UI with four tabs: Story, Evidence, Why uncertain, and Audit.
 - One controlled fixture-backed demo claim: "When does the regulation start?"
+- Controlled manual/local input boundaries: submitted text is an assertion container, not evidence of truth.
+- Source URLs are metadata only in v0.6; the default local demo path does not fetch, authenticate, archive, or enrich them.
 - Visible contested/uncertain/support/conflict language without final-verdict wording.
 - Deterministic confidence scoring rules with visible reasons.
 - Local audit trace primitive for method inspectability.
@@ -47,7 +49,8 @@ Current demo commitments:
 
 Current demo limits:
 
-- No real-time ingestion, crawling, RSS polling, or URL fetching.
+- No real-time ingestion, crawling, RSS polling, URL fetching, scraping, or network enrichment.
+- Manual input, source labels, and source URLs are user assertions/metadata unless supported by supplied evidence.
 - No paid APIs, secrets, telemetry, or hidden network calls.
 - No LLM calls in the default local demo path.
 - No production-scale retrieval or global source coverage.
@@ -99,7 +102,7 @@ POST http://localhost:8000/analyze
 GET  http://localhost:8000/audit/verify
 ```
 
-The expected response contract is documented in `docs/architecture/API_CONTRACT.md`.
+The expected response contract is documented in `docs/architecture/API_CONTRACT.md`. v0.6 manual/local input is a controlled submission boundary, not a live-ingestion path; URL fields remain metadata unless future scoped work explicitly adds retrieval.
 
 ### Frontend demo UI
 
@@ -109,7 +112,7 @@ npm install
 npm run dev
 ```
 
-Open the local Next.js URL printed by the dev server, usually `http://localhost:3000`. The public UI should show a simple black/white tabbed claim story with Story, Evidence, Why uncertain, and Audit tabs.
+Open the local Next.js URL printed by the dev server, usually `http://localhost:3000`. The public UI should show a simple black/white tabbed claim story with Story, Evidence, Why uncertain, and Audit tabs, plus a visible v0.6 local/manual-only limitation note.
 
 ### Optional Docker Compose development path
 
@@ -155,4 +158,4 @@ Start with these documents:
 
 ## Trust model
 
-Lumen earns trust by being inspectable, not authoritative. Outputs must preserve uncertainty and expose the reasons behind confidence assignments. The current public demo is a controlled local fixture, not live analysis. Audit traces record method traceability; they do not prove that an underlying claim is correct.
+Lumen earns trust by being inspectable, not authoritative. Outputs must preserve uncertainty and expose the reasons behind confidence assignments. The current public demo is controlled local/manual input only, not live analysis. Manual inputs are assertion containers, not facts; audit traces record method traceability and do not prove that an underlying claim is correct.

@@ -1,5 +1,5 @@
 {
-  "schema_version": "lumen.evals.golden_cases.v3",
+  "schema_version": "lumen.evals.golden_cases.v4",
   "purpose": "Deterministic golden cases for method-first Lumen behavior. Expected outputs verify transparency, uncertainty preservation, and visible confidence logic rather than final-truth conclusions.",
   "global_invariants": [
     "Do not emit a final truth verdict for an entire article.",
@@ -12,7 +12,9 @@
     "Placeholder extractors must disclose limitations and must not claim production-grade extraction.",
     "Both /sample and /analyze must expose the v0.3 analysis contract with claims, evidence, briefing, audit trail, limitations_ref, and audit verification.",
     "Every displayed claim must include status, confidence_reason, evidence_refs, audit_reference, and limitations_ref.",
-    "Frontend static verification must require all seven dashboard panels, including SourceSpread."
+    "Frontend static verification must require the simplified four-tab public UI: Story, Evidence, Why uncertain, and Audit.",
+    "Manual input is an assertion container, not truth; /analyze and /ingest/manual must preserve local provenance and visible limitations.",
+    "The default path must not perform URL fetching, RSS polling, scraping, live ingestion, LLM calls, paid API calls, telemetry, auth/account flows, or production persistence."
   ],
   "cases": [
     {
@@ -348,8 +350,8 @@
     },
     {
       "id": "GC-012-v03-analyze-local-input-contract",
-      "category": "api_contract_v03",
-      "input_summary": "POST /analyze receives controlled local text and returns the same contract shape without external network or model calls.",
+      "category": "manual_local_input_containment",
+      "input_summary": "POST /analyze receives controlled local text and returns the same contract shape without external network or model calls; POST /ingest/manual preserves the same manual-input boundary before analysis.",
       "claims_under_test": [
         {
           "text": "A user-supplied local input is converted into inspectable claims and local evidence placeholders.",
@@ -371,44 +373,63 @@
           "evidence_refs",
           "audit_reference",
           "limitations_ref"
+        ],
+        "required_disclosure": "manual/local input is an assertion container, not truth",
+        "forbidden_default_capabilities": [
+          "URL fetching",
+          "RSS polling",
+          "scraping",
+          "live ingestion",
+          "LLM calls",
+          "paid API calls",
+          "telemetry",
+          "auth/accounts",
+          "production persistence",
+          "truth/oracle verdicts"
         ]
       },
       "must_not": [
         "invent missing evidence",
         "perform external retrieval",
-        "represent placeholder extraction as production-grade"
+        "represent placeholder extraction as production-grade",
+        "treat user supplied text as proof of truth"
       ]
     },
     {
-      "id": "GC-013-frontend-static-verifier-seven-panels",
-      "category": "frontend_contract_static_verification",
-      "input_summary": "The static UI verifier is the release gate for required dashboard panel coverage.",
+      "id": "GC-013-frontend-static-verifier-four-tabs",
+      "category": "simplified_public_ui_contract",
+      "input_summary": "The static UI verifier is the release gate for the simplified public four-tab claim story and v0.6 local/manual-only boundary language.",
       "claims_under_test": [
         {
-          "text": "The dashboard renders all seven required panels and rejects missing panels at verify time.",
+          "text": "The public demo renders the Story, Evidence, Why uncertain, and Audit tabs without exposing raw internal identifiers or final-verdict wording.",
           "type": "briefing_claim"
         }
       ],
       "expected": {
-        "required_panels": [
-          "BriefingPanel",
-          "ClaimMatrix",
-          "EvidenceTrail",
-          "AuditTrail",
-          "NarrativeMap",
-          "SourceSpread",
-          "ContradictionBoard"
+        "required_tabs": [
+          "Story",
+          "Evidence",
+          "Why uncertain",
+          "Audit"
+        ],
+        "required_public_claim": "When does the regulation start?",
+        "required_boundary_phrases": [
+          "v0.6 local/manual only",
+          "Controlled local demo only",
+          "Methods over conclusions"
         ],
         "required_command": "npm run verify:static --prefix apps/web",
         "required_rejections": [
-          "missing component file",
+          "missing simplified UI phrase",
+          "retired public-interface wording",
           "overclaiming language"
         ]
       },
       "must_not": [
-        "skip SourceSpread",
+        "restore the old dense dashboard as the public launch surface",
+        "show raw hashes, audit IDs, .md references, machine labels, underscores, or provenance jargon in the main public view",
         "allow certainty-overclaim language",
-        "hide deferred fixture-backed status"
+        "add a manual-input workflow to the public demo page"
       ]
     }
   ]

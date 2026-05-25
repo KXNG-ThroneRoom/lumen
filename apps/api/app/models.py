@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 def utc_now() -> datetime:
@@ -252,6 +252,95 @@ class AnalysisRequest(BaseModel):
     text: str = Field(min_length=1)
     topic: str = "User supplied text"
     source_name: str = "user_supplied"
+
+
+class ManualIngestRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    title: str = "Manual input"
+    source_name: str = "user_supplied"
+    author: str | None = None
+    published_at: str | None = None
+    source_url: str | None = None
+    raw_text: str = Field(min_length=1)
+    input_method: Literal["manual_text"] = "manual_text"
+
+    @field_validator("title", "source_name", mode="before")
+    @classmethod
+    def strip_required_metadata(cls, value: Any) -> str:
+        stripped = str(value).strip()
+        if not stripped:
+            raise ValueError("manual input metadata must not be blank")
+        return stripped
+
+    @field_validator("author", "published_at", "source_url", mode="before")
+    @classmethod
+    def strip_optional_metadata(cls, value: Any) -> Any:
+        if value is None:
+            return None
+        stripped = str(value).strip()
+        return stripped or None
+
+    @field_validator("raw_text")
+    @classmethod
+    def require_non_empty_normalized_text(cls, value: str) -> str:
+        normalized = value.replace("\r\n", "\n").replace("\r", "\n").strip()
+        if not normalized:
+            raise ValueError("raw_text must contain non-empty manual_text after trimming and line-ending normalization")
+        return value
+
+
+class RawDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    raw_document_id: str
+    input_method: Literal["manual_text"] = "manual_text"
+    state: Literal["received", "normalized", "rejected", "superseded"]
+    submitted_text: str
+    user_source_label: str
+    user_topic_label: str
+    source_url: str | None = None
+    source_url_fetched: Literal[False] = False
+    received_at: datetime = Field(default_factory=utc_now)
+    content_hash: str
+    limitations: list[str] = Field(min_length=1)
+    limitations_ref: str = "LIMITATIONS.md"
+    audit_reference: str
+
+
+class SourceDocument(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    source_document_id: str
+    raw_document_id: str
+    source_id: str
+    state: Literal["derived", "ready_for_local_analysis", "analysis_completed", "analysis_failed", "discarded"]
+    display_name: str
+    topic: str
+    text_for_analysis: str
+    source_assertion_type: Literal["user_supplied"] = "user_supplied"
+    analysis_allowed: bool = True
+    limitations: list[str] = Field(min_length=1)
+    limitations_ref: str = "LIMITATIONS.md"
+    audit_reference: str
+
+
+class ManualIngestResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    schema_version: str = "lumen.ingest.manual.v0.6"
+    mode: Literal["manual_input"] = "manual_input"
+    raw_document: RawDocument
+    source_document: SourceDocument
+    content_hash: str
+    metadata: dict[str, Any]
+    limitations: list[str] = Field(min_length=1)
+    limitations_ref: str = "LIMITATIONS.md"
+    audit_event: AuditEvent
+    audit_trail: list[AuditEvent]
+    audit_events: list[AuditEvent] = Field(default_factory=list)
+    audit_verification: AuditVerification
+    analysis: "AnalysisResponse | None" = None
 
 
 class AnalysisResponse(BaseModel):

@@ -1,6 +1,6 @@
 # Lumen Adversarial Review Process
 
-Version: v0.5-public-framing
+Version: v0.6-controlled-manual-input
 
 ## Purpose
 
@@ -25,6 +25,7 @@ Reviewers may challenge:
 - limitation disclosure;
 - audit completeness;
 - UI wording that implies excessive certainty;
+- public wording that implies live ingestion, URL fetching, source authentication, truth verification, or production coverage;
 - governance rule changes.
 
 ## Challenge Packet
@@ -54,6 +55,7 @@ Reviewers should ask:
 - Are unknown, unresolved, and contested states preserved?
 - Does the interface overstate certainty?
 - Can the audit trail explain the output?
+- If a `source_url` or URL-looking string appears, is it clearly treated as metadata or user-supplied text rather than fetched evidence?
 
 ## Red-Team Cases
 
@@ -70,6 +72,7 @@ MVP adversarial cases should include:
 - unresolved claim with insufficient evidence;
 - emotionally strong wording with weak evidence.
 - current-demo copy that implies live coverage, production authority, or final verdicts.
+- manual-input copy that treats submitted text, files, source labels, or URL-looking strings as authenticated sources or verified facts.
 
 ## Resolution States
 
@@ -83,7 +86,7 @@ Challenges may resolve as:
 
 ## Documentation
 
-Accepted and partially accepted challenges should update the relevant governance docs, tests/evals, and audit notes. If a challenge concerns public-demo wording, the correction should preserve the v0.5 boundary: controlled local fixture, simplified UI, no live claim-verification promise, and no final authority language.
+Accepted and partially accepted challenges should update the relevant governance docs, tests/evals, and audit notes. If a challenge concerns public-demo wording, the correction should preserve the v0.6 boundary: controlled local fixture, controlled manual/local input only, simplified UI, no live claim-verification promise, no URL fetching promise, and no final authority language.
 
 Governance changes must be public and versioned. Silent scoring or disclosure changes are prohibited.
 

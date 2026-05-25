@@ -1,14 +1,14 @@
 # Lumen Roadmap to v1
 
-Version: v0.5.1-stabilization-hygiene
+Version: v0.6-controlled-manual-input
 
 ## Roadmap stance
 
-This roadmap is a restraint document. It separates what v0.5/v0.5.1 can honestly announce from what may come later.
+This roadmap is a restraint document. It separates what v0.6 can honestly announce from what remains deferred, while preserving the v0.5/v0.5.1/v0.5.2 stabilization history.
 
-v0.5 is a controlled local fixture demo. v0.5.1 is stabilization and hygiene for that same demo, not capability expansion. v1 should remain method-first, open-source, auditable, and human-centered. No phase below authorizes final truth determination, hidden scoring, paid-only infrastructure, telemetry, or production claims before they are implemented and verified.
+v0.5 is a controlled local fixture demo. v0.5.1/v0.5.2 are stabilization, release-packet, and public-framing hygiene for that same demo. v0.6 is controlled manual/local input only: submitted text, local files, source labels, and URL-looking strings are assertion containers, not verified facts or live source retrieval. v1 should remain method-first, open-source, auditable, and human-centered. No phase below authorizes final truth determination, hidden scoring, paid-only infrastructure, telemetry, live URL/RSS ingestion, broad extraction, persistence, auth/accounts, LLM-backed default analysis, or production claims before they are implemented and verified under explicit scope.
 
-## Current baseline: v0.5
+## Current baseline: v0.5/v0.5.2
 
 Goal: public-readiness for the controlled local demo.
 
@@ -46,29 +46,33 @@ Gate:
 - setup documentation requires no secrets, paid services, telemetry, accounts, live feeds, or LLM calls for the default demo path;
 - no v0.5.1 document expands the public claim surface beyond the controlled fixture.
 
-## Phase v0.6 — Documentation and challenge hardening
+## Phase v0.6 — Controlled manual/local input
 
-Goal: make public inspection and contributor review easier without adding analytical surface.
+Goal: accept manually supplied local text or explicitly local-file payloads as assertion containers, preserving uncertainty, visible limitations, and auditability without adding live ingestion or production verification.
+
+Candidate work:
+
+- define RawDocument and SourceDocument lifecycle states;
+- add or document `POST /ingest/manual` as the controlled local boundary;
+- keep submitted URLs inert unless future scope authorizes retrieval;
+- carry limitations that articles, pasted excerpts, local files, source labels, and URL-looking strings are containers of claims or user assertions, not facts;
+- map existing `POST /analyze` local-text behavior to the document lifecycle;
+- add local deterministic validation/error states for empty or unsupported input.
+
+Gate:
+
+- no URL fetching, crawling, scraping, RSS polling, live feeds, paid APIs, LLM calls, telemetry, auth/accounts, persistence expansion, or production storage complexity;
+- manual input is represented as supplied material, not verified truth;
+- audit events explain local transformations without proving real-world correctness.
+
+## Phase v0.7 — Documentation, challenge hardening, and fixture depth
+
+Goal: make public inspection easier and improve method demonstration quality with more controlled cases, not live coverage.
 
 Candidate work:
 
 - tighten README, limitations, contribution, and challenge-path cross-links;
-- add public screenshots only after verifier passes;
 - add doc checks for stale UI language and overclaim patterns;
-- make operator walkthroughs reproducible from a clean clone;
-- clarify which detailed components are internal/legacy vs public.
-
-Gate:
-
-- a new contributor can run and challenge the local demo without maintainer context;
-- all public docs preserve controlled local fixture boundaries.
-
-## Phase v0.7 — Fixture depth and evaluation coverage
-
-Goal: improve method demonstration quality with more controlled cases, not live coverage.
-
-Candidate work:
-
 - add additional synthetic or historically neutral fixture cases;
 - expand golden cases for unsupported, contradicted, contested, and unresolved outputs;
 - test source-dependency and missing-evidence behavior across fixtures;
@@ -78,9 +82,9 @@ Gate:
 
 - fixture expansion improves edge-case coverage without implying global source coverage or live monitoring.
 
-## Phase v0.8 — Local input ergonomics
+## Phase v0.8 — Local input ergonomics hardening
 
-Goal: make manually supplied local text easier to inspect while preserving default deterministic behavior.
+Goal: make manually supplied local text easier to inspect after the v0.6 boundary is stable while preserving default deterministic behavior.
 
 Candidate work:
 
@@ -129,7 +133,7 @@ v1 should not be declared until the implementation, docs, tests, and public word
 The following are not automatic roadmap commitments:
 
 - production intelligence service;
-- broad live web/news ingestion;
+- broad live web/news ingestion, crawling, scraping, RSS polling, or URL fetching;
 - paid-source integrations;
 - LLM-backed default analysis;
 - user accounts and personalization;

@@ -9,6 +9,7 @@ Routes:
 - `GET /health` — service and doctrine status.
 - `GET /sample` — deterministic controlled fixture analysis for the local demo.
 - `POST /analyze` — deterministic local placeholder analysis for supplied text.
+- `POST /ingest/manual` — controlled manual text assertion container with no URL fetching or live ingestion.
 - `GET /audit/verify` — verifies the in-memory sample audit hash chain.
 
 Demo-path stability notes:
@@ -20,6 +21,9 @@ Demo-path stability notes:
   contradiction` using local fixture data only.
 - `/analyze` treats user-supplied text as local evidence that a claim was
   supplied, not evidence that the claim is true.
+- `/ingest/manual` accepts the canonical `raw_text` + `input_method:
+  manual_text` request shape and rejects legacy aliases before external clients
+  depend on them.
 - Claims expose `status`, `confidence_score`, `confidence_reason`,
   `evidence_refs`, `audit_reference`, and `limitations_ref`.
 - Briefings expose uncertainty language, `limitations`, `limitations_ref`, and

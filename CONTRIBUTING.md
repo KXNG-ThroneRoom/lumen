@@ -28,11 +28,12 @@ If your change affects a public output, confidence scoring, limitation disclosur
 
 ## Current scope boundary
 
-The current v0.5 demo is local, deterministic, fixture-backed, and limited. The public UI is a simplified claim story with Story, Evidence, Why uncertain, and Audit tabs.
+The current v0.6 demo is local, deterministic, fixture-backed, manually bounded, and limited. The public UI is a simplified claim story with Story, Evidence, Why uncertain, and Audit tabs. Manual/local submissions are assertion containers for inspection, not proof that an article, excerpt, source label, or URL-looking string is true.
 
 Do not add or imply:
 
 - live ingestion, crawling, RSS polling, or URL fetching;
+- treating `source_url` or any URL-looking field as a fetched source rather than metadata supplied with the input;
 - paid APIs, secrets, telemetry, or hidden network calls;
 - LLM calls in the default local demo path;
 - production claim extraction, live retrieval, or global source coverage;
@@ -40,7 +41,7 @@ Do not add or imply:
 - propaganda-detection, deception-proof, or perfect-neutrality claims;
 - blockchain anchoring, accounts, personalization, or database complexity unless explicitly scoped later.
 
-Use controlled fixtures and explicit limitation labels. If a capability is partial, fixture-backed, stubbed, or deferred, say so close to the output. Do not describe legacy internal components as the current public UI.
+Use controlled fixtures, controlled manual/local input, and explicit limitation labels. If a capability is partial, fixture-backed, stubbed, manual-only, or deferred, say so close to the output. Do not describe legacy internal components as the current public UI.
 
 ## Public wording rules
 
@@ -49,6 +50,8 @@ Allowed framing:
 - "Lumen exposes claims, evidence, uncertainty, provenance, and audit trails."
 - "Confidence explains the documented rule path for available inputs."
 - "The demo uses controlled fixtures."
+- "Manual/local input is an assertion container, not verified truth."
+- "A source URL is metadata unless a later scoped capability explicitly fetches and preserves it."
 - "Audit trails record method traceability."
 - "Contradictions are exposed, not automatically resolved."
 
@@ -120,6 +123,7 @@ A contribution is not ready for review unless it answers:
 - Which governance/scoring/audit rules are affected?
 - Which tests or verification commands were run?
 - Does the change preserve controlled-fixture boundaries?
+- Does the change preserve v0.6 controlled manual/local input boundaries and avoid implying URL fetch, live ingestion, or source authentication?
 - Does the change avoid hidden scoring, hidden weighting, telemetry, secrets, paid APIs, and fake capability claims?
 - Does the change avoid overwriting, deleting, or mutating original evidence without explicit review?
 

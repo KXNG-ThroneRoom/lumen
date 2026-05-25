@@ -1,16 +1,19 @@
 # Lumen Public Backlog
 
-Purpose: capture public-facing follow-up work without expanding the v0.5 controlled local demo. Items here are deferred until separately scoped, implemented, and verified. Nothing in this backlog is a current launch promise.
+Purpose: capture public-facing follow-up work without expanding the v0.6 controlled manual/local input layer. Items here are deferred until separately scoped, implemented, and verified. Nothing in this backlog is a current launch promise.
 
 ## Current boundary
 
-v0.5 remains a simplified controlled local fixture demo around one contested claim story: "When does the regulation start?" The public UI is the Story / Evidence / Why uncertain / Audit tabbed view. Lumen does not determine truth, ingest live events, call paid APIs or LLMs, collect telemetry, require secrets, or provide production intelligence reliability.
+v0.6 remains a controlled local/manual demo around one contested claim story: "When does the regulation start?" The public UI is the Story / Evidence / Why uncertain / Audit tabbed view. Manual input is an assertion container, not truth; articles and submitted text are containers of claims, not facts. Lumen does not determine truth, ingest live events, fetch URLs, crawl, poll RSS, call paid APIs or LLMs, collect telemetry, require secrets, create accounts, persist production data, or provide production intelligence reliability.
 
 ## Ingestion
 
 - Add a local file-ingestion fixture path that preserves originals as immutable evidence.
   - Why: broaden demo inputs without live crawling or network dependency.
   - Gate: original text preserved, transformation audit events emitted, no source mutation.
+- Keep the current manual/local text input path explicitly labeled as an assertion container.
+  - Why: user-supplied text proves only that a claim was supplied, not that the claim is true.
+  - Gate: `/analyze` returns local-input provenance, visible limitations, audit references, and no external retrieval claims.
 - Define a future URL-ingestion threat model before any URL fetching is implemented.
   - Why: live fetching introduces provenance, freshness, safety, and privacy risks.
   - Gate: governance approval, network boundary tests, clear limitation language.
@@ -56,9 +59,9 @@ v0.5 remains a simplified controlled local fixture demo around one contested cla
 
 ## Evals
 
-- Add golden cases for simplified UI expectations and public-copy boundaries.
-  - Why: prevent stale dense-dashboard language from returning as the launch surface.
-  - Gate: static verifier and docs scans catch public UI drift.
+- Add golden cases for simplified UI expectations, manual/local input containment, and public-copy boundaries.
+  - Why: prevent stale dense-dashboard language from returning as the launch surface and prevent manual input from being mistaken for truth.
+  - Gate: static verifier and docs scans catch public UI drift; API contract tests assert local-input provenance and limitations.
 - Add no-secret/no-network evals for the default local demo path.
   - Why: auditability is a release blocker and external dependency creep is easy to miss.
   - Gate: tests fail on credential requirements, telemetry, paid API calls, or hidden network calls.

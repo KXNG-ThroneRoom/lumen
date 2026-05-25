@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Lumen aggregate verification gate for v0.5.2 release-packet readiness.
+# Lumen aggregate verification gate for v0.6 controlled manual/local input readiness.
 #
 # Environment expectations:
 # - Run from the repository root, or from any directory inside this repo.
@@ -106,7 +106,7 @@ PY
   fi
 }
 
-note "Lumen v0.5.2 aggregate verification"
+note "Lumen v0.6 aggregate verification: controlled manual/local input only"
 note "Repo root: ${REPO_ROOT}"
 
 if [[ -x ".venv/bin/python" ]]; then
@@ -144,6 +144,14 @@ run_no_hit_scan \
   README.md CONTRIBUTING.md LIMITATIONS.md SECURITY.md ADVERSARIAL_REVIEW.md docs/checklists docs/demo docs/architecture docs/governance scripts apps/api/README.md apps/api/app apps/api/tests apps/web/README.md apps/web/scripts apps/web/src
 
 if [[ -d "apps/api/tests" ]]; then
+  run_gate "api manual/local input contract pytest" \
+    "${PYTHON_BIN}" -m pytest \
+    apps/api/tests/test_manual_input.py \
+    apps/api/tests/test_api_contract.py::test_analyze_returns_stable_v03_contract_with_local_input_evidence \
+    apps/api/tests/test_api_contract.py::test_analyze_route_returns_local_input_contract_without_external_capability_claims \
+    apps/api/tests/test_api_contract.py::test_manual_ingest_creates_assertion_container_without_url_fetching \
+    apps/api/tests/test_api_contract.py::test_manual_ingest_rejects_live_ingestion_modes \
+    -q
   run_gate "api pytest" "${PYTHON_BIN}" -m pytest apps/api/tests -q
 else
   skip_gate "api pytest" "apps/api/tests not present"

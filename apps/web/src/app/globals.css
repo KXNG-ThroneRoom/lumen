@@ -123,6 +123,63 @@ p {
   margin-top: 18px;
 }
 
+.manual-input-card {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+  border: 1px solid rgba(245, 200, 75, 0.58);
+  border-radius: 8px;
+  background: var(--middle-soft);
+  padding: 18px;
+}
+
+.manual-input-card .section-label {
+  margin-top: 0;
+}
+
+.manual-input-card h2 {
+  margin-bottom: 8px;
+}
+
+.manual-input-label {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.manual-input-card textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 12px;
+  line-height: 1.45;
+}
+
+.manual-input-card textarea::placeholder {
+  color: var(--dim);
+}
+
+.manual-input-card textarea:focus-visible {
+  outline: 2px solid var(--middle);
+  outline-offset: 3px;
+}
+
+.manual-preview {
+  border-top: 1px solid rgba(245, 200, 75, 0.36);
+  padding-top: 12px;
+}
+
+.manual-preview strong {
+  color: var(--middle);
+}
+
+.manual-preview p {
+  margin: 6px 0 0;
+}
+
 .signal,
 .simple-card,
 .timeline-step {

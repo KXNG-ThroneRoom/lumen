@@ -6,13 +6,26 @@ from datetime import datetime
 from typing import cast
 
 from fastapi import FastAPI
-
 from .audit import append_audit_event, create_genesis_event, verify_audit_chain
+
 from .briefing import generate_briefing
 from .claim_extraction import extract_claims
 from .contradiction import detect_contradictions
 from .demo_fixtures import build_demo_fixture
-from .models import AnalysisRequest, AnalysisResponse, Briefing, Claim, Contradiction, Evidence, EvidenceType, Source
+from .manual_input import build_manual_ingest_response, normalize_manual_text
+from .models import (
+    AnalysisRequest,
+    AnalysisResponse,
+    Briefing,
+    Claim,
+    Contradiction,
+    Evidence,
+    EvidenceType,
+    ManualIngestRequest,
+    ManualIngestResponse,
+    Source,
+)
+
 from .scoring import apply_scoring
 from .source_graph import build_source_graph
 
@@ -28,7 +41,6 @@ LIMITATIONS = [
     "No LLM calls, no paid APIs, and no production intelligence reliability claims.",
     "Confidence values expose method signals and uncertainty; they are not truth verdicts.",
 ]
-
 
 def _with_audit_timestamp(ledger, timestamp: datetime | None):
     if timestamp is None:
@@ -201,6 +213,18 @@ def analyze(request: AnalysisRequest) -> AnalysisResponse:
     )
     claims, evidence = _evidence_from_local_input(extraction.claims, source.id)
     return _assemble_analysis(topic=request.topic, claims=claims, evidence=evidence, sources=[source], mode="local_input")
+
+
+@app.post("/ingest/manual", response_model=ManualIngestResponse)
+def ingest_manual(request: ManualIngestRequest) -> ManualIngestResponse:
+    analysis = analyze(
+        AnalysisRequest(
+            text=normalize_manual_text(request.raw_text),
+            topic=request.title,
+            source_name=request.source_name,
+        )
+    )
+    return build_manual_ingest_response(request, analysis=analysis)
 
 
 @app.get("/audit/verify")
