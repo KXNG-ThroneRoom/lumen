@@ -1,25 +1,13 @@
 {
+  "schema_version": "lumen.scaffold_inventory.v0.3",
+  "generated_for": "Lumen v0.3 contract + demo integration swarm",
   "eval_auditor_owned_files": [
-    "apps/api/tests/test_audit.py",
-    "apps/api/tests/test_scoring.py",
-    "apps/api/tests/test_source_graph.py",
-    "apps/api/tests/test_contradiction.py",
-    "apps/api/tests/test_briefing.py",
-    "apps/api/tests/test_claim_extraction.py",
-    "evals/README.md",
-    "evals/eval_plan.md",
+    "apps/api/tests/test_api_contract.py",
+    "apps/api/tests/test_demo_flow.py",
     "evals/golden_cases.json",
-    "docs/audits/SCAFFOLD_AUDIT.md",
+    "docs/audits/V0_3_AUDIT.md",
     "docs/audits/scaffold_inventory.json"
   ],
-  "excluded_dir_counts": {
-    ".git": 1,
-    ".next": 2,
-    ".pytest_cache": 1,
-    ".venv": 1,
-    "__pycache__": 118,
-    "node_modules": 2
-  },
   "exclusions": [
     ".git",
     ".next",
@@ -28,13 +16,16 @@
     "__pycache__",
     "node_modules"
   ],
-  "file_count_excluding_generated": 73,
+  "excluded_dir_counts": {
+    ".git": 1,
+    ".next": 0,
+    ".pytest_cache": 1,
+    ".venv": 1,
+    "__pycache__": 2,
+    "node_modules": 1
+  },
+  "file_count_excluding_generated": 77,
   "files": [
-    {
-      "path": ".DS_Store",
-      "sha256": "6174467b72200418b0a28d3021b492fb8013e8eca55c7fe81493e6daa4da41b5",
-      "size_bytes": 6148
-    },
     {
       "path": ".gitignore",
       "sha256": "84961d206c605e8390880e1f9a477eea3510552124637e056cbd6cc7076acabc",
@@ -42,8 +33,8 @@
     },
     {
       "path": "ADVERSARIAL_REVIEW.md",
-      "sha256": "64158bc1b2f99e7a66669b6c0c8b2bbdd641438abb636f839ad722940426b730",
-      "size_bytes": 2540
+      "sha256": "4bc82d56a5aaff92947358177a81511f57a1ad6e203c7ab75d65fac1068cd723",
+      "size_bytes": 2798
     },
     {
       "path": "CONSTITUTION.md",
@@ -57,8 +48,8 @@
     },
     {
       "path": "LIMITATIONS.md",
-      "sha256": "b19bf0ee454eb26f41c46cff7c92489539a2e7d7f51d76eb411907caf03a967f",
-      "size_bytes": 2592
+      "sha256": "3f8a60bb86c67ddcd4796e7042b41dd07996d0f972d8025b63665cb79eda61b9",
+      "size_bytes": 3523
     },
     {
       "path": "README.md",
@@ -71,14 +62,19 @@
       "size_bytes": 2797
     },
     {
-      "path": "apps/.DS_Store",
-      "sha256": "9275fad522787a21945b0bc4695d174ba1175e6a6ee32e4cafed6122f3b8f868",
-      "size_bytes": 6148
+      "path": "docker-compose.yml",
+      "sha256": "26a7565a38a01a9489f8c7d7bfb5fc4aead708077c0e6fcd96d7e8a6db807057",
+      "size_bytes": 564
     },
     {
       "path": "apps/api/README.md",
       "sha256": "87bbddb2c14288bfe527a043016437f99c686fd02bc1298de3eb6dbd6349d9e2",
       "size_bytes": 1069
+    },
+    {
+      "path": "apps/api/pyproject.toml",
+      "sha256": "130e94987b17e72076beef52ec65d7ebb0ebc3c026160a0fa31209c91cd50e5d",
+      "size_bytes": 554
     },
     {
       "path": "apps/api/app/__init__.py",
@@ -106,14 +102,19 @@
       "size_bytes": 3471
     },
     {
+      "path": "apps/api/app/demo_fixtures.py",
+      "sha256": "1721e17cd93620070d88fc47820895596ea610809db4366bc565323b1808a0a3",
+      "size_bytes": 1364
+    },
+    {
       "path": "apps/api/app/main.py",
-      "sha256": "10511c8938cb81dce9d15c585338ffc2b928e20e515e43c616381a477a30c43f",
-      "size_bytes": 5728
+      "sha256": "ced93bd9e2efcf77a26dfc9d553f3a07e1099741b8722ce2ba9b41a793c03376",
+      "size_bytes": 7327
     },
     {
       "path": "apps/api/app/models.py",
-      "sha256": "17f5496bfb8340751a182d92661836f62c92f26c37c1dc7ca4af5b5e4465f4fe",
-      "size_bytes": 8292
+      "sha256": "0abf60c3d9f404dfb49d29bc047b52081baa334a9a0c45ecfbe445c913ca85a1",
+      "size_bytes": 8752
     },
     {
       "path": "apps/api/app/scoring.py",
@@ -126,9 +127,9 @@
       "size_bytes": 2427
     },
     {
-      "path": "apps/api/pyproject.toml",
-      "sha256": "130e94987b17e72076beef52ec65d7ebb0ebc3c026160a0fa31209c91cd50e5d",
-      "size_bytes": 554
+      "path": "apps/api/tests/test_api_contract.py",
+      "sha256": "49af9dca3fd1daff1b0d351fa7e94cce3bc5e243b05da1354f05ec837a855c12",
+      "size_bytes": 2264
     },
     {
       "path": "apps/api/tests/test_audit.py",
@@ -149,6 +150,11 @@
       "path": "apps/api/tests/test_contradiction.py",
       "sha256": "b43b057cc0905b790aedc3ba8bb9af6db25c95dcc63cb484f4de164a1e166e0d",
       "size_bytes": 1326
+    },
+    {
+      "path": "apps/api/tests/test_demo_flow.py",
+      "sha256": "3208803d45aa7ea66d28f53d925214a76593c93c95913fb6af04737c94722e61",
+      "size_bytes": 2611
     },
     {
       "path": "apps/api/tests/test_scoring.py",
@@ -186,9 +192,19 @@
       "size_bytes": 762
     },
     {
+      "path": "apps/web/tsconfig.json",
+      "sha256": "8c796183a303dda2cce6cb4a7baf2a20c6c6ad96a989684de5b006457cdbf00a",
+      "size_bytes": 640
+    },
+    {
+      "path": "apps/web/tsconfig.tsbuildinfo",
+      "sha256": "bc2868281db307abbfd144d34cbde062f5f28c834e51751272bb8eedeb68e005",
+      "size_bytes": 109607
+    },
+    {
       "path": "apps/web/scripts/verify-static-ui.mjs",
-      "sha256": "ce7c399996e091c4023404a65b7620b928524df4df23deb3d8c0da88216f4ddb",
-      "size_bytes": 1548
+      "sha256": "7fea72b580134e7fe4ce49f039ef0aa9661e8b1c991ba10e75718e8e82852a76",
+      "size_bytes": 3116
     },
     {
       "path": "apps/web/src/app/globals.css",
@@ -202,43 +218,48 @@
     },
     {
       "path": "apps/web/src/app/page.tsx",
-      "sha256": "e7fe895de0ea2af732763a91fb0fc28af8a9eb64457718858029dc1adcff5c90",
-      "size_bytes": 2633
+      "sha256": "56861605bed5af47137bb7b4fbfc5141e9f25ecb838af952a9a264be63e14687",
+      "size_bytes": 2961
     },
     {
       "path": "apps/web/src/components/AuditTrail.tsx",
-      "sha256": "fb798a2e1028ee443b57b9bfb40d3d0b78d5e7f93cbed1822820203551f7d9a5",
-      "size_bytes": 927
+      "sha256": "148dc96f392922436780121414cb607cbba64aca4bedb5f6a6541cddfcd101da",
+      "size_bytes": 1321
     },
     {
       "path": "apps/web/src/components/BriefingPanel.tsx",
-      "sha256": "c0e4ad06cdae39c1dccf86b2baea8f358e370ec0464d2e768dd61a38d9583551",
-      "size_bytes": 1740
+      "sha256": "7f19c60b6496fb42e4ad85c4d32791ebc503392d4be9155dde0a56e5434f21c2",
+      "size_bytes": 2000
     },
     {
       "path": "apps/web/src/components/ClaimMatrix.tsx",
-      "sha256": "d3d57928fdfb7ff6e2f707ccf8c79c371831128bbda5ec318459bd0a7d40aca7",
-      "size_bytes": 2446
+      "sha256": "db2c92d723c1d8fa8977fa786b879c26197ce89dfb28f5187b4fa148c6880246",
+      "size_bytes": 2538
     },
     {
       "path": "apps/web/src/components/ContradictionBoard.tsx",
-      "sha256": "384e4cda0c9580e599519e40e735b9b42611bca7d15ff07c972bcbb62c4bfb6a",
-      "size_bytes": 1447
+      "sha256": "a24f832c1d6ec867a551b4733606f5bf10c26e7b938abcee36ba4ae9da6f729d",
+      "size_bytes": 1575
     },
     {
       "path": "apps/web/src/components/EvidenceTrail.tsx",
-      "sha256": "bbdf674ef639c2f11dcae0e1ad3b2f91a84ec0503ccfb0f91a74ad78dfe713e5",
-      "size_bytes": 1067
+      "sha256": "e80826029130fb558fa4d4dad9de7489445621c6d9481bc34c1dfb3849b77ffb",
+      "size_bytes": 1659
     },
     {
       "path": "apps/web/src/components/NarrativeMap.tsx",
-      "sha256": "81cd4a72f33cfc9dc3da0238f02e51e456eb9b371eda3a55f964e91407c76773",
-      "size_bytes": 1216
+      "sha256": "f14807413d009a8771a6904a0e59c729de79b2aed77cfbe149c0065bc2074911",
+      "size_bytes": 1280
     },
     {
       "path": "apps/web/src/components/SourceSpread.tsx",
-      "sha256": "3aa4086b3b215f851dcaacd6b4b56daff9a42bb46b9864661d1632bd130fd9bc",
-      "size_bytes": 2493
+      "sha256": "893b6a1f83107800edb38dfeee1eeba8cf7515de5731997d2d5b98b0f2313ee9",
+      "size_bytes": 1828
+    },
+    {
+      "path": "apps/web/src/data/demo-response.json",
+      "sha256": "0ab31b240e05941e6422979cb4fd8d826f78bb28ee839df66a1b792385a8c5a5",
+      "size_bytes": 17810
     },
     {
       "path": "apps/web/src/data/lumenSample.ts",
@@ -246,34 +267,24 @@
       "size_bytes": 5584
     },
     {
-      "path": "apps/web/tsconfig.json",
-      "sha256": "8c796183a303dda2cce6cb4a7baf2a20c6c6ad96a989684de5b006457cdbf00a",
-      "size_bytes": 640
+      "path": "apps/web/src/lib/api-contract.ts",
+      "sha256": "a8f4ca1b3104679f330f6f93acd071feecd370b1d15d97fee66d3234b1cce5e4",
+      "size_bytes": 5621
     },
     {
-      "path": "apps/web/tsconfig.tsbuildinfo",
-      "sha256": "0e8155fce2fd2e9deb54de6027238a0411343fc30263d6c2b3d75f2dcbacc4c6",
-      "size_bytes": 109808
-    },
-    {
-      "path": "data/.DS_Store",
-      "sha256": "ae532cfea766fa2e71206b7aab1db70b3d400b6d298e56486973485a6680301b",
-      "size_bytes": 6148
-    },
-    {
-      "path": "docker-compose.yml",
-      "sha256": "26a7565a38a01a9489f8c7d7bfb5fc4aead708077c0e6fcd96d7e8a6db807057",
-      "size_bytes": 564
-    },
-    {
-      "path": "docs/.DS_Store",
-      "sha256": "63a5807751344a211dbc28119f83eeb3b72b4b480b577f3cc6927d614e61d99c",
-      "size_bytes": 6148
+      "path": "docs/architecture/API_CONTRACT.md",
+      "sha256": "30251ae0857504270a03f18f28c09591f421ae4155d6e202f80387252a9ba2ad",
+      "size_bytes": 14471
     },
     {
       "path": "docs/architecture/DATA_MODEL.md",
       "sha256": "1f9023dd9f7aee23576f9a48f7738ce1333d9cccfea3325ff51424dfe48e5982",
       "size_bytes": 10957
+    },
+    {
+      "path": "docs/architecture/DEMO_FLOW.md",
+      "sha256": "221432b2a9654ccb3598a50cd01167ca3733e2806e1b9797f3d9a37737bca089",
+      "size_bytes": 12113
     },
     {
       "path": "docs/architecture/MVP_PHASES.md",
@@ -282,8 +293,8 @@
     },
     {
       "path": "docs/architecture/MVP_SCOPE.md",
-      "sha256": "8d769e15119222daecfbcf8f5f3a61b85a660208acc8c0bb95a1892727b8420e",
-      "size_bytes": 6173
+      "sha256": "81fc553d44a2cf9e42e96327d1bba34ca520bbd627651cb9fb35196dde4abbc8",
+      "size_bytes": 7612
     },
     {
       "path": "docs/architecture/PROJECT_BLUEPRINT.md",
@@ -301,9 +312,14 @@
       "size_bytes": 9619
     },
     {
+      "path": "docs/audits/V0_3_AUDIT.md",
+      "sha256": "5757127c7962e6a2ea797d10c17cf55ac8ab6770223eb1a59d326ec8a238ad80",
+      "size_bytes": 5304
+    },
+    {
       "path": "docs/audits/scaffold_inventory.json",
-      "sha256": "54f8e9347b2a261e0af7163c87bc273711807855d3f9cebffd4d3fa92c6d847c",
-      "size_bytes": 14183
+      "sha256": "336ac3451db1fd283c98762ea3272d3dea58fd7d11781f36c4cc6badc63ddcc9",
+      "size_bytes": 13453
     },
     {
       "path": "docs/governance/AUDIT_TRAIL_SPEC.md",
@@ -317,13 +333,13 @@
     },
     {
       "path": "docs/governance/CONFIDENCE_SCORING.md",
-      "sha256": "23a5500c23f31b2e0798e3af8ca78c5738903366d28660a0477c8b5a5a5cabd9",
-      "size_bytes": 4638
+      "sha256": "33daaa4df7f355422a5eda049c3c60fc63d1a2cfd855aff2e0ae42e593c51ddd",
+      "size_bytes": 5095
     },
     {
       "path": "docs/governance/GOVERNANCE_RULES.md",
-      "sha256": "792e23b70c6cb14a232fe5e90e21e7d3c2584e175989375a43e1a25ee185b2db",
-      "size_bytes": 6139
+      "sha256": "aa6be14ac5dff7c97bb1ae40a2e9d871746e0179a150705e802c0bd879cce664",
+      "size_bytes": 6996
     },
     {
       "path": "evals/README.md",
@@ -337,8 +353,8 @@
     },
     {
       "path": "evals/golden_cases.json",
-      "sha256": "ff630d924cf9ca81d1631a2efd7f26a2553aef5f056535c1f49c11ded4966213",
-      "size_bytes": 8642
+      "sha256": "176cc239d0ec66626476e30926c5310677cc988ecf41c94fc093f69190d5bd86",
+      "size_bytes": 13991
     },
     {
       "path": "examples/sample_article.json",
@@ -395,74 +411,5 @@
       "sha256": "f0402dd914463f2461305e5a5c4170f28ba87a2c980ddd2c6e8f68f6ca6a2ff3",
       "size_bytes": 620
     }
-  ],
-  "generated_at_utc": "2026-05-24T11:59:35.897642+00:00",
-  "git_status_short": [
-    "?? .gitignore",
-    "?? ADVERSARIAL_REVIEW.md",
-    "?? CONSTITUTION.md",
-    "?? LICENSE",
-    "?? LIMITATIONS.md",
-    "?? README.md",
-    "?? SECURITY.md",
-    "?? apps/",
-    "?? docker-compose.yml",
-    "?? docs/",
-    "?? evals/",
-    "?? examples/",
-    "?? packages/"
-  ],
-  "known_blockers": [
-    {
-      "detail": "Repository contents remain untracked; baseline commit should wait for human review and remaining reference cleanup.",
-      "kind": "baseline_review"
-    }
-  ],
-  "repo_path": "/Users/amirtbz/lumen",
-  "resolved_blockers": [
-    {
-      "detail": "Audit chain verification blocker resolved; backend/eval pytest now passes 11/11.",
-      "kind": "backend_test_failure"
-    },
-    {
-      "detail": "Forbidden legacy-name/reference scan blocker resolved by rewording architecture acceptance criterion.",
-      "kind": "reference_scan_hit"
-    }
-  ],
-  "schema_version": "lumen.scaffold_inventory.v2",
-  "secret_scan": {
-    "hits": [],
-    "pattern_names_checked": [
-      "api_key_assignment",
-      "secret_assignment",
-      "token_assignment",
-      "private_key_block",
-      "password_assignment"
-    ],
-    "status": "pass"
-  },
-  "verification": {
-    "required_forbidden_reference_scan": {
-      "hit_count": 0,
-      "hit_paths": [],
-      "patterns": "banned legacy-name patterns redacted from inventory to avoid self-matching required grep",
-      "status": "pass"
-    }
-  },
-  "verification_results": {
-    "compileall_apps_api_app": "pass",
-    "conflict_marker_scan": "pass",
-    "pytest_apps_api_tests_q": "pass: 11 passed",
-    "required_certainty_claim_scan": {
-      "hit_count": 0,
-      "status": "pass"
-    },
-    "required_forbidden_reference_scan": {
-      "hit_count": 1,
-      "hit_paths": [
-        "docs/architecture/PROJECT_BLUEPRINT.md"
-      ],
-      "status": "fail_outside_eval_ownership"
-    }
-  }
+  ]
 }

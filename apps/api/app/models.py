@@ -111,6 +111,8 @@ class Evidence(BaseModel):
     primary: bool = False
     anonymous: bool = False
     limitations: list[str] = Field(default_factory=list)
+    limitations_ref: str = "LIMITATIONS.md"
+    audit_reference: str = "audit-reference-pending"
 
 
 class ConfidenceBreakdown(BaseModel):
@@ -158,6 +160,8 @@ class Claim(BaseModel):
     confidence_reason: list[str] = Field(min_length=1)
     status: ClaimStatus
     limitations: list[str] = Field(default_factory=list)
+    limitations_ref: str = "LIMITATIONS.md"
+    audit_reference: str = "audit-reference-pending"
     created_at: datetime = Field(default_factory=utc_now)
 
 
@@ -228,6 +232,7 @@ class Briefing(BaseModel):
     watch_indicators: list[str]
     unresolved_questions: list[str]
     limitations: list[str] = Field(min_length=1)
+    limitations_ref: str = "LIMITATIONS.md"
     audit_reference: str
     generated_at: datetime = Field(default_factory=utc_now)
 
@@ -252,6 +257,8 @@ class AnalysisRequest(BaseModel):
 class AnalysisResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    schema_version: str = "lumen.analysis.v0.3"
+    mode: Literal["fixture_demo", "local_input"] = "fixture_demo"
     topic: str
     claims: list[Claim]
     evidence: list[Evidence]
@@ -259,6 +266,8 @@ class AnalysisResponse(BaseModel):
     source_graph: SourceGraph
     contradictions: list[Contradiction]
     briefing: Briefing
-    audit_events: list[AuditEvent]
+    audit_trail: list[AuditEvent]
+    audit_events: list[AuditEvent] = Field(default_factory=list)
     audit_verification: AuditVerification
     limitations: list[str] = Field(min_length=1)
+    limitations_ref: str = "LIMITATIONS.md"

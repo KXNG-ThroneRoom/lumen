@@ -1,6 +1,6 @@
 # Lumen API
 
-Local deterministic backend core for the Lumen v0.2 MVP.
+Local deterministic backend core for the Lumen v0.4 demo path.
 
 This service exposes claim-level primitives only. It does not perform real-time ingestion, call LLMs, use paid APIs, or present conclusions as final truth.
 
@@ -10,6 +10,22 @@ Routes:
 - `GET /sample` — fixture-backed structured analysis.
 - `POST /analyze` — deterministic local placeholder analysis for supplied text.
 - `GET /audit/verify` — verifies the in-memory sample audit hash chain.
+
+Demo-path stability notes:
+
+- `/health` reports backend version `0.4.0` while the analysis envelope remains
+  `lumen.analysis.v0.3` to avoid a schema-version bump without a breaking
+  contract change.
+- `/sample` returns the controlled fixture topic `Fixture: regulation start-date
+  contradiction` using local fixture data only.
+- `/analyze` treats user-supplied text as local evidence that a claim was
+  supplied, not evidence that the claim is true.
+- Claims expose `status`, `confidence_score`, `confidence_reason`,
+  `evidence_refs`, `audit_reference`, and `limitations_ref`.
+- Briefings expose uncertainty language, `limitations`, `limitations_ref`, and
+  `audit_reference`.
+- No route performs LLM calls, paid API calls, live ingestion, telemetry, or
+  hidden network behavior.
 
 Local run after installing dependencies:
 
